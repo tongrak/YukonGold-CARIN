@@ -1,2 +1,2 @@
 # YukonGold-CARIN
-This Repository is for CPE200(2021) project CARIN FrontEnd, BackEnd, and interface Code.
+This Repository is for CPE200(2021) project CARIN FrontEnd, BackEnd, and everything in between.
