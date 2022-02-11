@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b92069fa-080c-42f2-827d-708b7269abac" name="Changes" comment="" />
+    <list default="true" id="b92069fa-080c-42f2-827d-708b7269abac" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/BackEnd/Evaluator/Tokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/At anyTurn idea.png" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/At anyTurn idea.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/At initialTurn idea.png" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/At initialTurn idea.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Interface_Class Design.png" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Interface_Class Design.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,5 +35,16 @@
       <updated>1644258033767</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
