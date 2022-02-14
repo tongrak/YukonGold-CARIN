@@ -1,4 +1,8 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.LinkedList;
 
 /**Tobe uses as a tokenizer for tokenize a simple text file (.txt). This is a singleton functional class which process a text file
  * in said text file in to a tokenStream[a List of string] which will store Tokens[a string]. With 2 important methods: peer and pop.
@@ -30,18 +34,37 @@ interface TokenizerInter{
 }
 
 public class Tokenizer  implements TokenizerInter{
+
+    private LinkedList<String> tokenStream;
+
     @Override
     public void tokenize(Path path) {
+        LinkedList<String> list = new LinkedList<String>();
+        Path file = Paths.get(path);
+        Charset charset = Charset.forName("US-ASCII");
 
+        try(BufferedReader reader = 
+            Files.newBufferedReader(file, charset)){
+                String line = null;
+                while((line = reader.readLine()) != null){
+                    String[] Splittedline = line.split(" ");
+                    for (String word : Splittedline) {
+                        list.add(word);
+                    }
+                }
+                this.tokenStream = list;
+        }catch(IOException e){
+            System.err.format("IOException: %s%n",e);
+        }
     }
 
     @Override
     public String peer() {
-        return null;
+        return tokenStream.peek();
     }
 
     @Override
     public String pop() {
-        return null;
+        return tokenStream.poll();
     }
 }
