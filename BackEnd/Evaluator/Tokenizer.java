@@ -26,11 +26,11 @@ interface TokenizerInter{
      * */
     void tokenize(Path path);
     /** return the latest token
-     * @return latest token
+     * @return latest token or Null if Stream was empty
      * */
     String peer();
     /** return and remove latest token
-     * @return latest token
+     * @return latest token or Null if Stream was empty
      * @sideEffect remove latest token
      * */
     String pop();
