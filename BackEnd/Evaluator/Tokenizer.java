@@ -1,7 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 /**Tobe uses as a tokenizer for tokenize a simple text file (.txt). This is a singleton functional class which process a text file
@@ -39,18 +42,15 @@ public class Tokenizer  implements TokenizerInter{
 
     @Override
     public void tokenize(Path path) {
-        LinkedList<String> list = new LinkedList<String>();
-        Path file = Paths.get(path);
-        Charset charset = Charset.forName("US-ASCII");
+        LinkedList<String> list = new LinkedList<>();
+        Charset charset = StandardCharsets.US_ASCII;
 
         try(BufferedReader reader = 
-            Files.newBufferedReader(file, charset)){
-                String line = null;
+            Files.newBufferedReader(path, charset)){
+                String line;
                 while((line = reader.readLine()) != null){
                     String[] Splittedline = line.split(" ");
-                    for (String word : Splittedline) {
-                        list.add(word);
-                    }
+                    list.addAll(Arrays.asList(Splittedline));
                 }
                 this.tokenStream = list;
         }catch(IOException e){
