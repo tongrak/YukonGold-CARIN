@@ -1,6 +1,6 @@
 import java.nio.file.Path;
 
-public abstract class GeneticCode {
+public class GeneticCode {
     protected final Path genePath;
 
     public GeneticCode(Path genePath) {
