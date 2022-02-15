@@ -91,26 +91,22 @@ class WhileStatementImpl extends WhileStatementAbs{
     }
 }
 
-class MoveCommand implements StatementBox{
-    private final int eightDirecCoor;
-
-    public MoveCommand(int eightDirecCoor){
-        this.eightDirecCoor = eightDirecCoor;
+record AssignmentCommand(String identifier, ExprAbs expr, Map<String, ExprAbs> binding) implements StatementBox {
+    @Override
+    public GPAction getGPAction() {
+        binding.put(identifier, expr);
+        return null;
     }
+}
 
+record MoveCommand(int eightDirecCoor) implements StatementBox {
     @Override
     public GPAction getGPAction() {
         return new MoveAct(eightDirecCoor);
     }
 }
 
-class ShootCommand implements StatementBox{
-    private final int eightDirecCoor;
-
-    public ShootCommand(int eightDirecCoor){
-        this.eightDirecCoor = eightDirecCoor;
-    }
-
+record ShootCommand(int eightDirecCoor) implements StatementBox {
     @Override
     public GPAction getGPAction() {
         return new ShootAct(eightDirecCoor);
@@ -130,43 +126,51 @@ public class StatementParser {
         this.exprParser = exprParser;
     }
 
-    StatementBox parse() throws SyntaxError {//Throw Syntax error
-        while(tk.peer() != null){
+    private int directionToEightDirec(String strIn) throws SyntaxError{
+        String[] directionArr = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
+        boolean isDirection = false;
+        for(String str: directionArr)if(strIn.equals(str)){isDirection = true; break;}
+        if (!isDirection) throw new SyntaxError("Syntax error: incorrect direction");
+        return switch (strIn) {
+            case "left" ->  17;
+            case "right" -> 13;
+            case "up" -> 11;
+            case "down" -> 15;
+            case "upleft" -> 18;
+            case "upright" -> 12;
+            case "downleft" -> 16;
+            case "downright" -> 14;
+            default -> 0;
+        };
+    }
+
+    private StatementBox parseC(boolean isReservedWord, String currToken) throws SyntaxError{
+        if(!isReservedWord) {
+            return new AssignmentCommand(currToken, exprParser.parseE(), binding);
+        }else{
+            String nextToken = tk.pop();
+            if(currToken.equals("move")){
+                return new MoveCommand(directionToEightDirec(nextToken));
+            }else{
+                return new ShootCommand(directionToEightDirec(nextToken));
+            }
+        }
+    }
+
+    protected StatementBox parseS() throws SyntaxError {
             String currToken = tk.pop();
             boolean isReservedWord = false;
             for(String str: reservedWord)
                 if (currToken.equals(str)) {isReservedWord = true;break;}
             //Command section;
-            if(!isReservedWord) {
-                binding.put(currToken, exprParser.parseE());
-            }else if(currToken.equals("move") || currToken.equals("shoot")){
-                String[] directionArr = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
-                String nextToken = tk.pop();
-                boolean isDirection = false;
-                for(String str: directionArr)if(nextToken.equals(str)){isDirection = true; break;}
-                if (!isDirection) throw new SyntaxError("ActionCommand syntax error");
-                int eightDirection = switch (nextToken) {
-                    case "left" -> 17;
-                    case "right" -> 13;
-                    case "up" -> 11;
-                    case "down" -> 15;
-                    case "upleft" -> 18;
-                    case "upright" -> 12;
-                    case "downleft" -> 16;
-                    case "downright" -> 14;
-                    default -> 0;
-                };
-                if(currToken.equals("move")){
-                    return new MoveCommand(eightDirection);
-                }else{
-                    return new ShootCommand(eightDirection);
-                }
+            if(!isReservedWord || currToken.equals("move") || currToken.equals("shoot" )){
+                return parseC(isReservedWord, currToken);
             }else{
                 switch (currToken) {
                     case "{":
                         LinkedList<StatementBox> inBracketExpr = new LinkedList<>();
                         while (!tk.peer().equals("}")) {
-                            inBracketExpr.add(parse());
+                            inBracketExpr.add(parseS());
                         }
                         tk.pop();
                         return new BlockStatementImpl(inBracketExpr);
@@ -175,9 +179,9 @@ public class StatementParser {
                             ExprAbs exprBox = exprParser.parseE();
                             if (!tk.pop().equals(")")) throw new SyntaxError("if statement syntax error");
                             if (!tk.pop().equals("then")) throw new SyntaxError("if statement syntax error");
-                            StatementBox thenStatement = parse();
+                            StatementBox thenStatement = parseS();
                             if (!tk.pop().equals("else")) throw new SyntaxError("if statement syntax error");
-                            StatementBox elseStatement = parse();
+                            StatementBox elseStatement = parseS();
                             return new IfStatementImpl(exprBox, thenStatement, elseStatement);
                         } else throw new SyntaxError("if statement syntax error");
                     case "while":
@@ -188,12 +192,6 @@ public class StatementParser {
                         break;
                 }
             }
-        }
         throw new SyntaxError("statement syntax error");
     }
-    //while (tk.hasNext)
-    //command parse // if tk.peer is identifier then assignment else it's GPs
-    //if tk.peer == { -> loop parse till detect } -> return BlockStatement
-    //if tk.peer == if -> create ExpressionObj
-    //if
 }
