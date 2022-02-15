@@ -188,8 +188,9 @@ public class StatementParser {
                         if (tk.pop().equals("(")) {
                             ExprAbs exprBox = exprParser.parseE();
                             if (!tk.pop().equals(")")) throw new SyntaxError("while statement syntax error");
-                        }
-                        break;
+                            StatementBox theStatement = parseS();
+                            return new WhileStatementImpl(exprBox, theStatement);
+                        }else throw new SyntaxError("while statement syntax error");
                 }
             }
         throw new SyntaxError("statement syntax error");
