@@ -40,3 +40,22 @@ class Antibody extends GamePiece{
         super.setTheGeneCode(gene);
     }
 }
+
+class Virus extends GamePiece{
+
+    public Virus(VirusGene gene){
+        super.setTheGeneCode(gene);
+    }
+
+    public VirusGene getGeneticCode(){return (VirusGene) super.getTheGeneCode();}
+
+    @Override
+    void move() {
+
+    }
+
+    @Override
+    void shoot() {
+
+    }
+}
