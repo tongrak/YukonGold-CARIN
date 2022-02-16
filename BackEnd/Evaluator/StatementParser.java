@@ -55,7 +55,7 @@ class IfStatementImpl extends IfStatementAbs {
 
     @Override
     public GPAction getGPAction(Coor theCoor) throws SyntaxError {
-        if(super.theExpr.eval() > 0){
+        if(super.theExpr.eval(theCoor) > 0){
             return super.thenStatement.getGPAction(theCoor);
         }else{
             return super.elseStatement.getGPAction(theCoor);
@@ -82,7 +82,7 @@ class WhileStatementImpl extends WhileStatementAbs{
     @Override
     public GPAction getGPAction(Coor theCoor) throws SyntaxError {
         int count = 0;
-        while(super.theExpr.eval() > 0 && count < 1000){
+        while(super.theExpr.eval(theCoor) > 0 && count < 1000){
             GPAction temp = this.thenStatement.getGPAction(theCoor);
             if(temp != null)return temp;
             count++;
@@ -128,24 +128,6 @@ public class StatementParser {
         this.exprParser = exprParser;
     }
 
-    private int directionToEightDirec(String strIn) throws SyntaxError{
-        String[] directionArr = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
-        boolean isDirection = false;
-        for(String str: directionArr)if(strIn.equals(str)){isDirection = true; break;}
-        if (!isDirection) throw new SyntaxError("Syntax error: incorrect direction");
-        return switch (strIn) {
-            case "left" ->  17;
-            case "right" -> 13;
-            case "up" -> 11;
-            case "down" -> 15;
-            case "upleft" -> 18;
-            case "upright" -> 12;
-            case "downleft" -> 16;
-            case "downright" -> 14;
-            default -> 0;
-        };
-    }
-
     private boolean isCommandBox(String strIn){
         if (strIn.equals("move")||strIn.equals("shoot")) return true;
         for(String str: reservedWord) if (str.equals(strIn)) return false;
@@ -156,9 +138,9 @@ public class StatementParser {
         if(currToken.equals("move")||currToken.equals("shoot")){
             String nextToken = tk.pop();
             if(currToken.equals("move")){
-                return new MoveCommand(directionToEightDirec(nextToken));
+                return new MoveCommand(DecodedGene.directionToEightDirec(nextToken));
             }else{
-                return new ShootCommand(directionToEightDirec(nextToken));
+                return new ShootCommand(DecodedGene.directionToEightDirec(nextToken));
             }
         }else if (tk.pop().equals("=")) return new AssignmentCommand(currToken, exprParser.parseE(), binding);
 

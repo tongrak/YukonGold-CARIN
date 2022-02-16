@@ -30,4 +30,22 @@ public class DecodedGene {
         }
         throw new SyntaxError("ProgramParser: statement list is GPAction less");
     }
+
+     protected static int directionToEightDirec(String strIn) throws SyntaxError{
+        String[] directionArr = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
+        boolean isDirection = false;
+        for(String str: directionArr)if(strIn.equals(str)){isDirection = true; break;}
+        if (!isDirection) throw new SyntaxError("Syntax error: incorrect direction");
+        return switch (strIn) {
+            case "left" ->  17;
+            case "right" -> 13;
+            case "up" -> 11;
+            case "down" -> 15;
+            case "upleft" -> 18;
+            case "upright" -> 12;
+            case "downleft" -> 16;
+            case "downright" -> 14;
+            default -> 0;
+        };
+    }
 }
