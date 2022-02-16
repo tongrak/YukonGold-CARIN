@@ -144,28 +144,32 @@ public class StatementParser {
         };
     }
 
-    private StatementBox parseC(boolean isReservedWord, String currToken) throws SyntaxError{
-        if(!isReservedWord) {
-            if (!tk.pop().equals("=")) throw new SyntaxError("Assignment statement syntax error");
-            return new AssignmentCommand(currToken, exprParser.parseE(), binding);
-        }else{
+    private boolean isCommandBox(String strIn){
+        if (strIn.equals("move")||strIn.equals("shoot")) return true;
+        for(String str: reservedWord) if (str.equals(strIn)) return false;
+        return !strIn.equals("{");
+
+    }
+
+    private StatementBox parseC(String currToken) throws SyntaxError{
+        if(currToken.equals("move")||currToken.equals("shoot")){
             String nextToken = tk.pop();
             if(currToken.equals("move")){
                 return new MoveCommand(directionToEightDirec(nextToken));
             }else{
                 return new ShootCommand(directionToEightDirec(nextToken));
             }
-        }
+        }else if (tk.pop().equals("=")) return new AssignmentCommand(currToken, exprParser.parseE(), binding);
+
+        throw new SyntaxError("Assignment statement syntax error");
     }
+
 
     protected StatementBox parseS() throws SyntaxError {
             String currToken = tk.pop();
-            boolean isReservedWord = false;
-            for(String str: reservedWord)
-                if (currToken.equals(str)) {isReservedWord = true;break;}
-            //Command section;
-            if(!isReservedWord || currToken.equals("move") || currToken.equals("shoot" )){
-                return parseC(isReservedWord, currToken);
+
+            if(isCommandBox(currToken)){ //Command section;
+                return parseC(currToken);
             }else{
                 switch (currToken) {
                     case "{":
