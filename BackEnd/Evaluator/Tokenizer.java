@@ -50,7 +50,25 @@ public class Tokenizer  implements TokenizerInter{
                 String line;
                 while((line = reader.readLine()) != null){
                     String[] Splittedline = line.split(" ");
-                    list.addAll(Arrays.asList(Splittedline));
+                    LinkedList<String> CurrentArray = new LinkedList<>();
+                    for (String i : Splittedline) {
+                        if(i.charAt(0) == "("){
+                            CurrentArray.add("(");
+                            CurrentArray.add(i.substring(1));
+                        }else if(i.charAt(0) == "{"){
+                            CurrentArray.add("{");
+                            CurrentArray.add(i.substring(1));
+                        }else if(i.charAt(i.length()-1) == ")"){
+                            CurrentArray.add(i.substring(0,i.length()-1));
+                            CurrentArray.add(")");
+                        }else if(i.charAt(i.length()-1) == "}"){
+                            CurrentArray.add(i.substring(0,i.length()-1));
+                            CurrentArray.add("}");
+                        }else{
+                            CurrentArray.add(i);
+                        }
+                    }
+                    list.addAll(Arrays.asList(CurrentArray));
                 }
                 this.tokenStream = list;
         }catch(IOException e){
