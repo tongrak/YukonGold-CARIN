@@ -231,9 +231,9 @@ public class ExpressionParser {
              ExprAbs theExpr = parseE();
              if(!tk.pop().equals(")")) throw new SyntaxError("ExpressionParser: Parse P: Parentheses syntax error");
              return new PowerAbsImpl(3, theExpr);
-         }else if(this.binding.containsKey(current))return new PowerAbsImpl(2, current, this.binding);
+         }else {return new PowerAbsImpl(2, current, this.binding);}
 
-         throw new SyntaxError("ExpressionParser: Parse P syntax error");
+//         throw new SyntaxError("ExpressionParser: Parse P syntax error");
     }
 
     public boolean isNumber(String str) {
