@@ -168,11 +168,9 @@ class PowerAbsImpl extends PowerAbs{
 public class ExpressionParser {
     protected final Tokenizer tk;
     protected final Map<String, ExprAbs> binding;
-    protected final Coor theCoor;
 
-    public ExpressionParser(Tokenizer tk, Map<String, ExprAbs> binding, Coor theCoor) {
+    public ExpressionParser(Tokenizer tk, Map<String, ExprAbs> binding) {
         this.binding = binding;
-        this.theCoor = theCoor;
         this.tk = tk;
     }
 
