@@ -1,3 +1,4 @@
+import java.nio.channels.NonWritableChannelException;
 import java.util.Map;
 
 interface ValuableBox {
@@ -42,6 +43,12 @@ class EprBoxImpl extends ExprAbs{
         super.theTerm = t;
     }
 
+    public EprBoxImpl(TermAbs  t) {
+        super.innerExpr = null;
+        super.operandIndex = 0;
+        super.theTerm = t;
+    }
+
     @Override
     public int eval() throws SyntaxError {
         if(super.innerExpr != null){
@@ -59,12 +66,18 @@ class EprBoxImpl extends ExprAbs{
     }
 }
 
+
+
 class TermAbsImpl extends TermAbs {
 
     public TermAbsImpl(TermAbs innerTerm,int operandIndex,FactorAbs theFactor){
         super.innerTerm = innerTerm;
         super.operandIndex = operandIndex;
         super.theFactor = theFactor;
+    }
+
+    public TermAbsImpl(FactorAbs theFactor){
+        this(null,0,theFactor);
     }
 
     @Override
@@ -173,28 +186,66 @@ public class ExpressionParser implements ExpressionParserInter {
 
     @Override
     public ExprAbs parseE() {
-//        TermAbs innerE = parseT();
-//        while(tk.peer().equals("+")||tk.peer().equals("-")){
-//
-//        }
+       ExprAbs innerE = parseT();
+       while(tk.peer().equals("+")||tk.peer().equals("-")){
+           if(tk.peer().equals("+")){
+               tk.pop();
+               innerE = new EprBoxImpl(innerE,1,parseT());
+           }else if(tk.peer().equals("-")){
+                tk.pop();
+                innerE = new EprBoxImpl(innerE,2,parseT());
+           }else{
+               throw new SyntaxError("Exception : Operation Error!");
+           }
 
-        return null;
+       }
+       return innerE;
     }
 
     @Override
     public TermAbs parseT() {
-        return null;
+        TermAbs innerT = parseF();
+        while(tk.peer().equals("*")||tk.peer().equals("/")||tk.peer().equals("%")){
+            if(tk.peer().equals("*")){
+                tk.pop();
+                innerT = new TermAbsImpl(innerT,1,parseF());
+            }else if(tk.peer().equals("/")){
+                tk.pop();
+                innerT = new TermAbsImpl(innerT,2,parseF());
+            }else if(tk.peer().equals("%")){
+                tk.pop();
+                innerT = new TermAbsImpl(innerT,3,parseF());
+            }else{
+                throw new SyntaxError("Exception : Operation Error!");
+            }
+        }
+        return innerT;
     }
 
     @Override
     public FactorAbs parseF() {
-
-        return null;
+        PowerAbs innerF = parseP();
+        while(tk.peer().equals("^")){
+            tk.pop();
+            innerF = new FactorAbsImpl(true, parseF(), innerF);
+        }
+        return innerF;
     }
 
     @Override
     public PowerAbs parseP() {
+        // String current = tk.peer();
+        // if(isNumber(current)){
+        //     return new PowerAbsImpl(1,Integer.parseInt(current));
+        // }else if(!current.equals("virus")||!current.equals("antibody")||!current.equals("nearby")){
+        //     return new Power
+        // }else if(){
 
+        // }else if(){
+
+        // }else{
+
+        // }
         return null;
     }
 
