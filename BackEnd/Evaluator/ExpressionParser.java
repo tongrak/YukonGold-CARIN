@@ -148,7 +148,10 @@ class PowerAbsImpl extends PowerAbs{
     public int eval(Coor theCoor) throws SyntaxError{
         switch (this.modeIndex){
             case 1 -> {return  this.numValOr8Direc;}
-            case 2 -> {return this.Binding.get(this.idOrActComm).eval(theCoor);}
+            case 2 -> {
+                if(idOrActComm.equals("rand")){return (int) (Math.random()*99);}
+                return this.Binding.get(this.idOrActComm).eval(theCoor);
+            }
             case 3 -> {return this.innerExpr.eval(theCoor);}
             case 4 -> {
                 switch (this.idOrActComm) {
