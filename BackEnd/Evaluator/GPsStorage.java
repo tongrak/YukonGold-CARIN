@@ -17,19 +17,19 @@ public class GPsStorage {
     /** return nearest Virus's 8-directional coor from inputted GP.
      * @return nearest Virus in the form of 8-directional coor
      * */
-    public static int nearestVirus(GamePiece gp) {
+    public static int nearestVirus(Coor gpCoor) {
         throw new RuntimeException("unimplemented");
     }
     /** return nearest AB 8-directional coor from inputted GP.
      * @return nearest AB in the form of 8-directional coor
      * */
-    public static int nearestAntiBody(GamePiece gp) {
+    public static int nearestAntiBody(Coor gpCoor) {
         throw new RuntimeException("unimplemented");
     }
     /** return nearest GamePiece's 1-directional GP's coor from inputted GP.
      * @return nearest GP in given direction. if it a virus return 10x+1 else (AB) 10x+2; x = distance from host GP.
      * */
-    public static int nearbyInDirec(int eightDirecCoor) {
+    public static int nearbyInDirec(Coor coor, int eightDirecCoor) {
         throw new RuntimeException("unimplemented");
     }
     /** return true if given Coor is occupied or not
