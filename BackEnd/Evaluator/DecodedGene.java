@@ -9,12 +9,12 @@ public class DecodedGene {
     StatementParser sParer;
     ExpressionParser eParser;
 
-    public DecodedGene(Tokenizer tk, Coor theCoor) throws SyntaxError {
+    public DecodedGene(Tokenizer tk) throws SyntaxError {
         final String[] reservedKeyWord = {"antibody", "else", "if", "move", "nearby", "shoot", "then", "virus", "while", "left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
         this.binding = new HashMap<>();
         this.statementLL = new LinkedList<>();
 
-        eParser = new ExpressionParser(tk, binding, theCoor);
+        eParser = new ExpressionParser(tk, binding);
         sParer = new StatementParser(tk, reservedKeyWord, binding, eParser);
 
         StatementBox currStatement = null;
