@@ -28,16 +28,23 @@ abstract class PowerAbs implements ValuableBox{
 
 class EprBoxImpl extends ExprAbs{
 
-
     public EprBoxImpl(ExprAbs e, int operandIndex, TermAbs  t) {
         super.innerExpr = e;
-//        super.innerExpr
+        super.operandIndex = operandIndex;
+        super.theTerm = t;
     }
 
     @Override
     public int eval() {
         if(super.innerExpr != null){
-            if(super.operandIndex == 1) return super.innerExpr.eval() + super.theTerm.eval();
+            if(super.operandIndex == 1){
+                return super.innerExpr.eval() + super.theTerm.eval();   
+            }
+            else if(super.operandIndex == 2){
+                return super.innerExpr.eval() - super.theTerm.eval();
+            }
+        }else{
+            
         }
         throw new RuntimeException("Fail to evaluate a Expression");
     }
