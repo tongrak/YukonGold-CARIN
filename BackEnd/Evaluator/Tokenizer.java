@@ -50,25 +50,27 @@ public class Tokenizer  implements TokenizerInter{
                 String line;
                 while((line = reader.readLine()) != null){
                     String[] Splittedline = line.split(" ");
-                    LinkedList<String> CurrentArray = new LinkedList<>();
-                    for (String i : Splittedline) {
-                        if(i.charAt(0) == "("){
-                            CurrentArray.add("(");
-                            CurrentArray.add(i.substring(1));
-                        }else if(i.charAt(0) == "{"){
-                            CurrentArray.add("{");
-                            CurrentArray.add(i.substring(1));
-                        }else if(i.charAt(i.length()-1) == ")"){
-                            CurrentArray.add(i.substring(0,i.length()-1));
-                            CurrentArray.add(")");
-                        }else if(i.charAt(i.length()-1) == "}"){
-                            CurrentArray.add(i.substring(0,i.length()-1));
-                            CurrentArray.add("}");
-                        }else{
-                            CurrentArray.add(i);
+                    LinkedList<String> pendingLL = new LinkedList<>();
+
+                    boolean haveBracket = false;
+                    int markingIndex = 0;
+                    for(String unSpaceStr : Splittedline){
+                        System.out.println(unSpaceStr);
+                        if(unSpaceStr.equals("")){continue;}
+                        for (int i = 0; i < unSpaceStr.length(); i++) {
+                            char c = unSpaceStr.charAt(i);
+                            if(c=='(' || c=='{' || c=='}' || c==')'){
+                                haveBracket = true;
+                                if(i != 0 && markingIndex != i) pendingLL.add(unSpaceStr.substring(markingIndex, i));
+                                pendingLL.add(String.valueOf(c));
+                                markingIndex = i+1;
+                            }
                         }
+                        if(!haveBracket)pendingLL.add(unSpaceStr);
+                        else if(markingIndex != unSpaceStr.length()){ pendingLL.add(unSpaceStr.substring(markingIndex)); haveBracket = false;}
+                        markingIndex = 0;
                     }
-                    list.addAll(Arrays.asList(CurrentArray));
+                    list.addAll(pendingLL);
                 }
                 this.tokenStream = list;
         }catch(IOException e){
@@ -78,11 +80,13 @@ public class Tokenizer  implements TokenizerInter{
 
     @Override
     public String peer() {
+        System.out.println("tk peer: " + tokenStream.peek());
         return tokenStream.peek();
     }
 
     @Override
     public String pop() {
+        System.out.println("tk pop: " + tokenStream.peek());
         return tokenStream.poll();
     }
 }
