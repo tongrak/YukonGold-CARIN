@@ -22,8 +22,11 @@ abstract class FactorAbs implements ValuableBox {
 
 abstract class PowerAbs implements ValuableBox{
     protected boolean isBlanket;
+    protected boolean isNumber;
     protected ExprAbs innerExpr;
     protected int theValue;
+    protected Map<String,ExprAbs> Binding;
+    protected String identifier;
 }
 
 class EprBoxImpl extends ExprAbs{
@@ -42,11 +45,81 @@ class EprBoxImpl extends ExprAbs{
             }
             else if(super.operandIndex == 2){
                 return super.innerExpr.eval() - super.theTerm.eval();
+            }else{
+                throw new SyntaxError();
             }
         }else{
-            
+            return super.theTerm.eval();
         }
-        throw new RuntimeException("Fail to evaluate a Expression");
+    }
+}
+
+class TermAbsImpl extends TermAbs{
+
+    public TermAbsImpl(TermAbs innerTerm,int operandIndex,FactorAbs theFactor){
+        super.innerTerm = innerTerm;
+        super.operandIndex = operandIndex;
+        super.theFactor = theFactor;
+    }
+
+    @Override
+    public int eval(){
+        if(super.innerTerm != null){
+            if(super.operandIndex == 1){
+                return super.innerTerm.eval() * super.theFactor.eval();
+            }else if(super.operandIndex == 2){
+                return super.innerTerm.eval() / super.theFactor.eval();
+            }else if(super.operandIndex == 3){
+                return super.innerTerm.eval() % super.theFactor.eval();
+            }else{
+                throw new SyntaxError();
+            }
+        }else{
+            return super.theFactor.eval();
+        }
+    }
+}
+
+class FactorAbsImpl extends FactorAbs{
+
+    public FactorAbsImpl(boolean isExpo,FactorAbs innerFactor,PowerAbs thePower){
+        super.isExpo = isExpo;
+        super.innerFactor = innerFactor;
+        super.thePower = thePower;
+    }
+
+    @Override
+    public int eval(){
+        if(isExpo){
+            return Math.pow(super.thePower.eval(),super.innerFactor.eval());          
+        }else{
+            return super.thePower.eval();
+        }
+    }
+}
+
+class PowerAbsImpl extends PowerAbs{
+
+    public PowerAbsImpl(boolean isBlanket,boolean isNumber,ExprAbs innerExpr,int theValue,Map<String,ExprAbs> Binding,String identifier){
+        super.isBlanket = isBlanket;
+        super.isNumber = isNumber;
+        super.innerExpr = innerExpr;
+        super.theValue = theValue;
+        super.Binding = Binding;
+        super.identifier = identifier; 
+    }
+
+    @Override
+    public int eval(){
+        if(isNumber){
+            return super.theValue;
+        }else if(super.Binding != null){
+            return super.Binding.get(identifier).eval();
+        }else if(isBlanket){
+            return super.innerExpr.eval();
+        }else if(false){ //SensorExpression
+            return 0;
+        }
     }
 }
 
