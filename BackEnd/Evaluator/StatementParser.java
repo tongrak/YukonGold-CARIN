@@ -7,7 +7,7 @@ interface StatementBox{
      *
      * @return the 1st GPAction detected in the statement or null if none have detected.
      * */
-    GPAction getGPAction(); //if return null == not terminable
+    GPAction getGPAction() throws SyntaxError; //if return null == not terminable
 }
 
 abstract class BlockStatementAbs implements StatementBox{
@@ -28,7 +28,7 @@ class BlockStatementImpl extends BlockStatementAbs{
     }
 
     @Override
-    public GPAction getGPAction() {
+    public GPAction getGPAction() throws SyntaxError {
         StatementBox statementHolder = null;
         for(StatementBox sb : getStatementLL())if(sb.getGPAction() != null){ statementHolder = sb; break;}
         return (statementHolder != null)? statementHolder.getGPAction(): null;
@@ -54,7 +54,7 @@ class IfStatementImpl extends IfStatementAbs {
     }
 
     @Override
-    public GPAction getGPAction() {
+    public GPAction getGPAction() throws SyntaxError {
         if(super.theExpr.eval() > 0){
             return super.thenStatement.getGPAction();
         }else{
@@ -80,7 +80,7 @@ class WhileStatementImpl extends WhileStatementAbs{
     }
 
     @Override
-    public GPAction getGPAction() {
+    public GPAction getGPAction() throws SyntaxError {
         int count = 0;
         while(super.theExpr.eval() > 0 && count < 1000){
             GPAction temp = this.thenStatement.getGPAction();
@@ -146,6 +146,7 @@ public class StatementParser {
 
     private StatementBox parseC(boolean isReservedWord, String currToken) throws SyntaxError{
         if(!isReservedWord) {
+            if (!tk.pop().equals("=")) throw new SyntaxError("Assignment statement syntax error");
             return new AssignmentCommand(currToken, exprParser.parseE(), binding);
         }else{
             String nextToken = tk.pop();
