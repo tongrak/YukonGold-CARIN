@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GeneEvaluator {
-    Map<Path, ProgramParser> decodedGeneMap;
+    Map<Path, DecodedGene> decodedGeneMap;
     private GeneEvaluator instance;
     private GeneEvaluator(){
         decodedGeneMap = new HashMap<>();
