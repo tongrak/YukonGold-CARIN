@@ -2,7 +2,7 @@ import java.nio.channels.NonWritableChannelException;
 import java.util.Map;
 
 interface ValuableBox {
-    int eval() throws SyntaxError;
+    int eval(Coor theCoor) throws SyntaxError;
 }
 
 abstract class ExprAbs implements ValuableBox {
@@ -25,9 +25,6 @@ abstract class FactorAbs implements ValuableBox {
 
 abstract class PowerAbs implements ValuableBox{
     protected int modeIndex; //0 -> none, 1 -> Number, 2 -> identifier, 3 -> Parentheses, 4 -> sensorEx;
-//    protected boolean isBlanket;
-//    protected boolean isNumber;
-    protected Coor theCoor;
     protected ExprAbs innerExpr;
     protected Map<String,ExprAbs> Binding;
     protected String idOrActComm;
@@ -50,18 +47,18 @@ class EprBoxImpl extends ExprAbs{
     }
 
     @Override
-    public int eval() throws SyntaxError {
+    public int eval(Coor theCoor) throws SyntaxError {
         if(super.innerExpr != null){
             if(super.operandIndex == 1){
-                return super.innerExpr.eval() + super.theTerm.eval();   
+                return super.innerExpr.eval(theCoor) + super.theTerm.eval(theCoor);
             }
             else if(super.operandIndex == 2){
-                return super.innerExpr.eval() - super.theTerm.eval();
+                return super.innerExpr.eval(theCoor) - super.theTerm.eval(theCoor);
             }else{
                 throw new SyntaxError();
             }
         }else{
-            return super.theTerm.eval();
+            return super.theTerm.eval(theCoor);
         }
     }
 }
@@ -81,19 +78,19 @@ class TermAbsImpl extends TermAbs {
     }
 
     @Override
-    public int eval() throws SyntaxError{
+    public int eval(Coor theCoor) throws SyntaxError{
         if(super.innerTerm != null){
             if(super.operandIndex == 1){
-                return super.innerTerm.eval() * super.theFactor.eval();
+                return super.innerTerm.eval(theCoor) * super.theFactor.eval(theCoor);
             }else if(super.operandIndex == 2){
-                return super.innerTerm.eval() / super.theFactor.eval();
+                return super.innerTerm.eval(theCoor) / super.theFactor.eval(theCoor);
             }else if(super.operandIndex == 3){
-                return super.innerTerm.eval() % super.theFactor.eval();
+                return super.innerTerm.eval(theCoor) % super.theFactor.eval(theCoor);
             }else{
                 throw new SyntaxError();
             }
         }else{
-            return super.theFactor.eval();
+            return super.theFactor.eval(theCoor);
         }
     }
 }
@@ -106,57 +103,61 @@ class FactorAbsImpl extends FactorAbs{
         super.thePower = thePower;
     }
 
+    public FactorAbsImpl(PowerAbs thePower){
+        this(false, null, thePower);
+    }
+
     @Override
-    public int eval() throws SyntaxError{
+    public int eval(Coor theCoor) throws SyntaxError{
         if(isExpo){
-            return (int) Math.pow(super.thePower.eval(),super.innerFactor.eval());
+            return (int) Math.pow(super.thePower.eval(theCoor),super.innerFactor.eval(theCoor));
         }else{
-            return super.thePower.eval();
+            return super.thePower.eval(theCoor);
         }
     }
 }
 
 class PowerAbsImpl extends PowerAbs{
 
-    public PowerAbsImpl(int modeIndex, Coor theCoor, ExprAbs innerExpr,int theValue,Map<String,ExprAbs> Binding,String identifier){
+    public PowerAbsImpl(int modeIndex, ExprAbs innerExpr,int theValue,String identifier, Map<String, ExprAbs> binding){
         super.modeIndex = modeIndex;
         super.innerExpr = innerExpr;
         super.numValOr8Direc = theValue;
-        super.Binding = Binding;
         super.idOrActComm = identifier;
+        super.Binding = binding;
     }
 
     public PowerAbsImpl(int modeIndex, int value){
-        this(modeIndex, null,null,value, null, null);
+        this(modeIndex,null,value, null, null);
     }
 
-    public PowerAbsImpl(int modeIndex, Map<String, ExprAbs> binding, String id){
-        this(modeIndex, null, null, 0, binding, id);
+    public PowerAbsImpl(int modeIndex, String id, Map<String, ExprAbs> binding){
+        this(modeIndex, null, 0, id, binding);
     }
 
     public PowerAbsImpl(int modeIndex, ExprAbs expr){
-        this(modeIndex, null, expr, 0, null,null);
+        this(modeIndex, expr, 0,null,null);
     }
 
-    public PowerAbsImpl(int modeIndex, Coor coor, String sensorEx , int EightDirec){
-        this(modeIndex, coor, null, EightDirec, null, sensorEx);
+    public PowerAbsImpl(int modeIndex, String sensorEx , int EightDirec){
+        this(modeIndex, null, EightDirec, sensorEx, null);
 
     }
 
     @Override
-    public int eval() throws SyntaxError{
+    public int eval(Coor theCoor) throws SyntaxError{
         switch (this.modeIndex){
             case 1 -> {return  this.numValOr8Direc;}
-            case 2 -> {return this.Binding.get(this.idOrActComm).eval();}
-            case 3 -> {return this.innerExpr.eval();}
+            case 2 -> {return this.Binding.get(this.idOrActComm).eval(theCoor);}
+            case 3 -> {return this.innerExpr.eval(theCoor);}
             case 4 -> {
                 switch (this.idOrActComm) {
                     case "virus":
-                        return GPsStorage.nearestVirus(this.theCoor);
+                        return GPsStorage.nearestVirus(theCoor);
                     case "antibody":
-                        return GPsStorage.nearestAntiBody(this.theCoor);
+                        return GPsStorage.nearestAntiBody(theCoor);
                     case "nearby":
-                        return GPsStorage.nearbyInDirec(this.theCoor, this.numValOr8Direc);
+                        return GPsStorage.nearbyInDirec(theCoor, this.numValOr8Direc);
                 }
             }
         }
@@ -164,16 +165,7 @@ class PowerAbsImpl extends PowerAbs{
     }
 }
 
-interface ExpressionParserInter{
-    ExprAbs parseE();
-    TermAbs parseT();
-    FactorAbs parseF();
-    PowerAbs parseP();
-    boolean isNumber(String str);
-    int tokenToNumber(String strInt);
-}
-
-public class ExpressionParser implements ExpressionParserInter {
+public class ExpressionParser {
     protected final Tokenizer tk;
     protected final Map<String, ExprAbs> binding;
     protected final Coor theCoor;
@@ -184,9 +176,8 @@ public class ExpressionParser implements ExpressionParserInter {
         this.tk = tk;
     }
 
-    @Override
-    public ExprAbs parseE() {
-       ExprAbs innerE = parseT();
+    public ExprAbs parseE() throws SyntaxError {
+       ExprAbs innerE = new EprBoxImpl(parseT());
        while(tk.peer().equals("+")||tk.peer().equals("-")){
            if(tk.peer().equals("+")){
                tk.pop();
@@ -202,9 +193,8 @@ public class ExpressionParser implements ExpressionParserInter {
        return innerE;
     }
 
-    @Override
-    public TermAbs parseT() {
-        TermAbs innerT = parseF();
+    public TermAbs parseT() throws SyntaxError {
+        TermAbs innerT = new TermAbsImpl(parseF());
         while(tk.peer().equals("*")||tk.peer().equals("/")||tk.peer().equals("%")){
             if(tk.peer().equals("*")){
                 tk.pop();
@@ -222,52 +212,37 @@ public class ExpressionParser implements ExpressionParserInter {
         return innerT;
     }
 
-    @Override
-    public FactorAbs parseF() {
+    public FactorAbs parseF() throws SyntaxError {
         PowerAbs innerF = parseP();
+        FactorAbs theFactor = new FactorAbsImpl(innerF);
         while(tk.peer().equals("^")){
             tk.pop();
-            innerF = new FactorAbsImpl(true, parseF(), innerF);
+            theFactor = new FactorAbsImpl(true, parseF(), innerF);
         }
-        return innerF;
+        return theFactor;
     }
 
-    @Override
-    public PowerAbs parseP() {
-        // String current = tk.peer();
-        // if(isNumber(current)){
-        //     return new PowerAbsImpl(1,Integer.parseInt(current));
-        // }else if(!current.equals("virus")||!current.equals("antibody")||!current.equals("nearby")){
-        //     return new Power
-        // }else if(){
+    public PowerAbs parseP() throws SyntaxError {
+         String current = tk.pop();
+         if(isNumber(current)){
+             return new PowerAbsImpl(1,Integer.parseInt(current));
+         }else if(current.equals("virus")||current.equals("antibody")||current.equals("nearby")){
+             if(current.equals("nearby")) return new PowerAbsImpl(4, current, DecodedGene.directionToEightDirec(tk.pop()));
+             return new PowerAbsImpl(4, current, 0);
+         }else if(current.equals("(")){
+             ExprAbs theExpr = parseE();
+             if(!tk.pop().equals(")")) throw new SyntaxError("ExpressionParser: Parse P: Parentheses syntax error");
+             return new PowerAbsImpl(3, theExpr);
+         }else if(binding.containsKey(current)) new PowerAbsImpl(2, current, binding);
 
-        // }else if(){
-
-        // }else{
-
-        // }
-        return null;
+        throw new SyntaxError("ExpressionParser: Parse P syntax error");
     }
 
-    @Override
     public boolean isNumber(String str) {
         try {
             Integer.parseInt(str);
             return true;
         }catch (Exception e) {return false;}
     }
-
-    @Override
-    public int tokenToNumber(String strInt) {
-        if(isNumber(strInt)){
-            return Integer.parseInt(strInt);
-        }else throw new NumberFormatException();
-    }
-
-
-    // need GPsStorage pointer for SensorExpression;
-    // boolean isNumber(String str);
-    // boolean isIdentifier(String str, Map<String, Integer> binding)
-    //    ExprAbs parse()
 
 }
