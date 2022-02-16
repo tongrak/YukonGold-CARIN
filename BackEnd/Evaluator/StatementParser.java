@@ -7,7 +7,7 @@ interface StatementBox{
      *
      * @return the 1st GPAction detected in the statement or null if none have detected.
      * */
-    GPAction getGPAction() throws SyntaxError; //if return null == not terminable
+    GPAction getGPAction(Coor theCoor) throws SyntaxError; //if return null == not terminable
 }
 
 abstract class BlockStatementAbs implements StatementBox{
@@ -28,10 +28,10 @@ class BlockStatementImpl extends BlockStatementAbs{
     }
 
     @Override
-    public GPAction getGPAction() throws SyntaxError {
+    public GPAction getGPAction(Coor theCoor) throws SyntaxError {
         StatementBox statementHolder = null;
-        for(StatementBox sb : getStatementLL())if(sb.getGPAction() != null){ statementHolder = sb; break;}
-        return (statementHolder != null)? statementHolder.getGPAction(): null;
+        for(StatementBox sb : getStatementLL())if(sb.getGPAction(theCoor) != null){ statementHolder = sb; break;}
+        return (statementHolder != null)? statementHolder.getGPAction(theCoor): null;
     }
 }
 
@@ -54,11 +54,11 @@ class IfStatementImpl extends IfStatementAbs {
     }
 
     @Override
-    public GPAction getGPAction() throws SyntaxError {
+    public GPAction getGPAction(Coor theCoor) throws SyntaxError {
         if(super.theExpr.eval() > 0){
-            return super.thenStatement.getGPAction();
+            return super.thenStatement.getGPAction(theCoor);
         }else{
-            return super.elseStatement.getGPAction();
+            return super.elseStatement.getGPAction(theCoor);
         }
     }
 }
@@ -80,10 +80,10 @@ class WhileStatementImpl extends WhileStatementAbs{
     }
 
     @Override
-    public GPAction getGPAction() throws SyntaxError {
+    public GPAction getGPAction(Coor theCoor) throws SyntaxError {
         int count = 0;
         while(super.theExpr.eval() > 0 && count < 1000){
-            GPAction temp = this.thenStatement.getGPAction();
+            GPAction temp = this.thenStatement.getGPAction(theCoor);
             if(temp != null)return temp;
             count++;
         }
@@ -91,24 +91,26 @@ class WhileStatementImpl extends WhileStatementAbs{
     }
 }
 
-record AssignmentCommand(String identifier, ExprAbs expr, Map<String, ExprAbs> binding) implements StatementBox {
+interface CommandBox extends StatementBox{ }
+
+record AssignmentCommand(String identifier, ExprAbs expr, Map<String, ExprAbs> binding) implements CommandBox {
     @Override
-    public GPAction getGPAction() {
+    public GPAction getGPAction(Coor theCoor) {
         binding.put(identifier, expr);
         return null;
     }
 }
 
-record MoveCommand(int eightDirecCoor) implements StatementBox {
+record MoveCommand(int eightDirecCoor) implements CommandBox {
     @Override
-    public GPAction getGPAction() {
+    public GPAction getGPAction(Coor theCoor) {
         return new MoveAct(eightDirecCoor);
     }
 }
 
-record ShootCommand(int eightDirecCoor) implements StatementBox {
+record ShootCommand(int eightDirecCoor) implements CommandBox {
     @Override
-    public GPAction getGPAction() {
+    public GPAction getGPAction(Coor theCoor) {
         return new ShootAct(eightDirecCoor);
     }
 }
@@ -148,7 +150,6 @@ public class StatementParser {
         if (strIn.equals("move")||strIn.equals("shoot")) return true;
         for(String str: reservedWord) if (str.equals(strIn)) return false;
         return !strIn.equals("{");
-
     }
 
     private StatementBox parseC(String currToken) throws SyntaxError{
