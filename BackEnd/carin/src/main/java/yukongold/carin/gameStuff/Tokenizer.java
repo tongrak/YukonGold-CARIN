@@ -81,13 +81,11 @@ public class Tokenizer  implements TokenizerInter{
 
     @Override
     public String peer() {
-        System.out.println("tk peer: " + tokenStream.peek());
         return tokenStream.peek();
     }
 
     @Override
     public String pop() {
-        System.out.println("tk pop: " + tokenStream.peek());
         return tokenStream.poll();
     }
 }
