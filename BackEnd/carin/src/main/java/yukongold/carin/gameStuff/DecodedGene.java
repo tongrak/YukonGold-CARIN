@@ -1,4 +1,4 @@
-package yukongold.carin.gameStuff;
+package yukongold.carin.gamestuff;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -21,7 +21,6 @@ public class DecodedGene {
         eParser = new ExpressionParser(tk, binding);
         sParer = new StatementParser(tk, reservedKeyWord, binding, eParser);
 
-        StatementBox currStatement = null;
         while(tk.peer()!=null){
             statementLL.add(sParer.parseS());
         }

@@ -1,4 +1,4 @@
-package yukongold.carin.gameStuff;
+package yukongold.carin.gamestuff;
 
 import java.util.LinkedList;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package yukongold.carin.gameStuff;
+package yukongold.carin.gamestuff;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,6 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 /**Tobe uses as a tokenizer for tokenize a simple text file (.txt). This is a singleton functional class which process a text file

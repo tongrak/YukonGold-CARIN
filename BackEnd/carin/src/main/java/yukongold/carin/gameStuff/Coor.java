@@ -1,4 +1,4 @@
-package yukongold.carin.gameStuff;
+package yukongold.carin.gamestuff;
 
 public class Coor {
     private final int x;

@@ -1,6 +1,5 @@
-package yukongold.carin.gameStuff;
+package yukongold.carin.gamestuff;
 
-import java.nio.channels.NonWritableChannelException;
 import java.util.Map;
 
 interface ValuableBox {

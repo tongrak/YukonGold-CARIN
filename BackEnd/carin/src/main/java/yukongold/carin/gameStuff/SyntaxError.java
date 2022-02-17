@@ -1,4 +1,5 @@
-package yukongold.carin.gameStuff;
+package yukongold.carin.gamestuff;
+
 
 public class SyntaxError extends Exception{
     public SyntaxError(){

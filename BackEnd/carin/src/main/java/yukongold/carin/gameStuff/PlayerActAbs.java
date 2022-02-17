@@ -1,6 +1,5 @@
-package yukongold.carin.gameStuff;
+package yukongold.carin.gamestuff;
 
-import java.nio.file.Path;
 
 interface PlayerAction{ }
 
