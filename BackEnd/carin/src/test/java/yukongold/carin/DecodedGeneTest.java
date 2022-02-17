@@ -1,4 +1,9 @@
+package yukongold.carin;
+
 import org.junit.jupiter.api.Test;
+
+import yukongold.carin.gamestuff.DecodedGene;
+import yukongold.carin.gamestuff.Tokenizer;
 
 import java.nio.file.Path;
 
@@ -12,7 +17,7 @@ class DecodedGeneTest {
         Tokenizer tk = new Tokenizer();
         tk.tokenize(Path.of("Test/decodedGeneTester.txt"));
         assertDoesNotThrow(() -> {geneCodeA = new DecodedGene(tk);});
-        DecodedGene sim = geneCodeA;
+        // DecodedGene sim = geneCodeA;
         System.out.println("Help us all");
 
     }

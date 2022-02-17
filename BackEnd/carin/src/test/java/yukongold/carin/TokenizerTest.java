@@ -1,8 +1,12 @@
+package yukongold.carin;
+
 import org.junit.jupiter.api.Test;
+
+import yukongold.carin.gamestuff.Tokenizer;
 
 import java.nio.file.Path;
 
-import static org.junit.jupiter.api.Assertions.*;
+// import static org.junit.jupiter.api.Assertions.*;
 
 class TokenizerTest {
 
