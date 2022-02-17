@@ -6,12 +6,6 @@ interface ValuableBox {
     int eval(Coor theCoor) throws SyntaxError;
 }
 
-abstract class ExprAbs implements ValuableBox {
-    protected ExprAbs innerExpr;
-    protected int operandIndex; //0-> none, 1-> +, 2-> -
-    protected TermAbs theTerm;
-}
-
 abstract class TermAbs implements ValuableBox {
     protected TermAbs innerTerm;
     protected int operandIndex; //0-> none, 1-> *, 2-> /, 3-> %;

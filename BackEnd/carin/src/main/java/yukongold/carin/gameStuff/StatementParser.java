@@ -3,15 +3,6 @@ package yukongold.carin.gamestuff;
 import java.util.LinkedList;
 import java.util.Map;
 
-interface StatementBox{
-    /** Each Statement lead to termination some way or another.
-     * Which, said termination could be an Action for GP.
-     *
-     * @return the 1st GPAction detected in the statement or null if none have detected.
-     * */
-    GPAction getGPAction(Coor theCoor) throws SyntaxError; //if return null == not terminable
-}
-
 abstract class BlockStatementAbs implements StatementBox{
     private LinkedList<StatementBox> statementLL;
 
@@ -150,7 +141,7 @@ public class StatementParser {
     }
 
 
-    protected StatementBox parseS() throws SyntaxError {
+    public StatementBox parseS() throws SyntaxError {
             String currToken = tk.pop();
 
             if(isCommandBox(currToken)){ //Command section;
