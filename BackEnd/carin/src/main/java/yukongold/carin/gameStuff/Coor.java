@@ -16,4 +16,8 @@ public class Coor {
     public int getY() {
         return y;
     }
+
+    public boolean equals(Coor c1){
+        return (this.x == c1.x) && (this.y==c1.y);
+    }
 }
