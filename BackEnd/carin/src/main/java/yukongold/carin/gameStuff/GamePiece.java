@@ -1,15 +1,19 @@
 package yukongold.carin.gamestuff;
 
-public abstract class GamePiece {
-    private GeneticCode theGeneCode;
+import java.nio.file.Path;
 
-    void setTheGeneCode(GeneticCode theGeneCode) {
+public abstract class GamePiece {
+    private Path theGeneCode;
+
+    void setTheGeneCode(Path theGeneCode) {
         this.theGeneCode = theGeneCode;
     }
 
-    GeneticCode getTheGeneCode() {
+    public Path getTheGeneCode() {
         return theGeneCode;
     }
+
+    abstract void turnStart();
 
     abstract void move();
 
@@ -18,13 +22,11 @@ public abstract class GamePiece {
 
 class Antibody extends GamePiece{
 
-    public Antibody(ABGene gene){
+    public Antibody(Path gene){
         super.setTheGeneCode(gene);
     }
 
-    public ABGene getGeneticCode(){
-        return (ABGene) super.getTheGeneCode();
-    }
+    // public Path getGeneticCode(){return (Path) super.getTheGeneCode();}
 
     @Override
     void move() {
@@ -36,18 +38,24 @@ class Antibody extends GamePiece{
 
     }
 
-    void mutate(VirusGene gene){
+    void mutate(Path gene){
         super.setTheGeneCode(gene);
+    }
+
+    @Override
+    void turnStart() {
+        // TODO Auto-generated method stub
+        
     }
 }
 
 class Virus extends GamePiece{
 
-    public Virus(VirusGene gene){
+    public Virus(Path gene){
         super.setTheGeneCode(gene);
     }
 
-    public VirusGene getGeneticCode(){return (VirusGene) super.getTheGeneCode();}
+    // public Path getGeneticCode(){return (Path) super.getTheGeneCode();}
 
     @Override
     void move() {
@@ -57,5 +65,11 @@ class Virus extends GamePiece{
     @Override
     void shoot() {
 
+    }
+
+    @Override
+    void turnStart() {
+        // TODO Auto-generated method stub
+        
     }
 }
