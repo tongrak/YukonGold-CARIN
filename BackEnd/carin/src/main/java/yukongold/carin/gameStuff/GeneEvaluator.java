@@ -5,29 +5,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GeneEvaluator {
-    Map<Path, DecodedGene> decodedGeneMap;
-    private GeneEvaluator instance;
+    private static Map<Path, DecodedGene> decodedGeneMap;
+    private static GeneEvaluator instance;
     private GeneEvaluator(){
         decodedGeneMap = new HashMap<>();
     }
 
-    public GeneEvaluator getInstance(){
-        if(this.instance == null){
-            this.instance = new GeneEvaluator();
+    public static GeneEvaluator getInstance(){
+        if(instance == null){
+            instance = new GeneEvaluator();
         }
-        return this.instance;
+        return instance;
     }
 
     public GPAction getGPAction(Path geneCode, Coor coor){
         try {
-        if(decodedGeneMap.containsKey(geneCode)){
-                return decodedGeneMap.get(geneCode).getGPAction(coor);
-        }else{
-            //
-            return null;
+        if(!decodedGeneMap.containsKey(geneCode)){
+            Tokenizer tk = Tokenizer.getInstance();
+            tk.tokenize(geneCode);
+            DecodedGene newDeGene = new DecodedGene(tk);
+            decodedGeneMap.put(geneCode, newDeGene);
         }
+        return decodedGeneMap.get(geneCode).getGPAction(coor);
+
         } catch (SyntaxError e) {
-            throw new RuntimeException("");
+            throw new RuntimeException(e);
         }
     }
 }
