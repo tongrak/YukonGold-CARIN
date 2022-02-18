@@ -145,6 +145,7 @@ class PowerAbsImpl extends PowerAbs{
             case 1 -> {return  this.numValOr8Direc;}
             case 2 -> {
                 if(idOrActComm.equals("rand")){return (int) (Math.random()*99);}
+                if(!this.Binding.containsKey(this.idOrActComm))return 0;
                 return this.Binding.get(this.idOrActComm).eval(theCoor);
             }
             case 3 -> {return this.innerExpr.eval(theCoor);}
