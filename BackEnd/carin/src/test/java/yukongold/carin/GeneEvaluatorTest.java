@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import yukongold.carin.gamestuff.Coor;
 import yukongold.carin.gamestuff.GPAction;
 import yukongold.carin.gamestuff.GeneEvaluator;
-import yukongold.carin.gamestuff.MoveAct;
 
 public class GeneEvaluatorTest {
     // static Virus
@@ -29,6 +28,7 @@ public class GeneEvaluatorTest {
         GPAction expec01 = evaluator.getGPAction(moveCommPath, new Coor(0,0));
         GPAction expec02 = evaluator.getGPAction(shootCommPath, new Coor(0,0));
 
+        
 
         System.out.println("Help us all");
 

@@ -12,11 +12,11 @@ public class GPsFactory {
         return instance;
     }
 
-    public Virus createNewVirus(Path gene){
-        return new Virus(gene);
+    public Virus createNewVirus(Path gene, int hp){
+        return new Virus(gene, hp);
     }
 
-    public Antibody createNewAB(Path gene){
-        return new Antibody(gene);
+    public Antibody createNewAB(Path gene, int hp){
+        return new Antibody(gene, hp);
     }
 }

@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO Test it.
 public class GPsStorage {
     private static GPsStorage instance;
     private GPsStorage(){}
@@ -21,22 +22,33 @@ public class GPsStorage {
         return GPCoorMap;
     }
 
+    private int nearestGP(Coor gpCoor){
+        // TODO work on this.
+        int x = gpCoor.getX();
+        int y = gpCoor.getY();
+        return 0;
+
+    }
+
     /** return nearest Virus's 8-directional coor from inputted GP.
      * @return nearest Virus in the form of 8-directional coor
      * */
     public static int nearestVirus(Coor gpCoor) {
-        throw new RuntimeException("unimplemented");
+        // TODO work on this.
+        throw new RuntimeException("nearestVirus: unimplemented");
     }
     /** return nearest AB 8-directional coor from inputted GP.
      * @return nearest AB in the form of 8-directional coor
      * */
     public static int nearestAntiBody(Coor gpCoor) {
-        throw new RuntimeException("unimplemented");
+        // TODO work on this.
+        throw new RuntimeException("nearestAntiBody: unimplemented");
     }
     /** return nearest GamePiece's 1-directional GP's coor from inputted GP.
      * @return nearest GP in given direction. if it a virus return 10x+1 else (AB) 10x+2; x = distance from host GP.
      * */
     public static int nearbyInDirec(Coor coor, int eightDirecCoor) {
+        // TODO work on this.
         throw new RuntimeException("unimplemented");
     }
     /** return true if given Coor is occupied or not

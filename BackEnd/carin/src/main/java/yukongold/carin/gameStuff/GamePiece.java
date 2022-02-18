@@ -4,72 +4,36 @@ import java.nio.file.Path;
 
 public abstract class GamePiece {
     private Path theGeneCode;
+    private int hp;
 
-    void setTheGeneCode(Path theGeneCode) {
-        this.theGeneCode = theGeneCode;
+    public GamePiece(Path gene, int hp){
+        this.theGeneCode = gene;
+        this.hp = hp;
     }
 
     public Path getTheGeneCode() {
         return theGeneCode;
     }
 
-    abstract void turnStart();
+    public void turnStart(){
+        GeneEvaluator geneEval = GeneEvaluator.getInstance();
+        // TODO And somehow send GPAction to GPManager
 
-    abstract void move();
-
-    abstract void shoot();
+    }
 }
 
 class Antibody extends GamePiece{
 
-    public Antibody(Path gene){
-        super.setTheGeneCode(gene);
-    }
-
-    // public Path getGeneticCode(){return (Path) super.getTheGeneCode();}
-
-    @Override
-    void move() {
-
-    }
-
-    @Override
-    void shoot() {
-
-    }
-
-    void mutate(Path gene){
-        super.setTheGeneCode(gene);
-    }
-
-    @Override
-    void turnStart() {
-        // TODO Auto-generated method stub
-        
+    public Antibody(Path gene, int hp) {
+        super(gene, hp);
     }
 }
 
 class Virus extends GamePiece{
 
-    public Virus(Path gene){
-        super.setTheGeneCode(gene);
+    public Virus(Path gene, int hp) {
+        super(gene, hp);
     }
 
-    // public Path getGeneticCode(){return (Path) super.getTheGeneCode();}
 
-    @Override
-    void move() {
-
-    }
-
-    @Override
-    void shoot() {
-
-    }
-
-    @Override
-    void turnStart() {
-        // TODO Auto-generated method stub
-        
-    }
 }

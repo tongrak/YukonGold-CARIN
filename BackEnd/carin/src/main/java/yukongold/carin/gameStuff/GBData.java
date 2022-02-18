@@ -48,6 +48,9 @@ public class GBData {
         }else return false;
     }
 
+    // TODO a method that pass json data to client(GameMiator)
+    // TODO a method that analize json(from GameMiator)[Or not] to a PlayerAction. 
+
 
 
     

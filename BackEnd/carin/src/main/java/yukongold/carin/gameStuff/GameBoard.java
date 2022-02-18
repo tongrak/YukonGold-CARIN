@@ -34,7 +34,8 @@ public class GameBoard{
             switch (holder.getClass().getName()) {
                 case "SpawnAct"->{
                     SpawnAct spawnHolder = (SpawnAct) holder;
-                    Antibody newAB = GPsFac.createNewAB(spawnHolder.getSelectedABType());
+                    Antibody newAB = GPsFac.createNewAB(spawnHolder.getSelectedABType(), 100);
+                    // TODO get config data
                     boolean check = GPsStore.setGPintoStorage(newAB, spawnHolder.getSelectedCoor());
                     if(!check) throw new RuntimeException("SpawnAct: can't spawn "); else GPsPlay.addGP(newAB);
                 }
@@ -48,23 +49,23 @@ public class GameBoard{
     }
 
     public GBData init() {
-        // TODO Auto-generated method stub
+        // TODO create the starting pharase of the game
         return theData;
         
     }
 
     public void pauseGame() {
-        // TODO Auto-generated method stub
+        // TODO someHow pause the main while loop
         
     }
 
     public void speedChange() {
-        // TODO Auto-generated method stub
+        // TODO someHow speed up/down the main loop
         
     }
 
     public GBData updateData() {
-        // TODO Auto-generated method stub
+        // TODO sending essential data to resident GBData
         return null;
     }
     
