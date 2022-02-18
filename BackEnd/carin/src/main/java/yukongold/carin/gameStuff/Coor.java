@@ -1,5 +1,7 @@
 package yukongold.carin.gamestuff;
 
+import java.util.Objects;
+
 public class Coor {
     private final int x;
     private final int y;
@@ -17,7 +19,16 @@ public class Coor {
         return y;
     }
 
-    public boolean equals(Coor c1){
-        return (this.x == c1.x) && (this.y==c1.y);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coor coor = (Coor) o;
+        return x == coor.x && y == coor.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
