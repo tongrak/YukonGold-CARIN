@@ -14,8 +14,9 @@ class DecodedGeneTest {
 
     @Test
     void quickCheck(){
-        Tokenizer tk = new Tokenizer();
-        tk.tokenize(Path.of("Test/decodedGeneTester.txt"));
+        Tokenizer tk = Tokenizer.getInstance();
+        tk.tokenize(Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt"));
+
         assertDoesNotThrow(() -> {geneCodeA = new DecodedGene(tk);});
         // DecodedGene sim = geneCodeA;
         System.out.println("Help us all");

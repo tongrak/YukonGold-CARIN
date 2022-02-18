@@ -12,8 +12,8 @@ class TokenizerTest {
 
     @Test
     void tokenize() {
-        Tokenizer tk = new Tokenizer();
-        tk.tokenize(Path.of("Test/tokenizerCheck.txt"));
+        Tokenizer tk = Tokenizer.getInstance();
+        tk.tokenize(Path.of("/Test/tokenizerCheck.txt"));
         System.out.println("Hold_on");
     }
 

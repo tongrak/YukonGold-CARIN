@@ -22,8 +22,8 @@ class StatementParserTest {
 
     @BeforeAll
     static void setUp(){
-        tk = new Tokenizer();
-        tk.tokenize(Path.of("Test/sampleGeneCode.txt"));
+        tk = Tokenizer.getInstance();
+        tk.tokenize(Path.of("/Test/sampleGeneCode.txt"));
         expressionParserTester = new ExpressionParser(tk,bindingMap); //need some coor of sample GP.
         statementParserTester = new StatementParser(tk, reservedWordArr, bindingMap, expressionParserTester);
     }
