@@ -38,6 +38,14 @@ interface TokenizerInter{
 }
 
 public class Tokenizer  implements TokenizerInter{
+    private static Tokenizer instance;
+    private Tokenizer() {}
+    public static Tokenizer getInstance(){
+        if(instance == null){
+            instance = new Tokenizer();
+        }
+        return instance;
+    }
 
     private LinkedList<String> tokenStream;
 
@@ -56,7 +64,6 @@ public class Tokenizer  implements TokenizerInter{
                     boolean haveBracket = false;
                     int markingIndex = 0;
                     for(String unSpaceStr : Splittedline){
-                        System.out.println(unSpaceStr);
                         if(unSpaceStr.equals("")){continue;}
                         for (int i = 0; i < unSpaceStr.length(); i++) {
                             char c = unSpaceStr.charAt(i);
