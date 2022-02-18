@@ -1,5 +1,6 @@
 package yukongold.carin.gamestuff;
 
+import java.nio.file.Path;
 
 interface PlayerAction{ }
 
@@ -16,20 +17,27 @@ public abstract class PlayerActAbs implements PlayerAction {
 }
 
 class SpawnAct extends PlayerActAbs{
-    private final ABGene selectedABType;
+    private final Path selectedABType;
 
-    public SpawnAct(Coor coor, ABGene geneCodePath) {
+    public SpawnAct(Coor coor, Path geneCodePath) {
         super(coor);
         this.selectedABType = geneCodePath;
     }
 
-    public ABGene getSelectedABType() {
+    public Path getSelectedABType() {
         return selectedABType;
     }
 }
 
 class RelocateAct extends PlayerActAbs{
-    public RelocateAct(Coor coor){
-        super(coor);
+    private final Coor destination;
+
+    public RelocateAct(Coor selectedCoor, Coor destCoor){
+        super(selectedCoor);
+        destination = destCoor;
+    }
+
+    public Coor getDestination() {
+        return destination;
     }
 }
