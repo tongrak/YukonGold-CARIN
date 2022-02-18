@@ -1,20 +1,22 @@
 package yukongold.carin.gamestuff;
 
+import java.nio.file.Path;
+
 public class GPsFactory {
-    private GPsFactory instance;
+    private static GPsFactory instance;
     private GPsFactory(){ }
-    public GPsFactory getInstance(){
-        if(this.instance == null){
-            this.instance = new GPsFactory();
+    public static GPsFactory getInstance(){
+        if(instance == null){
+            instance = new GPsFactory();
         }
         return instance;
     }
 
-    public static Virus createNewVirus(VirusGene gene){
+    public Virus createNewVirus(Path gene){
         return new Virus(gene);
     }
 
-    public static Antibody createNewAB(ABGene gene){
+    public Antibody createNewAB(Path gene){
         return new Antibody(gene);
     }
 }
