@@ -2,10 +2,13 @@ package yukongold.carin.gamestuff;
 
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 // TODO Test it.
 public class GPsStorage {
+    private static int m; //maxX axis
+    private static int n; //maxY axis
     private static GPsStorage instance;
     private GPsStorage(){}
     private static Map<Coor, GamePiece> GPCoorMap;
@@ -14,57 +17,120 @@ public class GPsStorage {
         if(instance == null){
             instance = new GPsStorage();
             GPCoorMap = new HashMap<>();
+            m = 25;
+            n = 25;
         }
         return instance;
     }
+
+    public void setMN(int mIn, int nIn){m = mIn; n = nIn;}
 
     public Map<Coor, GamePiece> getMap(){
         return GPCoorMap;
     }
 
-    private int nearestGP(Coor gpCoor){
-        // TODO work on this.
+    // ! O(n) could be O(ln)
+    private static boolean containXY(int x, int y){
+        for(Coor c: GPCoorMap.keySet()){
+            if(c.getX()==x && c.getY()==y)return true;
+        }
+        return false;
+    }
+
+    private  static LinkedList<Coor> nearestGP(Coor gpCoor){
         int x = gpCoor.getX();
         int y = gpCoor.getY();
-        return 0;
+        int repeatitionCount = Math.max(x, y);
+        LinkedList<Coor> toReturn = new LinkedList<>();
+        for (int i = 1; i < repeatitionCount; i++) {
+            if(containXY(x, y+i)) toReturn.add(new Coor(x, y+i));
+            if(containXY(x+i, y+i)) toReturn.add(new Coor(x+i, y+i));
+            if(containXY(x+i, y)) toReturn.add(new Coor(x+i, y));
+            if(containXY(x+i, y-i)) toReturn.add(new Coor(x+i, y-i));
+            if(containXY(x, y-i)) toReturn.add(new Coor(x, y-i));
+            if(containXY(x-i, y-i)) toReturn.add(new Coor(x-i, y-i));
+            if(containXY(x-i, y)) toReturn.add(new Coor(x-i, y));
+            if(containXY(x-i, y+i)) toReturn.add(new Coor(x-i, y+i));
+        }
+        return toReturn;
+    }
 
+    private static int distanceFromHost(Coor host, Coor target){
+        int xDiff = target.getX() - host.getX();
+        int yDiff = target.getY() -  host.getY();
+        int distance = ((Math.abs(xDiff)>0)? Math.abs(xDiff):Math.abs(yDiff))*10;
+        if(xDiff>0){
+            return distance + ((yDiff>0)?2:(yDiff==0)?3:4);
+        }else if(xDiff==0){
+            return distance + ((yDiff>0)?1:5);
+        }else{
+            return distance + ((yDiff>0)?8:(yDiff==0)?7:6);
+        }
     }
 
     /** return nearest Virus's 8-directional coor from inputted GP.
      * @return nearest Virus in the form of 8-directional coor
      * */
     public static int nearestVirus(Coor gpCoor) {
-        // TODO work on this.
-        throw new RuntimeException("nearestVirus: unimplemented");
+        LinkedList<Coor> holder = nearestGP(gpCoor);
+        if(holder.size()==0)return 0;
+        for(Coor c: nearestGP(gpCoor)){
+            if(GPCoorMap.get(c).getClass().equals(Virus.class)){
+                return distanceFromHost(gpCoor, c);
+            }
+        }
+        return 0;
     }
     /** return nearest AB 8-directional coor from inputted GP.
      * @return nearest AB in the form of 8-directional coor
      * */
     public static int nearestAntiBody(Coor gpCoor) {
-        // TODO work on this.
-        throw new RuntimeException("nearestAntiBody: unimplemented");
+        LinkedList<Coor> holder = nearestGP(gpCoor);
+        if(holder.size()==0)return 0;
+        for(Coor c: nearestGP(gpCoor)){
+            if(GPCoorMap.get(c).getClass().equals(Antibody.class)){
+                return distanceFromHost(gpCoor, c);
+            }
+        }
+        return 0;
     }
     /** return nearest GamePiece's 1-directional GP's coor from inputted GP.
      * @return nearest GP in given direction. if it a virus return 10x+1 else (AB) 10x+2; x = distance from host GP.
      * */
     public static int nearbyInDirec(Coor coor, int eightDirecCoor) {
-        // TODO work on this.
-        throw new RuntimeException("unimplemented");
+        int x = coor.getX();
+        int y = coor.getY();
+        int repeatitionCount = Math.max(coor.getX(), Math.max(coor.getY(), Math.max(m-coor.getX(), n-coor.getY())));
+        int distance = 0;
+        for(int i = 1; i <= repeatitionCount; i++){
+            switch (eightDirecCoor) {
+                case 11->{if(containXY(x, y+i)) {distance = i; break;}}
+                case 12->{if(containXY(x+i, y+i)) {distance = i; break;}}
+                case 13->{if(containXY(x+i, y)) {distance = i; break;}}
+                case 14->{if(containXY(x+i, y-i)) {distance = i; break;}}
+                case 15->{if(containXY(x, y-i)) {distance = i; break;}}
+                case 16->{if(containXY(x-i, y-i)) {distance = i; break;}}
+                case 17->{if(containXY(x-i, y)) {distance = i; break;}}
+                case 18->{if(containXY(x-i, y+i)) {distance = i; break;}}
+            }
+            if(distance>0){break;}
+        }
+        return distance;
     }
     /** return true if given Coor is occupied or not
      * @return true if said Coor is occupied else false;
      * */
-    public static boolean coorOccupied(Coor coor) {
-        return !GPCoorMap.containsKey(coor);
+    public boolean coorOccupied(Coor coor) {
+        return GPCoorMap.containsKey(coor);
     }
     /** check if given GP existed in the storage;
      * @return true if given GP existed in the storage, else false;
      * */
-    public static boolean containGP(GamePiece gp) {
+    public boolean containGP(GamePiece gp) {
         return GPCoorMap.containsValue(gp);
     }
 
-    public static Coor coorOfGP(GamePiece gp) {
+    public Coor coorOfGP(GamePiece gp) {
         if(!containGP(gp))return null;
         for(Coor c: GPCoorMap.keySet())if(gp.equals(GPCoorMap.get(c))) return c;
         return null;
@@ -75,8 +141,11 @@ public class GPsStorage {
      * @return true if adding or change was successful;
      * */
     public boolean setGPintoStorage(GamePiece gp, Coor coor){
+        if(coor.getX()>m || coor.getX()<0 || coor.getY() >n || coor.getY()<0) throw new RuntimeException("illegal GP setting: (" + coor.getX() + "," + coor.getY() + ")" );
         if(!containGP(gp)){
-            if(!coorOccupied(coor)) { GPCoorMap.put(coor,gp); return true;}
+            if(!coorOccupied(coor)) { 
+                GPCoorMap.put(coor,gp);
+                 return true;}
             else return false;
         }else{
             if(!coorOccupied(coor)){
