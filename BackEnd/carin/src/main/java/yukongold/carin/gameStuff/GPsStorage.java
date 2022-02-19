@@ -205,18 +205,21 @@ public class GPsStorage {
     }
 
 
-    public boolean removeGP(GamePiece gp){
-        // TODO Implement this
-        throw new RuntimeException("Unimplemented");
+    public void removeGP(GamePiece gp){
+        if(GPCoorMap.containsValue(gp))GPCoorMap.remove(coorOfGP(gp));
     }
 
     /**replace AB with new Virus at the same coor
      * 
      * @return true if replacment was succuessful.
      */
-    public boolean replaceABwithVirus(Path virusGene, Coor ABCoor){
-        // TODO Implement this
-        throw new RuntimeException("Unimplemented");
+    public void replaceABwithVirus(Path virusGene, Coor ABCoor){
+        if(GPCoorMap.containsKey(ABCoor)){
+            GPCoorMap.remove(ABCoor);
+            GPsFactory GPFac = GPsFactory.getInstance();
+            setGPintoStorage(GPFac.createNewVirus(virusGene), ABCoor);
+        }
+
     }
 
     /**Getting GP at inputed Coor. If said Coor doesn't contain GP this will return null

@@ -1,19 +1,18 @@
 package yukongold.carin.gamestuff;
 
+//TODO Testing
+//TODO creat a visual class to run the game on terminal
 public class GameBoard{
     private static GameBoard instance;
-    private static GPsFactory GPsFac;
-    private static GPsPlayer GPsPlay;
-    private static GPsStorage GPsStore;
+    private GPsFactory GPsFac;
+    private GPsPlayer GPsPlay;
+    private GPsStorage GPsStore;
     private GBData theData;
     private GameBoard(){}
 
     public static GameBoard getInstance(){
         if(instance == null){
             instance = new GameBoard();
-            GPsFac = GPsFactory.getInstance();
-            GPsPlay = GPsPlayer.getInstance();
-            GPsStore = GPsStorage.getInstance();
         }
         return instance;
     }
@@ -34,7 +33,7 @@ public class GameBoard{
             switch (holder.getClass().getName()) {
                 case "SpawnAct"->{
                     SpawnAct spawnHolder = (SpawnAct) holder;
-                    Antibody newAB = GPsFac.createNewAB(spawnHolder.getSelectedABType(), 100);
+                    Antibody newAB = GPsFac.createNewAB(spawnHolder.getSelectedABType());
                     // TODO get config data
                     boolean check = GPsStore.setGPintoStorage(newAB, spawnHolder.getSelectedCoor());
                     if(!check) throw new RuntimeException("SpawnAct: can't spawn "); else GPsPlay.addGP(newAB);
@@ -48,9 +47,11 @@ public class GameBoard{
         }
     }
 
-    public GBData init() {
-        // TODO create the starting pharase of the game
-        return theData;
+    public void init() {
+        GPsFac = GPsFactory.getInstance();
+        GPsPlay = GPsPlayer.getInstance();
+        GPsStore = GPsStorage.getInstance();
+        theData = GBData.getInstance();
         
     }
 
