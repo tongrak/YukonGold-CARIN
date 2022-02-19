@@ -26,10 +26,11 @@ public abstract class GamePiece {
         else return true;
     }
 
-    public void turnStart(){
+    public void turnStart(Coor coor){
         GeneEvaluator geneEval = GeneEvaluator.getInstance();
-        // TODO And somehow send GPAction to GPManager
-
+        GPManager GPMana = GPManager.getInstance();
+        GPAction nextAct = geneEval.getGPAction(theGeneCode, coor);
+        GPMana.actGPAct(nextAct, coor);
     }
 }
 

@@ -18,8 +18,11 @@ public class GPsPlayer {
 
     public void startGPsTurn(){
         updateGPcount();
+        GPsStorage GPsS = GPsStorage.getInstance(); 
         for(int i = 0; i < gpCount; i++){
-            GPLL.get(i).turnStart();
+            GPLL.get(i).turnStart(
+                GPsS.coorOfGP(GPLL.get(i))
+            );
         }
     }
 
