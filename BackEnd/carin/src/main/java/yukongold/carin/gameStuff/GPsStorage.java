@@ -22,7 +22,11 @@ public class GPsStorage {
         }
         return instance;
     }
-
+    /** setting m (max X) and n (max Y)
+     * 
+     * @param mIn for m
+     * @param nIn for n
+     */
     public void setMN(int mIn, int nIn){m = mIn; n = nIn;}
 
     public Map<Coor, GamePiece> getMap(){
@@ -30,6 +34,12 @@ public class GPsStorage {
     }
 
     // ! O(n) could be O(ln)
+    /** check if there is a GP at inpputed x and y;
+     * 
+     * @param x for x part of Coor
+     * @param y for y part of Coor
+     * @return true if there is GP exist at x,y.
+     */
     private static boolean containXY(int x, int y){
         for(Coor c: GPCoorMap.keySet()){
             if(c.getX()==x && c.getY()==y)return true;
@@ -37,6 +47,11 @@ public class GPsStorage {
         return false;
     }
 
+    /** return a LinkedList of Coor which detected GP. Ordering from nearest to far. seaching pattern is as Proj spec (8direc)
+     * 
+     * @param gpCoor Coor of the host
+     * @return LinkedList of Coor where GP was detected
+     */
     private  static LinkedList<Coor> nearestGP(Coor gpCoor){
         int x = gpCoor.getX();
         int y = gpCoor.getY();
@@ -55,6 +70,12 @@ public class GPsStorage {
         return toReturn;
     }
 
+    /** return a distance form host coor to target coor in the form of 8direc
+     * 
+     * @param host host coor
+     * @param target targeted coor
+     * @return distance in a form of 8direc(xy which x is distance y is direction).
+     */
     private static int distanceFromHost(Coor host, Coor target){
         int xDiff = target.getX() - host.getX();
         int yDiff = target.getY() -  host.getY();
@@ -156,6 +177,12 @@ public class GPsStorage {
         }
     }
 
+    /**Relocating GP at selected Coor to Coor at destination
+     * 
+     * @param selected Coor of GP to be relocated
+     * @param destination Coor of desinatate location 
+     * @return true if relocation was successful
+     */
     public boolean relocateAB(Coor selected, Coor destination){
         return setGPintoStorage(GPCoorMap.get(selected), destination);
     }
@@ -177,7 +204,9 @@ public class GPsStorage {
         return Math.abs(GPDiff) == GPCoorMap.keySet().size();
     }
 
+
     public boolean removeGP(GamePiece gp){
+        // TODO Implement this
         throw new RuntimeException("Unimplemented");
     }
 
@@ -186,6 +215,18 @@ public class GPsStorage {
      * @return true if replacment was succuessful.
      */
     public boolean replaceABwithVirus(Path virusGene, Coor ABCoor){
+        // TODO Implement this
         throw new RuntimeException("Unimplemented");
+    }
+
+    /**Getting GP at inputed Coor. If said Coor doesn't contain GP this will return null
+     * 
+     * @param atCoor Coor in question
+     * @return GP at inputted Coor, or null if at Coor is empty.
+     */
+    public GamePiece getGPAt(Coor atCoor){
+        if(GPCoorMap.containsKey(atCoor)){
+            return GPCoorMap.get(atCoor);
+        }else return null;
     }
 }
