@@ -1,8 +1,26 @@
 package yukongold.carin.gamestuff;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 //TODO Testing
 //TODO creat a visual class to run the game on terminal
+
+
 public class GameBoard{
+
+    class MainLoop implements Runnable{
+
+        @Override
+        public void run() {
+            mainLoop();
+        }
+    
+    }
+    private int speedIndex = 0;
+    private Long[] speedRate = {1L, 2L, 3L};
+    private boolean isPause = false;
     private static GameBoard instance;
     private GPsFactory GPsFac;
     private GPsPlayer GPsPlay;
@@ -17,8 +35,13 @@ public class GameBoard{
         return instance;
     }
 
+    public void start(){
+        final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        final MainLoop ml = new MainLoop();
+        executorService.scheduleAtFixedRate(ml, 0, speedRate[speedIndex], TimeUnit.SECONDS);
+    }
 
-    public void startGame(){
+    private void mainLoop(){
         boolean metWinningCond = false;
         while(!metWinningCond){
             checkPlayerRequest();
@@ -56,19 +79,16 @@ public class GameBoard{
     }
 
     public void pauseGame() {
-        // TODO someHow pause the main while loop
-        
+        this.isPause = !this.isPause;
     }
 
     public void speedChange() {
-        // TODO someHow speed up/down the main loop
-        
+        this.speedIndex++;
+        if(speedIndex>3) this.speedIndex = 0;
     }
 
-    public GBData updateData() {
-        // TODO sending essential data to resident GBData
-        return null;
-    }
+    // public GBData updateData() {
+    // }
     
 }
  
