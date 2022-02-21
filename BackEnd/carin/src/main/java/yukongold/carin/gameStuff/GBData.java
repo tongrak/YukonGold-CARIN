@@ -7,7 +7,7 @@ public class GBData {
     private boolean clickSpeed;
     private int currSpeed;
     private PlayerAction currRequest;
-    private static Map<Coor, GamePiece> GPCoorMap;;
+    private static Map<Coor, GamePiece> GPCoorMap;
     private static GBData instance;
     private GBData(){}
 
