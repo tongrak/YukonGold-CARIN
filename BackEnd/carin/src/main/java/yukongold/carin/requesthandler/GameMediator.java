@@ -1,7 +1,9 @@
 package yukongold.carin.requesthandler;
 
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import yukongold.carin.gamestuff.GBData;
 
 /**As the name might suggest, the "class" handle when player request game to 
  * start or manipulate game's speed (pause, slow, fast)
@@ -69,6 +71,12 @@ public class GameMediator {
     @GetMapping("/start")
     public String greet(){
         return "Hello Spring, you\'re soo cool.";
+    }
+
+    @GetMapping("/test")
+    public GBData test(){
+        GBData test = GBData.getInstance();
+        return test.getMappingData();
     }
 
 }
