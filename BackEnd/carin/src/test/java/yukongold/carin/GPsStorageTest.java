@@ -21,10 +21,10 @@ public class GPsStorageTest {
         Path fakePath = Path.of("/Help_Us_All");
         gpStore = GPsStorage.getInstance();
         gpFac = GPsFactory.getInstance();
-        gpStore.setGPintoStorage(gpFac.createNewAB(fakePath, 5), new Coor(10, 25)); //AB (10,25)
-        gpStore.setGPintoStorage(gpFac.createNewVirus(fakePath, 5), new Coor(5, 20)); //V (5,20)
-        gpStore.setGPintoStorage(gpFac.createNewAB(fakePath, 5), new Coor(6, 21)); //AB (6,21)
-        gpStore.setGPintoStorage(gpFac.createNewVirus(fakePath, 5), new Coor(7, 22)); //V (7,22)
+        gpStore.setGPintoStorage(gpFac.createNewAB(fakePath), new Coor(10, 25)); //AB (10,25)
+        gpStore.setGPintoStorage(gpFac.createNewVirus(fakePath), new Coor(5, 20)); //V (5,20)
+        gpStore.setGPintoStorage(gpFac.createNewAB(fakePath), new Coor(6, 21)); //AB (6,21)
+        gpStore.setGPintoStorage(gpFac.createNewVirus(fakePath), new Coor(7, 22)); //V (7,22)
     }
 
     @Test
