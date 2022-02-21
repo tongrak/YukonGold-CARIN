@@ -144,7 +144,7 @@ class PowerAbsImpl extends PowerAbs{
         switch (this.modeIndex){
             case 1 -> {return  this.numValOr8Direc;}
             case 2 -> {
-                if(idOrActComm.equals("rand")){return (int) (Math.random()*99);}
+                if(idOrActComm.equals("random")){return (int) (Math.random()*99);}
                 if(!this.Binding.containsKey(this.idOrActComm))return 0;
                 return this.Binding.get(this.idOrActComm).eval(theCoor);
             }
