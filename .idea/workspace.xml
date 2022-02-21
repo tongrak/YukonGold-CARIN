@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b92069fa-080c-42f2-827d-708b7269abac" name="Changes" comment="Evaluator's report architecture related image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/carin/src/main/java/yukongold/carin/requesthandler/GameMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/carin/src/main/java/yukongold/carin/requesthandler/GameMediator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/carin/src/test/java/yukongold/carin/GamePiece.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
