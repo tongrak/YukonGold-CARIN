@@ -22,8 +22,8 @@ public abstract class GamePiece {
      */
     public boolean hpManipulate(int amount){
         hp += amount;
-        if(hp<0)return false;
-        else return true;
+        if(hp<0)return true;
+        else return false;
     }
 
     public void turnStart(Coor coor){
@@ -32,20 +32,4 @@ public abstract class GamePiece {
         GPAction nextAct = geneEval.getGPAction(theGeneCode, coor);
         GPMana.actGPAct(nextAct, coor);
     }
-}
-
-public class Antibody extends GamePiece{
-
-    public Antibody(Path gene, int hp) {
-        super(gene, hp);
-    }
-}
-
-public class Virus extends GamePiece{
-
-    public Virus(Path gene, int hp) {
-        super(gene, hp);
-    }
-
-
 }

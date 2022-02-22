@@ -89,7 +89,7 @@ interface CommandBox extends StatementBox{ };
 record AssignmentCommand(String identifier, ExprAbs expr, Map<String, ExprAbs> binding) implements CommandBox {
     @Override
     public GPAction getGPAction(Coor theCoor) {
-        if(!identifier.equals("rand"))binding.put(identifier, expr);
+        if(!identifier.equals("random"))binding.put(identifier, expr);
         return null;
     }
 }

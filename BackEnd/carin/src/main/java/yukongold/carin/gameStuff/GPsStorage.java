@@ -7,18 +7,19 @@ import java.util.Map;
 
 // TODO Test it.
 public class GPsStorage {
-    private static int m; //maxX axis
-    private static int n; //maxY axis
+    private static int m = 25; //maxX axis
+    private static int n = 25; //maxY axis
     private static GPsStorage instance;
     private GPsStorage(){}
     private static Map<Coor, GamePiece> GPCoorMap;
+
+    private static GPsPlayer gpP;
 
     public static GPsStorage getInstance(){
         if(instance == null){
             instance = new GPsStorage();
             GPCoorMap = new HashMap<>();
-            m = 25;
-            n = 25;
+            gpP = GPsPlayer.getInstance();
         }
         return instance;
     }
@@ -55,7 +56,7 @@ public class GPsStorage {
     private  static LinkedList<Coor> nearestGP(Coor gpCoor){
         int x = gpCoor.getX();
         int y = gpCoor.getY();
-        int repeatitionCount = Math.max(x, y);
+        int repeatitionCount = Math.max(gpCoor.getX(), Math.max(gpCoor.getY(), Math.max(m-gpCoor.getX(), n-gpCoor.getY())));
         LinkedList<Coor> toReturn = new LinkedList<>();
         for (int i = 1; i < repeatitionCount; i++) {
             if(containXY(x, y+i)) toReturn.add(new Coor(x, y+i));
@@ -217,7 +218,9 @@ public class GPsStorage {
         if(GPCoorMap.containsKey(ABCoor)){
             GPCoorMap.remove(ABCoor);
             GPsFactory GPFac = GPsFactory.getInstance();
-            setGPintoStorage(GPFac.createNewVirus(virusGene), ABCoor);
+            Virus newV = GPFac.createNewVirus(virusGene);
+            setGPintoStorage(newV, ABCoor);
+            gpP.addGP(newV);
         }
 
     }

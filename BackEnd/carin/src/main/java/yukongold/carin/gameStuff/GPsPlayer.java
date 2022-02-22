@@ -2,7 +2,7 @@ package yukongold.carin.gamestuff;
 
 import java.util.LinkedList;
 
-public class GPsPlayer {
+public class GPsPlayer implements Runnable {
     private int gpCount = 0;
     private static LinkedList<GamePiece> GPLL;
     private static GPsPlayer instance;
@@ -20,10 +20,16 @@ public class GPsPlayer {
         updateGPcount();
         GPsStorage GPsS = GPsStorage.getInstance(); 
         for(int i = 0; i < gpCount; i++){
+            System.out.println(GPLL.get(i).getClass() + " is at " + GPsS.coorOfGP(GPLL.get(i)).getX() + "," + GPsS.coorOfGP(GPLL.get(i)).getY() );
             GPLL.get(i).turnStart(
                 GPsS.coorOfGP(GPLL.get(i))
             );
         }
+    }
+
+    @Override
+    public void run(){
+        startGPsTurn();
     }
 
     public void addGP(GamePiece gp){

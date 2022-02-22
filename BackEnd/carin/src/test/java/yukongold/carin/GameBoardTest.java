@@ -11,7 +11,6 @@ import yukongold.carin.gamestuff.GPsFactory;
 import yukongold.carin.gamestuff.GPsPlayer;
 import yukongold.carin.gamestuff.GPsStorage;
 import yukongold.carin.gamestuff.GameBoard;
-import yukongold.carin.gamestuff.GamePiece;
 import yukongold.carin.gamestuff.SpawnAct;
 
 public class GameBoardTest {
@@ -32,13 +31,19 @@ public class GameBoardTest {
 
     @Test
     void innit1stPhases(){
+        Thread t0 = new Thread(gb);
         Path pAB = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt");
-        Path pV = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCodeVirus.txt");
-        GamePiece virus1 = gpF.createNewVirus(pV);
-        gpP.addGP(virus1);
-        GPStore.setGPintoStorage(virus1, new Coor(2,2));
-        gbData.setPlayerAction(new SpawnAct(new Coor(10,10), pAB));
-        // gb.start();
+        SpawnAct newSpawnAct = new SpawnAct(new Coor(0,1), pAB);
+        gbData.setPlayerAction(newSpawnAct);
+        // gb.run();
+        t0.start();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        // gbData.setClickPause();
         
     }
 

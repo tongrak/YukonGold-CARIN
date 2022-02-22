@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class GameBoard implements Runnable {
-    private Path VGene = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt");
+    private Path VGene = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCodeVirus.txt");
 
     private int speedIndex = 0;
     private int turnCounter = 0;
@@ -40,6 +40,7 @@ public class GameBoard implements Runnable {
     @Override
     public void run() {
         final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        spawnVirus(1);
         executorService.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
@@ -48,22 +49,36 @@ public class GameBoard implements Runnable {
         }
         , 0, speedRate[speedIndex],
         TimeUnit.SECONDS);
+        // while(!metWinningCond){
+        //     mainLoop();
+        //     try {
+        //         Thread.sleep(speedRate[speedIndex]*1000);
+        //     } catch (InterruptedException e) {
+        //         e.printStackTrace();
+        //     }
+        // }
+        // System.out.println("Game End");
     }
 
     private void mainLoop() {
+        System.out.println("current win con: " + metWinningCond);
+        System.out.println("GB: is " + ((isPause) ? "pause" : "running") + " at turn:"+ ((isPause) ? turnCounter : turnCounter++));
+        // Thread t1 = new Thread();
         // if (!metWinningCond) {
             checkPlayerRequest();
-            if (!isPause)
+            if (!isPause){
                 GPsPlay.startGPsTurn();
-            metWinningCond = GPsStore.checkWinningCond();
-            System.out.println("current win con: " + metWinningCond);
-            System.out.println("GB: is " + ((isPause) ? "pause" : "running") + " at turn:"
-                    + ((isPause) ? turnCounter : turnCounter++));
+                metWinningCond = GPsStore.checkWinningCond();
+            }
+        // }else{
+        // Thread.interrupted();
         // }
     }
 
     private void checkPlayerRequest() {
         PlayerAction holder = theData.getCurrRequest();
+        if(theData.isPlClickPause())pauseGame();
+        if(theData.isPlClickSpeed())speedChange();
         if (holder != null) {
             if(holder.getClass().equals(SpawnAct.class)){
                 SpawnAct spawnHolder = (SpawnAct) holder;
@@ -82,6 +97,15 @@ public class GameBoard implements Runnable {
                     if (!check)
                         throw new RuntimeException("RelocateAct: can't relocated");
             }
+        }
+    }
+
+    public void spawnVirus(int amount){
+        for (int i = 0; i < amount; i++) {
+            Virus newV = GPsFac.createNewVirus(VGene);
+            // (int)(Math.random() * 26)
+            GPsStore.setGPintoStorage(newV, new Coor(0, 0));
+            GPsPlay.addGP(newV); 
         }
     }
 

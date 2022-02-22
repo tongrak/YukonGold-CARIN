@@ -8,11 +8,13 @@ public class GPManager {
 
     private static GPManager instance;
     private static GPsStorage GpStore;
+    private static GPsPlayer gpP;
     private GPManager(){}
     public static GPManager getInstance() {
         if(instance == null){
             instance = new GPManager();
             GpStore = GPsStorage.getInstance();
+            gpP = GPsPlayer.getInstance();
         }
         return instance;
     }
@@ -22,6 +24,7 @@ public class GPManager {
      * @param coor host's current coor
      */
     public void actGPAct(GPAction action, Coor coor){
+        System.out.println("GP at: " + coor.getX() +"," +coor.getY()+" act :" + action);
         int eightDirec = action.getDirection()%10;
         boolean isVirus = GpStore.getGPAt(coor).getClass().equals(Virus.class);
         if(action.getClass().equals(ShootAct.class)){
@@ -109,6 +112,7 @@ public class GPManager {
                 GpStore.removeGP(gp);
                 GpStore.getGPAt(hostCoor).hpManipulate(ABGain);
             }
+            gpP.removeGP(gp);
         }
     }
 
@@ -118,6 +122,7 @@ public class GPManager {
      * @param destinationCoor Coor which host is traveling to
      */
     private void movingGP(Coor hostCoor, Coor destinationCoor){
+        if(destinationCoor.getX()<0||destinationCoor.getX()>25||destinationCoor.getY()<0||destinationCoor.getY()>25 )return;
         GpStore.relocateAB(hostCoor, destinationCoor);
     }
 }
