@@ -1,0 +1,17 @@
+#Menu {
+    /* position: fixed;
+    bottom: 85px;
+    left: 235px; */
+    width: 200px;
+    height: 475px;
+    border-style: solid;
+    border-width: medium;
+    border-color: black;
+    background-color: rgb(80, 169, 228);
+}
+
+#Menu .Credit{
+    width: 100px;
+    height: auto;
+    place-content: center;
+}
