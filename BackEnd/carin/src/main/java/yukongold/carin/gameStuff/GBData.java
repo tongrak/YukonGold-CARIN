@@ -5,7 +5,7 @@ import java.util.Map;
 public class GBData {
     private boolean clickPause;
     private boolean clickSpeed;
-    // private int currSpeed;
+    private int currSpeed;
     private PlayerAction currRequest;
     private static Map<Coor, GamePiece> GPCoorMap;
     private static GBData instance;
@@ -65,6 +65,9 @@ public class GBData {
         }else return false;
     }
 
+    public int getCurrspeed(){
+        return this.currSpeed;
+    }
 
     /** getting Map object of current game data
      * 
