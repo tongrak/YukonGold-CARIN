@@ -90,6 +90,11 @@ public class GameMediator {
         t0.start();
         return "Starting GameBoards";
     }
+    private int click_count = 1;
+    private String[] clickCoor1;
+    private String[] clickCoor2;
+    private Coor coor1;
+    private Coor coor2;
 
     @GetMapping("/test")
     public Map<String,GamePiece> test(){
@@ -114,20 +119,39 @@ public class GameMediator {
         return toReturn;
     }
 
-    // @PostMapping("/start")
-    // public Map<String,String> start(@RequestBody String start) throws IOException{
-    //     if(start == "true"){
-    //         Map<Coor, GamePiece> mapData = gbdata.getMappingData();
-    //         Map<String,String> toReturn;
+    @PostMapping("/pause")
+    public void pause(){
+        gbdata.setClickPause();
+    }
 
-    //         return null;
-    //     }else{
-    //         throw new IOException();
-    //     }
-    // }
+    @PostMapping("/speed")
+    public void speed(){
+        gbdata.setClickSpeed();
+    }
 
     @PostMapping("/click")
-    public String click(@RequestBody String request){
-        return "Received : " + request;
+    public String click(@RequestBody ModelRequest request){
+        if(click_count == 1){
+            clickCoor1 = request.getCoor().split(",");
+            coor1 = new Coor(Integer.parseInt(clickCoor1[0]),
+            Integer.parseInt(clickCoor1[1]));
+            click_count++;
+        }else if(click_count == 2){
+            clickCoor2 = request.getCoor().split(",");
+            coor2 = new Coor(Integer.parseInt(clickCoor2[0]),
+            Integer.parseInt(clickCoor2[1]));
+            click_count = 1;
+            //to send data
+        }else{
+            click_count = 1;
+        }
+        
+        return "Click : " + click_count;
     }
+
+    // private void checkClick(Coor coor){
+    //     if(this.coor1 == null && this.coor2 == null){
+            
+    //     }
+    // }
 }
