@@ -38,7 +38,7 @@ public class GameBoardTest {
         gpP.addGP(virus1);
         GPStore.setGPintoStorage(virus1, new Coor(2,2));
         gbData.setPlayerAction(new SpawnAct(new Coor(10,10), pAB));
-        gb.start();
+        // gb.start();
         
     }
 
