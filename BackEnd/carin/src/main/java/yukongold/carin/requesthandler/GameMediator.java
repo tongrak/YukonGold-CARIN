@@ -110,7 +110,7 @@ public class GameMediator {
             Pair toPush = new Pair<Pair,String>(c,s);
             datall.push(toPush);
         }
-        return new GameData(mainGame.getisPause(), gbdata.getCurrspeed(),datall);
+        return new GameData(mainGame.getIsPause(), gbdata.getCurrspeed(),datall);
     }
 
     @GetMapping("/test")
