@@ -10,9 +10,11 @@ import yukongold.carin.gamestuff.GameBoard;
 import yukongold.carin.gamestuff.Coor;
 import yukongold.carin.gamestuff.GamePiece;
 import yukongold.carin.gamestuff.SpawnAct;
+import yukongold.carin.gamestuff.Virus;
 
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**As the name might suggest, the "class" handle when player request game to 
@@ -79,6 +81,8 @@ public class GameMediator {
 
     private GBData gbdata = GBData.getInstance();
     private Map<Coor, GamePiece> MapData = gbdata.getMappingData();
+    private LinkedList<Pair<Pair<Integer, Integer>, String>> datall;
+    private GameBoard mainGame = GameBoard.getInstance();
 
     private int selectedABtypeIndex = 0; //0-> non-selected 1->3 is selected
     private int click_count = 1;
@@ -105,7 +109,18 @@ public class GameMediator {
 
     @GetMapping("/getdata")
     public GameData sendingData(){
-        throw new RuntimeException("unimplement");
+        String s;
+        for(Coor key : MapData.keySet()){
+            Pair c = new Pair<Integer,Integer>(key.getX(),key.getY());
+            if(MapData.get(key).getClass().equals(Virus.class)){
+                s = "virus" ;
+            }else{
+                s = "antibody";
+            }
+            Pair toPush = new Pair<Pair,String>(c,s);
+            datall.push(toPush);
+        }
+        return new GameData(mainGame.getIsPause(), gbdata.getCurrspeed(),datall);
     }
 
     @GetMapping("/test")

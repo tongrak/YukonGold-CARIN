@@ -2,8 +2,8 @@
     display: grid;
     grid-template-columns: repeat(8, 60px);
     grid-template-rows: repeat(8, 60px);
-    width: 480px;
-    height: 480px;
+    width: 475px;
+    height: 475px;
     background-color: rgb(194, 98, 98);
 }
 

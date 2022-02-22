@@ -5,8 +5,11 @@ import './App.css';
 function App() {
   return (
     <div id="app">
-        <Menu/>
-        <Board/>
+      <h1 className='text-sky-400/100'>Hello ViRuS</h1>
+      
+      <Menu/>
+      <Board/>
+        
     </div>
   );
 }
