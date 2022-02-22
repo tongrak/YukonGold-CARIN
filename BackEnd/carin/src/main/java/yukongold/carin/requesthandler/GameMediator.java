@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import yukongold.carin.gamestuff.GBData;
+import yukongold.carin.gamestuff.GameBoard;
 import yukongold.carin.gamestuff.Coor;
 import yukongold.carin.gamestuff.GamePiece;
 
@@ -26,7 +27,7 @@ interface RequestHandler{
      * 
      * @return reply confirm the order
      */
-    RequestHandler start();
+    //// RequestHandler start();
 
     /**a order to kick start the game properly.
      * 
@@ -81,7 +82,14 @@ public class GameMediator {
 
     private GBData gbdata = GBData.getInstance();
     private Map<Coor, GamePiece> MapData = gbdata.getMappingData();
-    
+
+    @GetMapping("/start")
+    public String startGame(){
+        GameBoard gb = GameBoard.getInstance();
+        Thread t0 = new Thread(gb);
+        t0.start();
+        return "Starting GameBoards";
+    }
 
     @GetMapping("/test")
     public Map<String,GamePiece> test(){
