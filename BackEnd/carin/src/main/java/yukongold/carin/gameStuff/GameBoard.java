@@ -1,19 +1,17 @@
 package yukongold.carin.gamestuff;
 
+import java.nio.file.Path;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-//TODO Testing
+import org.springframework.stereotype.Controller;
 
-public class GameBoard {
 
-    // class MainLoop extends Thread{
-    // @Override
-    // public void run() {
-    // mainLoop();
-    // }
-    // }
+@Controller
+public class GameBoard implements Runnable {
+    private Path VGene = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt");
+
     private int speedIndex = 0;
     private int turnCounter = 0;
     private boolean metWinningCond = false;
@@ -39,26 +37,21 @@ public class GameBoard {
         return instance;
     }
 
-    public void start() {
+    @Override
+    public void run() {
         final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        // final MainLoop ml = new MainLoop();
-        // ml.setDaemon(true);
-        // executorService.scheduleAtFixedRate(ml, 0, speedRate[speedIndex],
-        // TimeUnit.SECONDS);
-        
-        while (true) {
-            mainLoop();
-            try {
-                Thread.sleep(speedRate[speedIndex]*1000);
-            } catch (InterruptedException ex) {
-                Thread.currentThread().interrupt();
+        executorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                mainLoop();
             }
         }
+        , 0, speedRate[speedIndex],
+        TimeUnit.SECONDS);
     }
 
     private void mainLoop() {
-        boolean metWinningCond = false;
-        if (!metWinningCond) {
+        // if (!metWinningCond) {
             checkPlayerRequest();
             if (!isPause)
                 GPsPlay.startGPsTurn();
@@ -66,7 +59,7 @@ public class GameBoard {
             System.out.println("current win con: " + metWinningCond);
             System.out.println("GB: is " + ((isPause) ? "pause" : "running") + " at turn:"
                     + ((isPause) ? turnCounter : turnCounter++));
-        }
+        // }
     }
 
     private void checkPlayerRequest() {
@@ -101,5 +94,4 @@ public class GameBoard {
         if (speedIndex > 3)
             this.speedIndex = 0;
     }
-
 }
