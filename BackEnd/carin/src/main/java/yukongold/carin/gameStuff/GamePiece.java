@@ -34,18 +34,4 @@ public abstract class GamePiece {
     }
 }
 
-public class Antibody extends GamePiece{
 
-    public Antibody(Path gene, int hp) {
-        super(gene, hp);
-    }
-}
-
-public class Virus extends GamePiece{
-
-    public Virus(Path gene, int hp) {
-        super(gene, hp);
-    }
-
-
-}
