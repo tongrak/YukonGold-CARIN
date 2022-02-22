@@ -69,6 +69,10 @@ public class GBData {
         return this.currSpeed;
     }
 
+    public void setCurrSpeed(int input){
+        this.currSpeed = input;
+    }
+
     /** getting Map object of current game data
      * 
      * @return a Map object represent a game data.

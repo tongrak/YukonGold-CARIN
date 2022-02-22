@@ -33,8 +33,3 @@ public abstract class GamePiece {
         GPMana.actGPAct(nextAct, coor);
     }
 }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c1607265bcfa020125597447bfbcbab0de28770f

@@ -16,7 +16,7 @@ public class GameBoard implements Runnable {
     private int turnCounter = 0;
     private boolean metWinningCond = false;
     private int[] speedRate = { 1, 2, 3 };
-    private boolean isPause = false;
+    private boolean isPause = true;
     private static GameBoard instance;
     private static GPsFactory GPsFac;
     private static GPsPlayer GPsPlay;
@@ -39,37 +39,38 @@ public class GameBoard implements Runnable {
 
     @Override
     public void run() {
-        final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         spawnVirus(1);
-        executorService.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                mainLoop();
-            }
-        }
-        , 0, speedRate[speedIndex],
-        TimeUnit.SECONDS);
-        // while(!metWinningCond){
-        //     mainLoop();
-        //     try {
-        //         Thread.sleep(speedRate[speedIndex]*1000);
-        //     } catch (InterruptedException e) {
-        //         e.printStackTrace();
+
+        // final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        // executorService.scheduleAtFixedRate(new Runnable() {
+        //     @Override
+        //     public void run() {
+        //         mainLoop();
         //     }
         // }
-        // System.out.println("Game End");
+        // , 0, speedRate[speedIndex],
+        // TimeUnit.SECONDS);
+        while(!metWinningCond){
+            mainLoop();
+            try {
+                Thread.sleep(speedRate[speedIndex]*1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Game End");
     }
 
     private void mainLoop() {
         System.out.println("current win con: " + metWinningCond);
         System.out.println("GB: is " + ((isPause) ? "pause" : "running") + " at turn:"+ ((isPause) ? turnCounter : turnCounter++));
-        // Thread t1 = new Thread();
         // if (!metWinningCond) {
             checkPlayerRequest();
             if (!isPause){
                 GPsPlay.startGPsTurn();
                 metWinningCond = GPsStore.checkWinningCond();
             }
+            theData.setCurrSpeed(speedRate[speedIndex]);
         // }else{
         // Thread.interrupted();
         // }
