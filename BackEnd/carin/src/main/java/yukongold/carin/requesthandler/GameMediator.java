@@ -9,7 +9,9 @@ import yukongold.carin.gamestuff.GBData;
 import yukongold.carin.gamestuff.GameBoard;
 import yukongold.carin.gamestuff.Coor;
 import yukongold.carin.gamestuff.GamePiece;
+import yukongold.carin.gamestuff.SpawnAct;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -93,8 +95,16 @@ public class GameMediator {
         return "Starting GameBoards";
     }
 
+    @GetMapping("/spawn")
+    public String spawningSampleGPS(){
+        Path pAB = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt");
+        SpawnAct newSpawnAct = new SpawnAct(new Coor(13,13), pAB);
+        gbdata.setPlayerAction(newSpawnAct);
+        return "Spawning: AB at 13,13";
+    }
+
     @GetMapping("/getdata")
-    public GameData sendinData(){
+    public GameData sendingData(){
         throw new RuntimeException("unimplement");
     }
 
@@ -121,12 +131,12 @@ public class GameMediator {
         return toReturn;
     }
 
-    @PostMapping("/pause")
+    @GetMapping("/pause")
     public void pause(){
         gbdata.setClickPause();
     }
 
-    @PostMapping("/speed")
+    @GetMapping("/speed")
     public void speed(){
         gbdata.setClickSpeed();
     }
