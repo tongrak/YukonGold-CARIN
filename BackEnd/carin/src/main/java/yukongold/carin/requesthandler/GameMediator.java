@@ -10,11 +10,6 @@ import yukongold.carin.gamestuff.GameBoard;
 import yukongold.carin.gamestuff.Coor;
 import yukongold.carin.gamestuff.GamePiece;
 
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,6 +78,13 @@ public class GameMediator {
     private GBData gbdata = GBData.getInstance();
     private Map<Coor, GamePiece> MapData = gbdata.getMappingData();
 
+    private int selectedABtypeIndex = 0; //0-> non-selected 1->3 is selected
+    private int click_count = 1;
+    private String[] clickCoor1;
+    private String[] clickCoor2;
+    private Coor coor1;
+    private Coor coor2;
+
     @GetMapping("/start")
     public String startGame(){
         GameBoard gb = GameBoard.getInstance();
@@ -90,11 +92,11 @@ public class GameMediator {
         t0.start();
         return "Starting GameBoards";
     }
-    private int click_count = 1;
-    private String[] clickCoor1;
-    private String[] clickCoor2;
-    private Coor coor1;
-    private Coor coor2;
+
+    @GetMapping("/getdata")
+    public GameData sendinData(){
+        throw new RuntimeException("unimplement");
+    }
 
     @GetMapping("/test")
     public Map<String,GamePiece> test(){
@@ -141,7 +143,7 @@ public class GameMediator {
             coor2 = new Coor(Integer.parseInt(clickCoor2[0]),
             Integer.parseInt(clickCoor2[1]));
             click_count = 1;
-            //to send data
+            gbdata.checkInput2Coor(coor1, coor2);
         }else{
             click_count = 1;
         }
