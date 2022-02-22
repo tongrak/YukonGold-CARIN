@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -85,15 +86,23 @@ public class GameMediator {
     @GetMapping("/test")
     public Map<String,GamePiece> test(){
         Map<String,GamePiece> toReturn = new HashMap<>();
-
+        String[] k = {};
+        GamePiece[] v = {};
+        int count = 0;
         for (Coor key : MapData.keySet()) {
-            for (GamePiece value : MapData.values()) {
-                String x = Integer.toString(key.getX()) + "," +
-                Integer.toString(key.getY());
-                toReturn.put(x, value);
-            }
+            k[count] = "(" + Integer.toString(key.getX()) + "," +
+            Integer.toString(key.getY()) + ")";
+            count++;
         }
-        
+        count = 0;
+        for (GamePiece value : MapData.values()) {
+            v[count] = value;
+            count++;
+        }
+        count = 0;
+        for(int i = 0;i < k.length;i++ ){
+            toReturn.put(k[i],v[i]);
+        }
         return toReturn;
     }
 
