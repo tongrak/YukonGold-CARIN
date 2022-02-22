@@ -89,6 +89,10 @@ public class GameBoard implements Runnable {
         this.isPause = !this.isPause;
     }
 
+    public boolean getIsPause(){
+        return this.isPause;
+    }
+
     public void speedChange() {
         this.speedIndex++;
         if (speedIndex > 3)
