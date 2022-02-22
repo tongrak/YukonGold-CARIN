@@ -34,14 +34,14 @@ public abstract class GamePiece {
     }
 }
 
-class Antibody extends GamePiece{
+public class Antibody extends GamePiece{
 
     public Antibody(Path gene, int hp) {
         super(gene, hp);
     }
 }
 
-class Virus extends GamePiece{
+public class Virus extends GamePiece{
 
     public Virus(Path gene, int hp) {
         super(gene, hp);
