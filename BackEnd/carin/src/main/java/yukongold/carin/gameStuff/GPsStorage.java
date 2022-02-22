@@ -193,7 +193,7 @@ public class GPsStorage {
      */
     public boolean checkWinningCond(){
         int GPDiff = 0;
-        if(GPCoorMap.keySet().size() == 0) return true;
+        if(GPCoorMap.keySet().size() == 0) return false;
         for(Coor c: GPCoorMap.keySet()){
             if(GPCoorMap.get(c).getClass().equals(Antibody.class)){
                 GPDiff++;

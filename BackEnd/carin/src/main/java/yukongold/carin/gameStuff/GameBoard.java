@@ -1,74 +1,97 @@
 package yukongold.carin.gamestuff;
 
-//TODO Testing
-//TODO creat a visual class to run the game on terminal
-public class GameBoard{
-    private static GameBoard instance;
-    private GPsFactory GPsFac;
-    private GPsPlayer GPsPlay;
-    private GPsStorage GPsStore;
-    private GBData theData;
-    private GameBoard(){}
+import java.nio.file.Path;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-    public static GameBoard getInstance(){
-        if(instance == null){
+import org.springframework.stereotype.Controller;
+
+
+@Controller
+public class GameBoard implements Runnable {
+    private Path VGene = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt");
+
+    private int speedIndex = 0;
+    private int turnCounter = 0;
+    private boolean metWinningCond = false;
+    private int[] speedRate = { 1, 2, 3 };
+    private boolean isPause = false;
+    private static GameBoard instance;
+    private static GPsFactory GPsFac;
+    private static GPsPlayer GPsPlay;
+    private static GPsStorage GPsStore;
+    private static GBData theData;
+
+    private GameBoard() {
+    }
+
+    public static GameBoard getInstance() {
+        if (instance == null) {
+            GPsFac = GPsFactory.getInstance();
+            GPsPlay = GPsPlayer.getInstance();
+            GPsStore = GPsStorage.getInstance();
+            theData = GBData.getInstance();
             instance = new GameBoard();
         }
         return instance;
     }
 
-
-    public void startGame(){
-        boolean metWinningCond = false;
-        while(!metWinningCond){
-            checkPlayerRequest();
-            GPsPlay.startGPsTurn();
-            metWinningCond = GPsStore.checkWinningCond();
+    @Override
+    public void run() {
+        final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        executorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                mainLoop();
+            }
         }
+        , 0, speedRate[speedIndex],
+        TimeUnit.SECONDS);
     }
 
-    private void checkPlayerRequest(){
+    private void mainLoop() {
+        // if (!metWinningCond) {
+            checkPlayerRequest();
+            if (!isPause)
+                GPsPlay.startGPsTurn();
+            metWinningCond = GPsStore.checkWinningCond();
+            System.out.println("current win con: " + metWinningCond);
+            System.out.println("GB: is " + ((isPause) ? "pause" : "running") + " at turn:"
+                    + ((isPause) ? turnCounter : turnCounter++));
+        // }
+    }
+
+    private void checkPlayerRequest() {
         PlayerAction holder = theData.getCurrRequest();
-        if(holder !=  null){
-            switch (holder.getClass().getName()) {
-                case "SpawnAct"->{
-                    SpawnAct spawnHolder = (SpawnAct) holder;
-                    Antibody newAB = GPsFac.createNewAB(spawnHolder.getSelectedABType());
-                    // TODO get config data
-                    boolean check = GPsStore.setGPintoStorage(newAB, spawnHolder.getSelectedCoor());
-                    if(!check) throw new RuntimeException("SpawnAct: can't spawn "); else GPsPlay.addGP(newAB);
-                }
-                case "RelocateAct"->{
-                    RelocateAct relocateHolder = (RelocateAct) holder;
-                    boolean check = GPsStore.relocateAB(relocateHolder.getSelectedCoor(), relocateHolder.getDestination());
-                    if(!check) throw new RuntimeException("RelocateAct: can't relocated");
-                }
+        if (holder != null) {
+            if(holder.getClass().equals(SpawnAct.class)){
+                SpawnAct spawnHolder = (SpawnAct) holder;
+                Antibody newAB = GPsFac.createNewAB(spawnHolder.getSelectedABType());
+                // TODO get config data
+                boolean check = GPsStore.setGPintoStorage(newAB, spawnHolder.getSelectedCoor());
+                if (!check)
+                    throw new RuntimeException("SpawnAct: can't spawn ");
+                else
+                    GPsPlay.addGP(newAB);
+
+            }else{
+                RelocateAct relocateHolder = (RelocateAct) holder;
+                    boolean check = GPsStore.relocateAB(relocateHolder.getSelectedCoor(),
+                            relocateHolder.getDestination());
+                    if (!check)
+                        throw new RuntimeException("RelocateAct: can't relocated");
             }
         }
     }
 
-    public void init() {
-        GPsFac = GPsFactory.getInstance();
-        GPsPlay = GPsPlayer.getInstance();
-        GPsStore = GPsStorage.getInstance();
-        theData = GBData.getInstance();
-        
-    }
-
     public void pauseGame() {
-        // TODO someHow pause the main while loop
-        
+        this.isPause = !this.isPause;
     }
 
     public void speedChange() {
-        // TODO someHow speed up/down the main loop
-        
+        this.speedIndex++;
+        if (speedIndex > 3)
+            this.speedIndex = 0;
     }
-
-    public GBData updateData() {
-        // TODO sending essential data to resident GBData
-        return null;
-    }
-    
 }
- 
