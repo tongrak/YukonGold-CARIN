@@ -81,7 +81,6 @@ public class GameMediator {
 
     private GBData gbdata = GBData.getInstance();
     private Map<Coor, GamePiece> MapData = gbdata.getMappingData();
-    private LinkedList<Pair<Pair<Integer, Integer>, String>> datall;
     private GameBoard mainGame = GameBoard.getInstance();
 
     private int selectedABtypeIndex = 0; //0-> non-selected 1->3 is selected
@@ -99,7 +98,7 @@ public class GameMediator {
         return "Starting GameBoards";
     }
 
-    @GetMapping("/spawn")
+    @GetMapping("/test/spawn")
     public String spawningSampleGPS(){
         Path pAB = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt");
         SpawnAct newSpawnAct = new SpawnAct(new Coor(13,13), pAB);
@@ -110,14 +109,15 @@ public class GameMediator {
     @GetMapping("/getdata")
     public GameData sendingData(){
         String s;
+        LinkedList<Pair<Pair<Integer, Integer>, String>> datall = new LinkedList<>();
         for(Coor key : MapData.keySet()){
-            Pair c = new Pair<Integer,Integer>(key.getX(),key.getY());
+            Pair<Integer,Integer> c = new Pair<>(key.getX(),key.getY());
             if(MapData.get(key).getClass().equals(Virus.class)){
                 s = "virus" ;
             }else{
                 s = "antibody";
             }
-            Pair toPush = new Pair<Pair,String>(c,s);
+            Pair<Pair<Integer,Integer>,String> toPush = new Pair<>(c,s);
             datall.push(toPush);
         }
         return new GameData(mainGame.getIsPause(), gbdata.getCurrspeed(),datall);
