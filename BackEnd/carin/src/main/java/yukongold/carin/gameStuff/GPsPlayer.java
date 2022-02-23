@@ -2,7 +2,7 @@ package yukongold.carin.gamestuff;
 
 import java.util.LinkedList;
 
-public class GPsPlayer implements Runnable {
+public class GPsPlayer {
     private int gpCount = 0;
     private static LinkedList<GamePiece> GPLL;
     private static GPsPlayer instance;
@@ -27,11 +27,6 @@ public class GPsPlayer implements Runnable {
         }
     }
 
-    @Override
-    public void run(){
-        startGPsTurn();
-    }
-
     public void addGP(GamePiece gp){
         GPLL.add(gp);
     }
@@ -41,7 +36,7 @@ public class GPsPlayer implements Runnable {
         gpCount--;
     }
 
-    public void updateGPcount(){
+    private void updateGPcount(){
         this.gpCount = GPLL.size();
     }
 

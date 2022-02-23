@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class GameBoard implements Runnable {
-    private Path VGene = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCodeVirus.txt");
+    private Path VGene = Path.of("src/test/java/yukongold/carin/sampleGeneCode/sampleGeneCodeVirus.txt");
 
     private int m;
     private int n;
@@ -65,7 +65,7 @@ public class GameBoard implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (RuntimeException re){
-                System.out.println(re);
+                System.err.println(re);
             }
         }
         System.out.println("Game End");
@@ -75,8 +75,8 @@ public class GameBoard implements Runnable {
         System.out.println("current win con: " + metWinningCond);
         System.out.println("GB: is " + ((isPause) ? "pause" : "running") + " at turn:"+ ((isPause) ? turnCounter : turnCounter++));
             checkPlayerRequest();
-            spawnVirus();
             if (!isPause){
+                spawnVirus();
                 GPsPlay.startGPsTurn();
                 updatePlCredit();
                 metWinningCond = GPsStore.checkWinningCond();
@@ -117,7 +117,7 @@ public class GameBoard implements Runnable {
     public void spawnVirus(){
         if(((int)(Math.random() * 2))<this.vSpawnposs){
             Virus newV = GPsFac.createNewVirus(VGene);
-            GPsStore.setGPintoStorage(newV, new Coor((int)(Math.random() * 26), (int)(Math.random() * 26)));
+            GPsStore.setGPintoStorage(newV, new Coor((int)(Math.random() * (this.m)), (int)(Math.random() * (this.n))));
             GPsPlay.addGP(newV); 
         }
     }

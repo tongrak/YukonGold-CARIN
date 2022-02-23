@@ -196,16 +196,14 @@ public class GPsStorage {
      * @return true if all GP on the boards consist only one side.
      */
     public boolean checkWinningCond(){
-        int GPDiff = 0;
+        int abCount = 0;
         if(GPCoorMap.keySet().size() == 0) return false;
         for(Coor c: GPCoorMap.keySet()){
             if(GPCoorMap.get(c).getClass().equals(Antibody.class)){
-                GPDiff++;
-            }else{
-                GPDiff--;
+                abCount++;
             }
         }
-        return Math.abs(GPDiff) == GPCoorMap.keySet().size();
+        return abCount == 0;
     }
 
 
@@ -239,6 +237,11 @@ public class GPsStorage {
         }else return null;
     }
 
+    /** Check if inputed coor is out of boards or not
+     * 
+     * @param coor Coor in question
+     * @return true if siad coor is in boards
+     */
     private boolean isOutOfBoards(Coor coor){
         if(coor.getX() < 0 || coor.getX() > m || coor.getY() < 0 || coor.getY() > n) return true;
         return false;
