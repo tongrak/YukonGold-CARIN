@@ -1,6 +1,6 @@
 #app {
-  display: flex;
-  place-content: center;
+  /* display: flex; */
+  /* place-content: center; */
   height: 100vh;
   background-color: rgb(250, 247, 247);
 }
