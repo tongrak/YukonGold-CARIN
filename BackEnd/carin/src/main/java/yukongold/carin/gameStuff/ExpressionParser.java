@@ -78,8 +78,10 @@ class TermAbsImpl extends TermAbs {
             if(super.operandIndex == 1){
                 return super.innerTerm.eval(theCoor) * super.theFactor.eval(theCoor);
             }else if(super.operandIndex == 2){
+                if(super.theFactor.eval(theCoor) == 0) throw new SyntaxError("can't divide by zero");
                 return super.innerTerm.eval(theCoor) / super.theFactor.eval(theCoor);
             }else if(super.operandIndex == 3){
+                if(super.theFactor.eval(theCoor) == 0) throw new SyntaxError("can't modelate by zero");
                 return super.innerTerm.eval(theCoor) % super.theFactor.eval(theCoor);
             }else{
                 throw new SyntaxError();
