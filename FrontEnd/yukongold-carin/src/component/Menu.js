@@ -12,6 +12,8 @@ export default function Menu(){
     menu.push(<Shop/>);
     menu.push(<Speed/>);
     menu.push(<Pause/>);
-    return<div id= "Menu">{menu}</div>;
+    return (
+        <div id= "Menu">{menu}</div>
+        )
     // return<div id= "Menu"><img src="images/Credits.png"/></div>;
 };

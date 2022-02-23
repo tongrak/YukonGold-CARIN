@@ -14,6 +14,7 @@ function App() {
   const inputOnchange = (e) =>{
     setInputdata(e.target.value)
     console.log(inputData)
+    
   }
 
   const createGrid = () => {
