@@ -1,14 +1,33 @@
 import React from 'react';
 import './Board.css';
 
-const VerticalAxis = ["1","2","3","4","5","6","7","8"];
-const HorizontalAxis = ["a","b","c","d","e","f","g","h"];
+// const VerticalAxis = [];
+// const HorizontalAxis = [];
 
-export default function Board(){
+const clickCoor = () =>{
+    // console.log(e)
+}
+
+export default function Board(props){
     let board = [];
-    for(let i = VerticalAxis.length-1;i >= 0;i--){
-        for(let j = 0;j < HorizontalAxis.length;j++){
-            board.push(<div className = "tile"></div>)
+    let x = 1;
+    let y = 1;
+    for(let i = props.layout;i > 0;i--){
+        for(let j = 0;j < props.layout;j++){
+            console.log(props.layout)
+            board.push(
+            <button id={(y*10)+x} className = "tile"
+            onClick={clickCoor()}></button>)
+            
+            if(x == props.layout){
+                x = 1;
+                y++;
+                
+            }else{
+                x++;
+                
+            }
+            
         }
     }
     return <div id="Board">{board}</div>
