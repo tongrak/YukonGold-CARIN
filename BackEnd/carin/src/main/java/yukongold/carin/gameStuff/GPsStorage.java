@@ -163,7 +163,10 @@ public class GPsStorage {
      * @return true if adding or change was successful;
      * */
     public boolean setGPintoStorage(GamePiece gp, Coor coor){
-        if(coor.getX()>m || coor.getX()<0 || coor.getY() >n || coor.getY()<0) throw new RuntimeException("illegal GP setting: (" + coor.getX() + "," + coor.getY() + ")" );
+        if(isOutOfBoards(coor)){
+         System.out.println("GPsStorage.setGPintoStorage: request Coor is out of Board: (" + coor.toString() + ")"); 
+         return false;  
+        } 
         if(!containGP(gp)){
             if(!coorOccupied(coor)) { 
                 GPCoorMap.put(coor,gp);
@@ -235,4 +238,9 @@ public class GPsStorage {
             return GPCoorMap.get(atCoor);
         }else return null;
     }
+
+    private boolean isOutOfBoards(Coor coor){
+        if(coor.getX() < 0 || coor.getX() > m || coor.getY() < 0 || coor.getY() > n) return true;
+        return false;
+    } 
 }

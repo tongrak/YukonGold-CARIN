@@ -5,19 +5,38 @@ public class GPManager {
     private int VirusDamage = 10;
     private int ABGain = 5;
     private int VirusGain = 5;
+    private int relocateCost = 0;
 
     private static GPManager instance;
     private static GPsStorage GpStore;
     private static GPsPlayer gpP;
+    private static GBData gbData;
     private GPManager(){}
+
     public static GPManager getInstance() {
         if(instance == null){
             instance = new GPManager();
             GpStore = GPsStorage.getInstance();
             gpP = GPsPlayer.getInstance();
+            gbData = GBData.getInstance();
         }
         return instance;
     }
+
+    public void setGPsDamage(int vDamage, int abDamage){
+        this.ABDamage = abDamage;
+        this.VirusDamage = vDamage;
+    }
+
+    public void setGPsGain(int vGain, int abGain){
+        this.ABGain = abGain;
+        this.VirusGain = vGain;
+    }
+    
+    public void setRelocateCost(int relocateCost) {
+        this.relocateCost = relocateCost;
+    }
+
     /** Act what host request through passed GPAction and its Coor
      * 
      * @param action action host requested
@@ -103,7 +122,7 @@ public class GPManager {
         if(!gp.hpManipulate(damage*(-1))){
             if(GpStore.getGPAt(hostCoor).getClass().equals(Virus.class))
             GpStore.getGPAt(hostCoor).hpManipulate(VirusGain);
-        }else{
+        }else{ //gp is dead
             if(GpStore.getGPAt(hostCoor).getClass().equals(Virus.class)){
                 GpStore.replaceABwithVirus(
                     GpStore.getGPAt(hostCoor).getTheGeneCode(), 
@@ -111,6 +130,7 @@ public class GPManager {
             }else{
                 GpStore.removeGP(gp);
                 GpStore.getGPAt(hostCoor).hpManipulate(ABGain);
+                gbData.increaseVDeadCount();
             }
             gpP.removeGP(gp);
         }
@@ -121,8 +141,18 @@ public class GPManager {
      * @param hostCoor Coor of the host
      * @param destinationCoor Coor which host is traveling to
      */
-    private void movingGP(Coor hostCoor, Coor destinationCoor){
-        if(destinationCoor.getX()<0||destinationCoor.getX()>25||destinationCoor.getY()<0||destinationCoor.getY()>25 )return;
-        GpStore.relocateAB(hostCoor, destinationCoor);
+    private boolean movingGP(Coor hostCoor, Coor destinationCoor){
+        if(destinationCoor.getX()<0||destinationCoor.getX()>25||destinationCoor.getY()<0||destinationCoor.getY()>25 )return false;
+        return GpStore.relocateAB(hostCoor, destinationCoor);
+    }
+
+    public boolean relocateAB(Coor hostCoor, Coor destinationCoor){
+        if(GpStore.getGPAt(hostCoor).hpManipulate(this.relocateCost*(-1))){
+            GpStore.removeGP(GpStore.getGPAt(hostCoor));
+            gpP.removeGP(GpStore.getGPAt(hostCoor));
+            return false;
+        }else{
+            return movingGP(hostCoor, destinationCoor);
+        }
     }
 }

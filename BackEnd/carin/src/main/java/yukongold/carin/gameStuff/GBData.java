@@ -5,8 +5,12 @@ import java.util.Map;
 public class GBData {
     private boolean clickPause;
     private boolean clickSpeed;
+
     private int currSpeed;
     private PlayerAction currRequest;
+    private int currCredit = 0;
+    private int vDeadCount = 0;
+
     private static Map<Coor, GamePiece> GPCoorMap;
     private static GBData instance;
     private GBData(){}
@@ -103,5 +107,23 @@ public class GBData {
      */
     public void checkInput2Coor(Coor firstCoor, Coor secCoor){
         throw new RuntimeException("Unimplement");
+    }
+
+    public void increaseVDeadCount(){
+        this.vDeadCount++;
+    }
+
+    public int getVDeadCount(){
+        int toReturn = this.vDeadCount;
+        this.vDeadCount = 0;
+        return toReturn;
+    }
+
+    public int getCurrCredit() {
+        return currCredit;
+    }
+
+    public void setCurrCredit(int currCredit) {
+        this.currCredit = currCredit;
     }
 }

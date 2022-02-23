@@ -1,0 +1,18 @@
+5 5
+0.2
+500 100
+100 70
+10 5
+15 3
+10
+75
+----------
+value in each line mean as follow:
+int m , n //dimention m x n
+0 < float <vS> < 1 //vS is virus spawn rate
+int <credit> int <abCost>
+int <virusHP> int <abHP>
+int <virusDamage> int <virusGain>
+int <abDamage> int<abGain>
+int <moveCost> 
+int <plCreditGain>
