@@ -11,7 +11,7 @@ import java.util.Map;
 
 // import static org.junit.jupiter.api.Assertions.*;
 
-class StatementParserTest {
+class StatementAndEprParserTest {
     final static String[] reservedWordArr = {"antibody", "down", "downleft", "downright", "else", "if", "left", "move", "nearby", "right", "shoot", "then", "up", "upleft", "upright", "virus", "while"};
     final static Map<String, ExprAbs> bindingMap = new HashMap<>();
     static ExpressionParser expressionParserTester;
@@ -30,7 +30,6 @@ class StatementParserTest {
 
     @Test
     void parseS() throws SyntaxError {
-        setUp();
         // StatementBox s0 = statementParserTester.parseS();
         // assertDoesNotThrow(()->{ StatementBox s1 = statementParserTester.parseS();});
 

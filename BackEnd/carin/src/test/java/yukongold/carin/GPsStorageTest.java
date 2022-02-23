@@ -43,6 +43,13 @@ public class GPsStorageTest {
     void checkVirusMethod(){
         assertEquals(12, GPsStorage.nearestVirus(new Coor(6, 21)));
         assertEquals(36, GPsStorage.nearestVirus(new Coor(10, 25)));
+        assertEquals(26, GPsStorage.nearestVirus(new Coor(7,22)));
+    }
+
+    @Test
+    void checkAntibodyMethod(){
+        assertEquals(12, GPsStorage.nearestAntiBody(new Coor(5,20)));
+
     }
     
 }

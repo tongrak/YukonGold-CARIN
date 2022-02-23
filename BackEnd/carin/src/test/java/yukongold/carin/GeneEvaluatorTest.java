@@ -31,8 +31,6 @@ public class GeneEvaluatorTest {
         
 
         System.out.println("Help us all");
-
-        // assertEquals(expec01, evaluator.getGPAction(moveCommPath, new Coor(0,0)));
     }
     
 }

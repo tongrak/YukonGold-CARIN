@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import yukongold.carin.gamestuff.Tokenizer;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.nio.file.Path;
 
 // import static org.junit.jupiter.api.Assertions.*;
@@ -11,17 +13,18 @@ import java.nio.file.Path;
 class TokenizerTest {
 
     @Test
-    void tokenize() {
+    void tokenizingTest1() {
         Tokenizer tk = Tokenizer.getInstance();
-        tk.tokenize(Path.of("/Test/tokenizerCheck.txt"));
-        System.out.println("Hold_on");
+        tk.tokenize(Path.of("src/test/java/yukongold/carin/sampleGeneCode/sampleGeneCode.txt"));
+        assertEquals("virusLoc", tk.peer());
+        assertEquals("virusLoc", tk.peer());
+        assertEquals("virusLoc", tk.pop());
+        assertEquals("=", tk.peer());
+        tk.pop();
+        tk.pop();
+        tk.pop();
+        assertEquals("(", tk.pop());
     }
 
-    @Test
-    void peer() {
-    }
 
-    @Test
-    void pop() {
-    }
 }

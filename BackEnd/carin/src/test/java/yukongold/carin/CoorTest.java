@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import yukongold.carin.gamestuff.Coor;
 
-public class QuickTest {
+public class CoorTest {
 
     @Test
     void theTest(){
