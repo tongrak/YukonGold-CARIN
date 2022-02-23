@@ -1,9 +1,7 @@
-
-
 #Board {
     display: grid;
-    grid-template-columns: repeat(8, 58px);
-    grid-template-rows: repeat(8, 58px);
+    grid-template-columns: repeat(8, 59px);
+    grid-template-rows: repeat(8, 59px);
     width: 475px;
     height: 475px;
     background-color: rgb(244, 238, 238);

@@ -158,22 +158,27 @@ public class GameMediator {
 
     @PostMapping("/click")
     public String click(@RequestBody ModelRequest request){
+        int i = 1;
+        boolean isFirst = true;
         if(click_count == 1){
+            isFirst = true;
             clickCoor1 = request.getCoor().split(",");
             coor1 = new Coor(Integer.parseInt(clickCoor1[0]),
             Integer.parseInt(clickCoor1[1]));
             click_count++;
         }else if(click_count == 2){
+            isFirst = false;
             clickCoor2 = request.getCoor().split(",");
             coor2 = new Coor(Integer.parseInt(clickCoor2[0]),
             Integer.parseInt(clickCoor2[1]));
             click_count = 1;
-            gbdata.checkInput2Coor(coor1, coor2);
+            // gbdata.checkInput2Coor(coor1, coor2);
         }else{
             click_count = 1;
         }
-        
-        return "Click : " + click_count;
+        if(!isFirst) i = 2;
+        System.out.println(request.getCoor());
+        return "Click : " + i;
     }
 
     // private void checkClick(Coor coor){
