@@ -39,7 +39,7 @@ function Board(props){
             let q = j.toString();
             let p = q.concat(s);
             board.push(
-            <button id={p} k={p} className = "tile"
+            <button id={p}  className = "tile"
             onClick={(e) => clickCoor(e.target.id)}></button>)
         
         }

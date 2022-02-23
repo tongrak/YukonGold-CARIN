@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import javax.print.DocFlavor.STRING;
+
 /**As the name might suggest, the "class" handle when player request game to 
  * start or manipulate game's speed (pause, slow, fast)
  */
@@ -147,13 +149,15 @@ public class GameMediator {
     }
 
     @GetMapping("/pause")
-    public void pause(){
+    public boolean pause(){
         gbdata.setClickPause();
+        return !mainGame.getIsPause();
     }
 
     @GetMapping("/speed")
-    public void speed(){
+    public int speed(){
         gbdata.setClickSpeed();
+        return gbdata.getCurrspeed() ;
     }
 
     @PostMapping("/click")
