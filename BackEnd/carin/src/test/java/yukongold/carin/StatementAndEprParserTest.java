@@ -29,7 +29,7 @@ class StatementAndEprParserTest {
     }
 
     @Test
-    void parseS() throws SyntaxError {
+    void ExprFactorTest() throws SyntaxError {
         // StatementBox s0 = statementParserTester.parseS();
         // assertDoesNotThrow(()->{ StatementBox s1 = statementParserTester.parseS();});
 
