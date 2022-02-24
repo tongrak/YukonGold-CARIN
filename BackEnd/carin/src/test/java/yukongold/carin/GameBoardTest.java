@@ -32,8 +32,7 @@ public class GameBoardTest {
     @Test
     void innit1stPhases(){
         Thread t0 = new Thread(gb);
-        Path pAB = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt");
-        SpawnAct newSpawnAct = new SpawnAct(new Coor(0,1), pAB);
+        SpawnAct newSpawnAct = new SpawnAct(new Coor(0,1), 1);
         gbData.setPlayerAction(newSpawnAct);
         // gb.run();
         t0.start();

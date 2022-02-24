@@ -28,13 +28,7 @@ interface RequestHandler{
      * 
      * @return reply confirm the order
      */
-    //// RequestHandler start();
-
-    /**a order to kick start the game properly.
-     * 
-     * @return reply confirm the order
-     */
-    RequestHandler startGame();
+    RequestHandler start();
 
     /**a order to pass game's data
      * 
@@ -53,18 +47,6 @@ interface RequestHandler{
      * @return reply confirm the order
      */
     RequestHandler pauseAct();
-
-    /**a order to change antibody coor
-     * 
-     * @return reply confirm the order
-     */
-    // RequestHandler relocateAct();
-
-    /**a order to create a new antibody at coor passed
-     * 
-     * @return reply confirm the order
-     */
-    // RequestHandler spawnAct();
 
     /**a order to selecte a certain ClickSensitiveComponent
      * 
@@ -102,8 +84,7 @@ public class GameMediator {
 
     @GetMapping("/test/spawn")
     public String spawningSampleGPS(){
-        Path pAB = Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt");
-        SpawnAct newSpawnAct = new SpawnAct(new Coor(13,13), pAB);
+        SpawnAct newSpawnAct = new SpawnAct(new Coor(13,13), 1);
         gbdata.setPlayerAction(newSpawnAct);
         return "Spawning: AB at 13,13";
     }
@@ -176,7 +157,7 @@ public class GameMediator {
             coor2 = new Coor(Integer.parseInt(clickCoor2[0]),
             Integer.parseInt(clickCoor2[1]));
             click_count = 1;
-            // gbdata.checkInput2Coor(coor1, coor2);
+            gbdata.checkInput2Coor(coor1, coor2);
         }else{
             click_count = 1;
         }
@@ -185,9 +166,10 @@ public class GameMediator {
         return "Click : " + i;
     }
 
-    // private void checkClick(Coor coor){
-    //     if(this.coor1 == null && this.coor2 == null){
-            
-    //     }
-    // }
+    @PostMapping("/ABSelected")
+    public String selectingAB(){
+        //when player click selecting one of three AB type to spawn in front-end shall post back to back-end with a integer (1,2,3) presenting a AB type. Then this method shall create a spawnAct object 
+        //! seek GameMediator.spawningSampleGPS() for referent.
+        throw new RuntimeException("Unimplemented");
+    }
 }

@@ -13,6 +13,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class GameBoard implements Runnable {
     private Path VGene = Path.of("src/test/java/yukongold/carin/sampleGeneCode/sampleGeneCodeVirus.txt");
+    private Path[] abArr = {
+        Path.of("src/test/java/yukongold/carin/sampleGeneCode/sampleGeneCode.txt")
+    };
 
     private int m;
     private int n;
@@ -92,7 +95,7 @@ public class GameBoard implements Runnable {
             if(holder.getClass().equals(SpawnAct.class)){
                 SpawnAct spawnHolder = (SpawnAct) holder;
                 if(this.currCredit - this.spawnCost > 0){
-                    Antibody newAB = GPsFac.createNewAB(spawnHolder.getSelectedABType());
+                    Antibody newAB = GPsFac.createNewAB(abArr[spawnHolder.getTypeIndex()-1]);
                     boolean check = GPsStore.setGPintoStorage(newAB, spawnHolder.getSelectedCoor());
                     if (!check)
                         System.out.println("GB.checkPlRequest: can't spawn AB at " + spawnHolder.getSelectedCoor().toString());

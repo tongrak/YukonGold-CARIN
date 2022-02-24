@@ -3,14 +3,15 @@ package yukongold.carin.gamestuff;
 import java.nio.file.Path;
 
 public class SpawnAct extends PlayerActAbs{
-    private final Path selectedABType;
+    // private final Path selectedABType;
+    private final int typeIndex;
 
-    public SpawnAct(Coor coor, Path geneCodePath) {
+    public SpawnAct(Coor coor, int typeIndex) {
         super(coor);
-        this.selectedABType = geneCodePath;
+        this.typeIndex = typeIndex;
     }
 
-    public Path getSelectedABType() {
-        return selectedABType;
+    public int getTypeIndex() {
+        return typeIndex;
     }
 }
