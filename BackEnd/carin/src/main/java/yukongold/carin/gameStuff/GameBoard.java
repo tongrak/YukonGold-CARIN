@@ -58,6 +58,9 @@ public class GameBoard implements Runnable {
         return instance;
     }
 
+    /** A method Overiding run() in Threads. Created so GameBoard object can be use as a Thread.
+     * 
+     */
     @Override
     public void run() {
         gameInit();
@@ -74,6 +77,10 @@ public class GameBoard implements Runnable {
         System.out.println("Game End");
     }
 
+    /**A method representing mainloop of the game. Which mainly spawnVirus, let the all GP start its turn, update data for front-end, and check current game winning condition
+     * 
+     * @throws RuntimeException
+     */
     private void mainLoop() throws RuntimeException {
         System.out.println("current win con: " + metWinningCond);
         System.out.println("GB: is " + ((isPause) ? "pause" : "running") + " at turn:"+ ((isPause) ? turnCounter : turnCounter++));
@@ -87,6 +94,9 @@ public class GameBoard implements Runnable {
             updateGBData();
     }
 
+    /**Check player request from GameBoard data centre.
+     * 
+     */
     private void checkPlayerRequest(){
         PlayerAction holder = theData.getCurrRequest();
         if(theData.isPlClickPause())pauseGame();
@@ -117,28 +127,45 @@ public class GameBoard implements Runnable {
         }
     }
 
+    /**spawning one virus in to random coor according to defined spawning possibility.
+     * 
+     */
     public void spawnVirus(){
         if(((int)(Math.random() * 2))<this.vSpawnposs){
             Virus newV = GPsFac.createNewVirus(VGene);
-            GPsStore.setGPintoStorage(newV, new Coor((int)(Math.random() * (this.m)), (int)(Math.random() * (this.n))));
+            GPsStore.setGPintoStorage(newV, 
+            new Coor((int)(Math.random() * (this.m)), (int)(Math.random() * (this.n))));
             GPsPlay.addGP(newV); 
         }
     }
 
+    /**pause or unpause the game.
+     * 
+     */
     public void pauseGame() {
         this.isPause = !this.isPause;
     }
 
+    /**Design for GBData class to get the current status of the game
+     * 
+     * @return true if the game is pause currently
+     */
     public boolean getIsPause(){
         return this.isPause;
     }
 
+    /**Change current game's speed into next pre-defined speed.
+     * 
+     */
     public void speedChange() {
         this.speedIndex++;
         if (speedIndex > 3)
             this.speedIndex = 0;
     }
 
+    /**reading config file and setting essensials variable
+     * 
+     */
     private void setConfig(){
         Path configFilePath = Path.of("src/main/java/yukongold/carin/configfile/config.txt");
         Charset charset = StandardCharsets.US_ASCII;
@@ -175,15 +202,24 @@ public class GameBoard implements Runnable {
         }
     }
 
+    /**updating current player credit according to virus dead count 
+     * 
+     */
     private void updatePlCredit(){
         this.currCredit += (theData.getVDeadCount()*this.plGain);
     }
 
+    /**undating current game data to front-end
+     * 
+     */
     private void updateGBData(){
         theData.setCurrCredit(this.currCredit);
         theData.setCurrSpeed(speedRate[speedIndex]);
     }
 
+    /**initialize the game by getting config variables and setting it accross the game's class
+     * 
+     */
     private void gameInit(){
         setConfig();
         GPsStore.setMN(this.m, this.n);
