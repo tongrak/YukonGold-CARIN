@@ -42,7 +42,7 @@ function App() {
 
   return (
 
-    <div id='app' className='bg-cyan-100'>
+    <div id='app' className='bg-white dark:bg-slate-900'>
 
       {/* Title */}
       <div className='flex justify-center pt-10 pb-5 '>
@@ -84,7 +84,7 @@ function App() {
 
       {/* Board and Menu */}
       <div
-        className='flex justify-center pt-7'>
+        className='flex justify-center'>
         {showBoard ? <Menu /> : null}
         {showBoard ? <Board layout={grid} /> : null}
       </div>
