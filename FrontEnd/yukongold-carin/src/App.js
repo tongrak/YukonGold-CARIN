@@ -2,7 +2,6 @@ import Board from './component/Board/Board';
 import Menu from './component/Menu';
 import Title from './component/title/Title';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState } from 'react';
 import axios from 'axios';
 
