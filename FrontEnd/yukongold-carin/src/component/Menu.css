@@ -3,10 +3,10 @@
     bottom: 85px;
     left: 235px;
     width: 200px;
-    height: 475px;
+    height: 480px;
     border-style: solid;
-    border-width: medium;
-    border-color: black;
+    border-width: 1px;
+    border-color: rgb(0, 0, 0);
     background-color: rgb(117, 191, 240);
 }
 

@@ -1,17 +1,15 @@
 #Board {
     display: grid;
-    grid-template-columns: repeat(8, 59px);
-    grid-template-rows: repeat(8, 59px);
-    width: 475px;
-    height: 475px;
+    width: 480px;
+    height: 480px;
     background-color: rgb(244, 238, 238);
 }
 
 #Board .tile{
-    width: 60px;
-    height: 60px;
+    /* min-width: 60px;
+    min-height: 60px; */
     border-style: solid;
-    border-width: medium;
+    border-width: 1px;
     border-color: black;
 }
 

@@ -40,11 +40,19 @@ function Board(props){
             let p = q.concat(s);
             board.push(
             <button id={p}  className = "tile"
+            style={{
+                width : 480/props.layout + "px",
+                height : 480/props.layout + "px"
+            }}
             onClick={(e) => clickCoor(e.target.id)}></button>)
         
         }
     }
-    return <div id="Board">{board}</div>
+    return <div id="Board" 
+    style={{
+        gridTemplateColumns: "repeat(" + props.layout + ", " + 480/props.layout +"px)",
+        gridTemplateRows: "repeat(" + props.layout + ", " + 480/props.layout +"px)",
+    }}>{board}</div>
 }
 
 export default Board;
