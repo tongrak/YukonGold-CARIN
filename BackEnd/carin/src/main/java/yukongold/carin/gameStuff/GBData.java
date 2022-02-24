@@ -93,20 +93,18 @@ public class GBData {
         if(currRequest == null){currRequest = PlAct;}
     }
 
-    /**Design for GameBoard(MainLoop) to spawn a config amount of Virus into the game
-     * 
-     */
-    public void spawnInVirus(){
-        throw new RuntimeException("Unimplement");
-    }
-
     /**Design for GameMediator to pass 2 Coor to analize and enforce relocation request
      * 
      * @param firstCoor 1st Coordinate player click
      * @param secCoor   2nd Coordinate player click
      */
     public void checkInput2Coor(Coor firstCoor, Coor secCoor){
-        throw new RuntimeException("Unimplement");
+        if(GPCoorMap.containsKey(firstCoor)){
+            if(GPCoorMap.get(firstCoor).equals(Antibody.class)){
+                RelocateAct newRAct = new RelocateAct(firstCoor, secCoor);
+                setPlayerAction(newRAct);
+            }
+        }
     }
 
     public void increaseVDeadCount(){
