@@ -67,7 +67,7 @@ public class Tokenizer  implements TokenizerInter{
                         if(unSpaceStr.equals("")){continue;}
                         for (int i = 0; i < unSpaceStr.length(); i++) {
                             char c = unSpaceStr.charAt(i);
-                            if(c=='(' || c=='{' || c=='}' || c==')'){
+                            if(c=='(' || c=='{' || c=='}' || c==')' || c=='+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '^'){
                                 haveBracket = true;
                                 if(i != 0 && markingIndex != i) pendingLL.add(unSpaceStr.substring(markingIndex, i));
                                 pendingLL.add(String.valueOf(c));

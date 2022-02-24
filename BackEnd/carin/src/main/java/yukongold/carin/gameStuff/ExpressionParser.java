@@ -214,7 +214,7 @@ public class ExpressionParser {
     public FactorAbs parseF() throws SyntaxError {
         PowerAbs innerF = parseP();
         FactorAbs theFactor = new FactorAbsImpl(innerF);
-        while(tk.peer().equals("^")){
+        if(tk.peer().equals("^")){
             tk.pop();
             theFactor = new FactorAbsImpl(true, parseF(), innerF);
         }
