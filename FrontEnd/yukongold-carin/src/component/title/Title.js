@@ -1,8 +1,12 @@
 import React from 'react';
+import './Title.css';
+
 
 function Title(){
     return <div className=''>
-        <h1 className='font-mono text-3xl font-bold'>Hello OOP</h1>
+        <h1 id="Title" className='text-7xl font-normal hover:font-bold'>
+            Project CARIN
+        </h1>
     </div>
 }
 
