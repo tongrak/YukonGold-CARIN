@@ -13,7 +13,16 @@ export default function Menu(){
     menu.push(<Speed/>);
     menu.push(<Pause/>);
     return (
-        <div id= "Menu">{menu}</div>
+        <div>
+            <div id= "Menu">
+                <Credit/>
+                <Shop/>
+                <Speed/>
+                <Pause/>
+            </div>
+            
+            
+        </div>
         )
     // return<div id= "Menu"><img src="images/Credits.png"/></div>;
 };
