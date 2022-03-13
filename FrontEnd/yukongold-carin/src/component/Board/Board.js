@@ -7,8 +7,8 @@ function Board(props) {
 
     const img = ["/images/Alpha48px.png","/images/Beta48px.png","/images/Gamma48px.png"]
     const [piture,setPiture] = useState('');
-    console.log("M = " + props.M)
-    console.log("N = " + props.N)
+    // console.log("M = " + props.M)
+    // console.log("N = " + props.N)
 
     const sendData = (e) => {
         axios.post("http://localhost:8080/click", {
@@ -16,7 +16,7 @@ function Board(props) {
             coor: e
         })
             .then(res => {
-                console.log(res)
+                console.log(res.data)
             })
             .catch(err => {
                 console.log(err)

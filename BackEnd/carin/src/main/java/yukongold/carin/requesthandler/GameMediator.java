@@ -142,7 +142,7 @@ public class GameMediator {
     }
 
     @PostMapping("/click")
-    public String click(@RequestBody ModelRequest request){
+    public String click(@RequestBody ModelRequestCoor request){
         int i = 1;
         boolean isFirst = true;
         if(click_count == 1){
@@ -167,9 +167,10 @@ public class GameMediator {
     }
 
     @PostMapping("/ABSelected")
-    public String selectingAB(){
+    public String selectingAB(@RequestBody ModelRequestAB request){
         //when player click selecting one of three AB type to spawn in front-end shall post back to back-end with a integer (1,2,3) presenting a AB type. Then this method shall create a spawnAct object 
         //! seek GameMediator.spawningSampleGPS() for referent.
-        throw new RuntimeException("Unimplemented");
+        // throw new RuntimeException("Unimplemented");
+        return "AB_Type : " + request.getType();
     }
 }

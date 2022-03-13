@@ -3,7 +3,7 @@ package yukongold.carin.requesthandler;
 import yukongold.carin.gamestuff.Coor;
 import yukongold.carin.gamestuff.PlayerActAbs;
 
-public class ModelRequest {
+public class ModelRequestCoor {
     
     private int id;
 
