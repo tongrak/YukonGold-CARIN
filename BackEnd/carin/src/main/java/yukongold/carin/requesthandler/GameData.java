@@ -6,7 +6,7 @@ public class GameData {
     private boolean isPause;
     private int speed;
     private LinkedList<Pair<Pair<Integer,Integer>,String>> dataLL;
-    private boolean winningStatus = false;
+    private boolean winningStatus;
 
     public GameData(boolean isPause, 
             int speed, 
@@ -40,6 +40,9 @@ public class GameData {
 
     public void setPause(boolean isPause) {
         this.isPause = isPause;
+    }
+    public boolean getWinningStatus(){
+        return this.winningStatus;
     }
 
     public void setWinnig(boolean win) {

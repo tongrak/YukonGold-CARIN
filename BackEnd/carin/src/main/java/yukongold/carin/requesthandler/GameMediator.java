@@ -171,6 +171,7 @@ public class GameMediator {
         //when player click selecting one of three AB type to spawn in front-end shall post back to back-end with a integer (1,2,3) presenting a AB type. Then this method shall create a spawnAct object 
         //! seek GameMediator.spawningSampleGPS() for referent.
         // throw new RuntimeException("Unimplemented");
+        this.selectedABtypeIndex = request.getType(); // 1 = KillerTCell,2 = Marcophage,3 = Neutropil
         return "AB_Type : " + request.getType();
     }
 }
