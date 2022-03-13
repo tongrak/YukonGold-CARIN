@@ -3,7 +3,7 @@
     bottom: 85px;
     left: 235px;
     width: 200px;
-    height: 480px;
+    height: 480;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(0, 0, 0);
@@ -13,5 +13,5 @@
 #Menu .Credit{
     width: 100px;
     height: auto;
-    place-content: center;
+    /* place-content: center; */
 }

@@ -5,10 +5,13 @@ import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
 
+
 function App() {
 
   const [inputData, setInputdata] = useState(0)
-  const [grid, setGrid] = useState(0)
+  const [inputCount, setInputCount] = useState(1)
+  const [M, setM] = useState(0)
+  const [N, setN] = useState(0)
   const [buttonDisabled, setButtondisable] = useState(true)
   const [inputDisabled, setInputDisable] = useState(true)
   const [showBoard, setShowBoard] = useState(false)
@@ -23,19 +26,28 @@ function App() {
   }
 
   const inputOnchange = (e) => {
+    console.log(inputData)
     setInputdata(e.target.value)
     if (e.target.value > 0) setErrorInput(false)
     else setErrorInput(true)
-    console.log(inputData)
+    
   }
 
   const createGrid = () => {
-    setGrid(inputData)
-    console.log(inputData)
-    start();
-    setButtondisable(false)
-    setInputDisable(false)
-    setShowBoard(true)
+
+    if (inputCount == 1) {
+      setM(inputData)
+      console.log("M = " + M)
+      setInputCount(2)
+    } else{
+      setN(inputData)
+      console.log("N = " + N)
+      start();
+      setButtondisable(false)
+      setInputDisable(false)
+      setShowBoard(true)
+    }
+
   }
 
 
@@ -85,7 +97,7 @@ function App() {
       <div
         className='flex justify-center'>
         {showBoard ? <Menu /> : null}
-        {showBoard ? <Board layout={grid} /> : null}
+        {showBoard ? <Board M={M} N={N} /> : null}
       </div>
 
     </div>
