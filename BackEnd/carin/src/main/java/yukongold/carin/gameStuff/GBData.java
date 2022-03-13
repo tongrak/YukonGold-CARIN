@@ -5,6 +5,7 @@ import java.util.Map;
 public class GBData {
     private boolean clickPause;
     private boolean clickSpeed;
+    private boolean winningStatus;
 
     private int currSpeed;
     private PlayerAction currRequest;
@@ -123,5 +124,14 @@ public class GBData {
 
     public void setCurrCredit(int currCredit) {
         this.currCredit = currCredit;
+    }
+
+    //need implement
+    public boolean getWinningStatus(){
+        return false;
+    }
+
+    public void setWinnigStatus(boolean win) {
+        this.winningStatus = win;
     }
 }

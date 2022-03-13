@@ -6,13 +6,16 @@ public class GameData {
     private boolean isPause;
     private int speed;
     private LinkedList<Pair<Pair<Integer,Integer>,String>> dataLL;
+    private boolean winningStatus = false;
 
     public GameData(boolean isPause, 
             int speed, 
-            LinkedList<Pair<Pair<Integer, Integer>, String>> dataLL) {
+            LinkedList<Pair<Pair<Integer, Integer>, String>> dataLL,
+            boolean winningStatus) {
         this.setPause(isPause);
         this.setSpeed(speed);
         this.setDataLL(dataLL);
+        this.setWinnig(winningStatus);
     }
 
     public LinkedList<Pair<Pair<Integer,Integer>,String>> getDataLL() {
@@ -39,6 +42,8 @@ public class GameData {
         this.isPause = isPause;
     }
 
-    
-    
+    public void setWinnig(boolean win) {
+        this.winningStatus = win;
+    }
+
 }
