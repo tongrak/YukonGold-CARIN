@@ -26,6 +26,12 @@ public class DecodedGene {
         }
     }
 
+    /** getting first GP's action detected. if no GPAction was detected will throw SyntaxError.
+     * 
+     * @param theCoor where the GP stand currently
+     * @return next action of the GP
+     * @throws SyntaxError if no GPAction was detected
+     */
     public GPAction getGPAction(Coor theCoor) throws SyntaxError{
         for (StatementBox s : statementLL) {
             GPAction currGPAction = s.getGPAction(theCoor);
@@ -34,7 +40,13 @@ public class DecodedGene {
         throw new SyntaxError("ProgramParser: statement list is GPAction less");
     }
 
-     protected static int directionToEightDirec(String strIn) throws SyntaxError{
+    /** converting string represent 2d direction to EightDirection. Will throws SyntaxError if given string is invalid.
+     * 
+     * @param strIn string to convert into 
+     * @return EightDirection of given string. 
+     * @throws SyntaxError if given string invalid direction
+     */
+    protected static int directionToEightDirec(String strIn) throws SyntaxError{
         String[] directionArr = {"left", "right", "up", "down", "upleft", "upright", "downleft", "downright"};
         boolean isDirection = false;
         for(String str: directionArr)if(strIn.equals(str)){isDirection = true; break;}
@@ -51,8 +63,4 @@ public class DecodedGene {
             default -> 0;
         };
     }
-
-//    protected static void setBinding(){
-//
-//    }
 }

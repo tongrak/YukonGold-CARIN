@@ -123,21 +123,25 @@ public class GPsStorage {
         int x = coor.getX();
         int y = coor.getY();
         int repeatitionCount = Math.max(coor.getX(), Math.max(coor.getY(), Math.max(m-coor.getX(), n-coor.getY())));
+        int foundedX = 0;
+        int foundedY = 0;
+
         int distance = 0;
         for(int i = 1; i <= repeatitionCount; i++){
             switch (eightDirecCoor) {
-                case 11->{if(containXY(x, y+i)) {distance = i; break;}}
-                case 12->{if(containXY(x+i, y+i)) {distance = i; break;}}
-                case 13->{if(containXY(x+i, y)) {distance = i; break;}}
-                case 14->{if(containXY(x+i, y-i)) {distance = i; break;}}
-                case 15->{if(containXY(x, y-i)) {distance = i; break;}}
-                case 16->{if(containXY(x-i, y-i)) {distance = i; break;}}
-                case 17->{if(containXY(x-i, y)) {distance = i; break;}}
-                case 18->{if(containXY(x-i, y+i)) {distance = i; break;}}
+                case 11->{if(containXY(x, y+i)) {foundedX = x; foundedY = y+i; distance = i; break;}}
+                case 12->{if(containXY(x+i, y+i)) {foundedX = x+i; foundedY = y+i; distance = i; break;}}
+                case 13->{if(containXY(x+i, y)) {foundedX = x+i; foundedY = y; distance = i; break;}}
+                case 14->{if(containXY(x+i, y-i)) {foundedX = x+i; foundedY = y-i; distance = i; break;}}
+                case 15->{if(containXY(x, y-i)) {foundedX = x; foundedY = y-i; distance = i; break;}}
+                case 16->{if(containXY(x-i, y-i)) {foundedX = x-i; foundedY = y-i; distance = i; break;}}
+                case 17->{if(containXY(x-i, y)) {foundedX = x-i; foundedY = y; distance = i; break;}}
+                case 18->{if(containXY(x-i, y+i)) {foundedX = x-i; foundedY = y+i; distance = i; break;}}
             }
             if(distance>0){break;}
         }
-        return distance;
+        return distance*10 + 
+        ((GPCoorMap.get(new Coor(foundedX, foundedY)).getClass().equals(Virus.class))?1:2);
     }
     /** return true if given Coor is occupied or not
      * @return true if said Coor is occupied else false;

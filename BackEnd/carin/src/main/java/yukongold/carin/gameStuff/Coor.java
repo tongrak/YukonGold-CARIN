@@ -11,10 +11,18 @@ public class Coor {
         this.y = y;
     }
 
+    /** Getting integer X of this Coor.
+     * 
+     * @return integer representing X of this Coor.
+     */
     public int getX() {
         return x;
     }
 
+    /** Getting integer Y of this Coor.
+     * 
+     * @return integer representing Y of this Coor.
+     */
     public int getY() {
         return y;
     }
