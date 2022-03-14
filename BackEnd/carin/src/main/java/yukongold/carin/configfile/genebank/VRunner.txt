@@ -1,0 +1,47 @@
+abLoc = antibody
+if (abLoc / 10 - 1) #nearToAttacks
+then
+  if( 3 - (abLoc / 10) )
+    then
+      if (abLoc % 10 - 7) then move downright
+      else if (abLoc % 10 - 6) then move right
+      else if (abLoc % 10 - 5) then move upright
+      else if (abLoc % 10 - 4) then move up
+      else if (abLoc % 10 - 3) then move upleft
+      else if (abLoc % 10 - 2) then move left
+      else if (abLoc % 10 - 1) then move downleft
+      else move down
+    else
+    {
+      dir = random % 8
+      if (dir - 6) then move upleft
+      else if (dir - 5) then move left
+      else if (dir - 4) then move downleft
+      else if (dir - 3) then move down
+      else if (dir - 2) then move downright
+      else if (dir - 1) then move right
+      else if (dir) then move upright
+      else move up
+    }
+else if (abLoc)
+then
+  if (abLoc % 10 - 7) then shoot upleft
+  else if (abLoc % 10 - 6) then shoot left
+  else if (abLoc % 10 - 5) then shoot downleft
+  else if (abLoc % 10 - 4) then shoot down
+  else if (abLoc % 10 - 3) then shoot downright
+  else if (abLoc % 10 - 2) then shoot right
+  else if (abLoc % 10 - 1) then shoot upright
+  else shoot up
+else
+{
+  dir = random % 8
+  if (dir - 6) then move upleft
+  else if (dir - 5) then move left
+  else if (dir - 4) then move downleft
+  else if (dir - 3) then move down
+  else if (dir - 2) then move downright
+  else if (dir - 1) then move right
+  else if (dir) then move upright
+  else move up
+}
