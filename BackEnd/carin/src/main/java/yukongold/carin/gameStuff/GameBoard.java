@@ -215,6 +215,7 @@ public class GameBoard implements Runnable {
     private void updateGBData(){
         theData.setCurrCredit(this.currCredit);
         theData.setCurrSpeed(speedRate[speedIndex]);
+        theData.setPauseStatus(isPause);
     }
 
     /**initialize the game by getting config variables and setting it accross the game's class
