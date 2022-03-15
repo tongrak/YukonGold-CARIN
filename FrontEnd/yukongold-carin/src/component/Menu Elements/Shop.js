@@ -27,7 +27,9 @@ export default function Credit() {
             {/* <img className="image"
                 src="/images/Shop.png"
             /> */}
-            <div className='place-content-center space-x-4 pt-10'>
+            <div className='flex place-content-center space-x-4'>
+
+
                 <button onClick={() => {sendData(0)}}>
                     <img className=''
                         src='/images/KillerTCell48px.png' />
@@ -39,6 +41,8 @@ export default function Credit() {
                 <button onClick={() => {sendData(2)}}>
                     <img className=''
                         src='/images/Neutropil48px.png' />
+
+
                 </button>
             </div>
 

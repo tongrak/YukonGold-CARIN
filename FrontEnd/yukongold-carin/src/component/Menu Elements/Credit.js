@@ -6,8 +6,8 @@ export default function Credit(){
     const [money,setMoney] = useState(0);
 
     return (
-        <div id= "Credit">
-            <a className="image">{money}</a>
+        <div  className="flex justify-center pt-5">
+            <a >{money}</a>
             {/* <img className="image" src = "/images/Credits.png"/> */}
         </div>
     )

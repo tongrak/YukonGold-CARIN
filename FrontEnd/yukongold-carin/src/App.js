@@ -15,7 +15,7 @@ function App() {
   const [buttonDisabled, setButtondisable] = useState(true)
   const [inputDisabled, setInputDisable] = useState(true)
   const [showBoard, setShowBoard] = useState(false)
-  const [erroInput, setErrorInput] = useState(true)
+  const [errorInput, setErrorInput] = useState(true)
 
 
   const start = () => {
@@ -86,7 +86,7 @@ function App() {
           <button
             className={'rounded px-5 bg-emerald-600 hover:bg-emerald-700 text-white'}
             onClick={createGrid}
-            disabled={erroInput}
+            disabled={errorInput}
           >
             Start
           </button> : null}

@@ -5,9 +5,21 @@ import { useState } from 'react';
 
 export default function Credit(){
     const [pause,setPaues] = useState('/images/UnPause.png')
-
+    const [isFirst,setIsFirst] = useState(true)
+    const [gameData,setGameData] = useState()
 
     const clickPause = () =>{
+        // if(isFirst){
+        //     setIsFirst(false)
+        //     axios.get("http://localhost:8080/getdata" , {crossdomain: true})
+        //     .then(res => {
+        //         console.log(res.data)
+        //         setGameData(res.data)
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
+        // }
         getPause();
     }
 
@@ -23,10 +35,13 @@ export default function Credit(){
                 setPaues("/images/pause.png")
             }
         })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     return(
-    <div id= "Pause">
+    <div id= "Pause" data={gameData}>
         <button onClick={clickPause}>
             <img className="image" src = {pause}/>
         </button>
