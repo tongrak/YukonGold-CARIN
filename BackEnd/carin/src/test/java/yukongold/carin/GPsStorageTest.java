@@ -34,9 +34,11 @@ public class GPsStorageTest {
 
     @Test
     void checkNearByMethod(){
-        assertEquals(5, GPsStorage.nearbyInDirec(new Coor(5, 25), 13));
-        assertEquals(1, GPsStorage.nearbyInDirec(new Coor(6, 21), 12));
-        assertEquals(1, GPsStorage.nearbyInDirec(new Coor(6, 21), 16));
+        // assertEquals(12, GPsStorage.nearbyInDirec(new Coor(5, 20), 13));
+        assertEquals(11, GPsStorage.nearbyInDirec(new Coor(6, 21), 12));
+        assertEquals(11, GPsStorage.nearbyInDirec(new Coor(6, 21), 16));
+        assertEquals(32, GPsStorage.nearbyInDirec(new Coor(7, 22), 12));
+        assertEquals(12, GPsStorage.nearbyInDirec(new Coor(10, 24), 11));
     }
 
     @Test
