@@ -65,7 +65,8 @@ public class GameMediator {
     private Map<Coor, GamePiece> MapData = gbdata.getMappingData();
     private GameBoard mainGame = GameBoard.getInstance();
 
-    private int selectedABtypeIndex = 0; //0-> non-selected 1->3 is selected
+    private String[] ABType = {"KillerTCell","Marcophage","Neutropil"};
+    private int selectedABtypeIndex; //0-> non-selected 1->3 is selected
     private int click_count = 1;
     private String[] clickCoor1;
     private String[] clickCoor2;
@@ -80,11 +81,12 @@ public class GameMediator {
         return "Starting GameBoards";
     }
 
-    @GetMapping("/test/spawn")
-    public String spawningSampleGPS(){
-        SpawnAct newSpawnAct = new SpawnAct(new Coor(13,13), 1);
+    @GetMapping("/spawn")
+    public ModelSendAB spawningSampleGPS(){
+        SpawnAct newSpawnAct = new SpawnAct(coor1, selectedABtypeIndex);
         gbdata.setPlayerAction(newSpawnAct);
-        return "Spawning: AB at 13,13";
+        // return "Spawning:" + ABType[selectedABtypeIndex] + " at " + coor1.getX() + "," + coor1.getY();
+        return new ModelSendAB(selectedABtypeIndex, coor1);
     }
 
     @GetMapping("/getdata")
@@ -148,7 +150,7 @@ public class GameMediator {
             clickCoor1 = request.getCoor().split(",");
             coor1 = new Coor(Integer.parseInt(clickCoor1[0]),
             Integer.parseInt(clickCoor1[1]));
-            click_count++;
+            click_count = 2;
         }else if(click_count == 2){
             isFirst = false;
             clickCoor2 = request.getCoor().split(",");

@@ -13,9 +13,9 @@ export default function Credit() {
         })
         .then(res => {
             console.log(res.data)
-            if(e == 1) console.log("Type : KillerTCell");
-            else if(e == 2) console.log("Type : Marcophage");
-            else if(e == 3) console.log("Type : Neutropil");
+            if(e == 0) console.log("Type : KillerTCell");
+            else if(e == 1) console.log("Type : Marcophage");
+            else if(e == 2) console.log("Type : Neutropil");
         })
         .catch(err => {
             console.log(err)
@@ -28,15 +28,15 @@ export default function Credit() {
                 src="/images/Shop.png"
             /> */}
             <div className='place-content-center space-x-4 pt-10'>
-                <button onClick={() => {sendData(1)}}>
+                <button onClick={() => {sendData(0)}}>
                     <img className=''
                         src='/images/KillerTCell48px.png' />
                 </button>
-                <button onClick={() => {sendData(2)}}>
+                <button onClick={() => {sendData(1)}}>
                     <img className=''
                         src='/images/Marcophage48px.png' />
                 </button>
-                <button onClick={() => {sendData(3)}}>
+                <button onClick={() => {sendData(2)}}>
                     <img className=''
                         src='/images/Neutropil48px.png' />
                 </button>
