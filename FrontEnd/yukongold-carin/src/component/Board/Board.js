@@ -6,9 +6,10 @@ import axios from 'axios';
 function Board(props) {
 
     const img = ["/images/Alpha48px.png","/images/Beta48px.png","/images/Gamma48px.png"]
-    const [piture,setPiture] = useState('');
-    // console.log("M = " + props.M)
-    // console.log("N = " + props.N)
+    const [piture,setPiture] = useState();
+    const [spawn,setSpawn] = useState(false);
+    // const [isFrist,setIsFrist] = useState(true);
+    
 
     const sendData = (e) => {
         axios.post("http://localhost:8080/click", {
@@ -23,8 +24,26 @@ function Board(props) {
             })
     }
 
-    const clickCoor = (e,im) => {
-        setPiture(img[im])
+    const spawnAB = () =>{
+        axios.get("http://localhost:8080/spawn" , {crossdomain: true})
+        .then(res => {
+            setPiture(res.data.type)
+            console.log("Spawn Type: " + res.data.type + " Coor : " + 
+            res.data.coor.x + "," + res.data.coor.y)
+        })
+    }
+
+    const clickCoor = (e) => {
+
+        //if AB is spawn
+        if(spawn){
+            spawnAB();
+            let pp = e.concat("0")
+            let setP = document.getElementById(pp)
+            setP.setAttribute('src',img[piture])
+            console.log(setP)
+        }
+        
         let fst = Math.floor(e / 10)
         let snd = Math.floor(e % 10)
         let fstSring = fst.toString();
@@ -38,23 +57,23 @@ function Board(props) {
 
     let k = 480;
     let l = 10;
-    if (props.M > props.N && props.N < l) {
-
-    }
-
+    
     for (let i = props.N; i > 0; i--) {
         for (let j = 0; j < props.M; j++) {
             let s = (i - 1).toString();
             let q = j.toString();
             let p = q.concat(s);
+            let pp = p.concat("0")
+            // console.log(p)
+            // console.log(pp)
             board.push(
                 <button id={p} className="tile"
                     style={{
                         width: k / l + "px",
                         height: k / l + "px"
                     }}
-                    onClick={(e,im) => clickCoor(e.target.id,im)}>
-                    <img src={piture}></img>
+                    onClick={(e) => clickCoor(e.target.id)}>
+                    <img id={pp} src=''></img>
                 </button>)
 
         }
