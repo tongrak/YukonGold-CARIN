@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Board.css';
 import axios from 'axios';
 import '../Menu Elements/Pause'
@@ -10,14 +10,30 @@ function Board(props) {
     const [piture, setPiture] = useState();
     const [spawn, setSpawn] = useState(false);
     const [playing, setPlaying] = useState(false)
-    const [gameData,setGameData] = useState()
+    const [gameData, setGameData] = useState()
     // const [isFirst,setIsFirst] = useState(true);
 
 
-    while (playing) {
+    // while (playing) {
 
-        
-        axios.get("http://localhost:8080/getdata", { crossdomain: true })
+        // axios.get("http://localhost:8080/getdata", { crossdomain: true })
+        //     .then(res => {
+        //         console.log(res.data)
+        //         setGameData(res.data)
+        //     })
+        //     .catch(err => {
+        //         console.log(err)
+        //     })
+
+    // }
+
+    const [count, setCount] = useState(0);
+
+    //Loop game
+    useEffect(() => {
+        setTimeout(() => {
+            setCount((count) => count + 1);
+            axios.get("http://localhost:8080/getdata", { crossdomain: true })
             .then(res => {
                 console.log(res.data)
                 setGameData(res.data)
@@ -25,8 +41,12 @@ function Board(props) {
             .catch(err => {
                 console.log(err)
             })
+        }, 5000);
+        console.log(count)
+        
 
-    }
+        
+    });
 
     const sendData = (e) => {
         axios.post("http://localhost:8080/click", {
@@ -51,6 +71,7 @@ function Board(props) {
     }
 
     const clickCoor = (e) => {
+
         let ts = document.getElementById("Pause")
         console.log(ts)
         //if AB is spawn
