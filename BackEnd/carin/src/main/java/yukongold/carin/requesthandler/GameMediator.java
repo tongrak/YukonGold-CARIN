@@ -83,7 +83,7 @@ public class GameMediator {
     @GetMapping("/test/spawn")
     public String spawningSampleGPS(){
         SpawnAct newSpawnAct = new SpawnAct(new Coor(13,13), 1);
-        gbdata.setPlayerAction(newSpawnAct);
+        gbdata.addPlayerAction(newSpawnAct);
         return "Spawning: AB at 13,13";
     }
 
