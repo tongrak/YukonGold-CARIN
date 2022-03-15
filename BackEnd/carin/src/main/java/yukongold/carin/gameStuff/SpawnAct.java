@@ -1,7 +1,5 @@
 package yukongold.carin.gamestuff;
 
-import java.nio.file.Path;
-
 public class SpawnAct extends PlayerActAbs{
     // private final Path selectedABType;
     private final int typeIndex;
