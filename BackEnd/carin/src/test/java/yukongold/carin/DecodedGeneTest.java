@@ -15,10 +15,10 @@ class DecodedGeneTest {
     @Test
     void quickCheck(){
         Tokenizer tk = Tokenizer.getInstance();
-        tk.tokenize(Path.of("src/test/java/yukongold/carin/Test/sampleGeneCode.txt"));
+        tk.tokenize(Path.of("src/test/java/yukongold/carin/sampleGeneCode/sampleGeneCode.txt"));
 
         assertDoesNotThrow(() -> {geneCodeA = new DecodedGene(tk);});
-        // DecodedGene sim = geneCodeA;
+        DecodedGene sim = geneCodeA;
         System.out.println("Help us all");
 
     }

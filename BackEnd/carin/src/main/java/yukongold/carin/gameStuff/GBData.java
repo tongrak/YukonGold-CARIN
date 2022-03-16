@@ -1,5 +1,6 @@
 package yukongold.carin.gamestuff;
 
+import java.util.LinkedList;
 import java.util.Map;
 
 public class GBData {
@@ -9,9 +10,10 @@ public class GBData {
     private boolean winningStatus;
     private boolean pauseStatus;
     private int currSpeed;
-    private PlayerAction currRequest;
+    // private PlayerAction currRequest;
     private int currCredit = 0;
     private int vDeadCount = 0;
+    private LinkedList<PlayerAction> plActions = new LinkedList<>();
 
     private static Map<Coor, GamePiece> GPCoorMap;
     private static GBData instance;
@@ -29,9 +31,9 @@ public class GBData {
     /** Design for GameBoard(Mainloop) to access current player request
      * 
      */
-    public PlayerAction getCurrRequest(){
-        PlayerAction holder = null;
-        if(currRequest != null){ holder = currRequest; currRequest = null;}
+    public LinkedList<PlayerAction> getCurrRequest(){
+        LinkedList<PlayerAction> holder = (LinkedList<PlayerAction>) plActions.clone();
+        plActions.clear(); 
         return holder;
     }
 
@@ -91,8 +93,8 @@ public class GBData {
      * 
      * @param PlAct - PlayerAction which had been analize of GameMediator
      */
-    public void setPlayerAction(PlayerAction PlAct){
-        if(currRequest == null){currRequest = PlAct;}
+    public void addPlayerAction(PlayerAction PlAct){
+        plActions.add(PlAct);
     }
 
     /**Design for GameMediator to pass 2 Coor to analize and enforce relocation request
@@ -104,7 +106,7 @@ public class GBData {
         if(GPCoorMap.containsKey(firstCoor)){
             if(GPCoorMap.get(firstCoor).equals(Antibody.class)){
                 RelocateAct newRAct = new RelocateAct(firstCoor, secCoor);
-                setPlayerAction(newRAct);
+                addPlayerAction(newRAct);
             }
         }
     }

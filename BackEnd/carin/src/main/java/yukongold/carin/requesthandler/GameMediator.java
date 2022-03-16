@@ -65,12 +65,14 @@ public class GameMediator {
     private Map<Coor, GamePiece> MapData = gbdata.getMappingData();
     private GameBoard mainGame = GameBoard.getInstance();
 
-    private int selectedABtypeIndex = 0; //0-> non-selected 1->3 is selected
+    private String[] ABType = {"KillerTCell","Marcophage","Neutropil"};
+    private int selectedABtypeIndex; //0-> non-selected 1->3 is selected
     private int click_count = 1;
     private String[] clickCoor1;
     private String[] clickCoor2;
     private Coor coor1;
     private Coor coor2;
+    private boolean spawn = false;
 
     @GetMapping("/start")
     public String startGame(){
@@ -80,11 +82,26 @@ public class GameMediator {
         return "Starting GameBoards";
     }
 
-    @GetMapping("/test/spawn")
-    public String spawningSampleGPS(){
-        SpawnAct newSpawnAct = new SpawnAct(new Coor(13,13), 1);
-        gbdata.setPlayerAction(newSpawnAct);
-        return "Spawning: AB at 13,13";
+    @GetMapping("/spawn")
+    public ModelSendAB spawningSampleGPS(){
+        if(click_count == 1){
+            SpawnAct newSpawnAct = new SpawnAct(coor2, selectedABtypeIndex);
+            gbdata.addPlayerAction(newSpawnAct);
+            boolean toSend = spawn;
+            spawn = false;
+            System.out.println("c1");
+            return new ModelSendAB(selectedABtypeIndex, coor2,toSend);
+        }else{
+            SpawnAct newSpawnAct = new SpawnAct(coor1, selectedABtypeIndex);
+            gbdata.addPlayerAction(newSpawnAct);
+            boolean toSend = spawn;
+            spawn = false;
+            System.out.println("c2");
+            return new ModelSendAB(selectedABtypeIndex, coor1,toSend);
+        }
+        
+        // return "Spawning:" + ABType[selectedABtypeIndex] + " at " + coor1.getX() + "," + coor1.getY();
+        
     }
 
     @GetMapping("/getdata")
@@ -148,7 +165,7 @@ public class GameMediator {
             clickCoor1 = request.getCoor().split(",");
             coor1 = new Coor(Integer.parseInt(clickCoor1[0]),
             Integer.parseInt(clickCoor1[1]));
-            click_count++;
+            click_count = 2;
         }else if(click_count == 2){
             isFirst = false;
             clickCoor2 = request.getCoor().split(",");
@@ -169,7 +186,8 @@ public class GameMediator {
         //when player click selecting one of three AB type to spawn in front-end shall post back to back-end with a integer (1,2,3) presenting a AB type. Then this method shall create a spawnAct object 
         //! seek GameMediator.spawningSampleGPS() for referent.
         // throw new RuntimeException("Unimplemented");
-        this.selectedABtypeIndex = request.getType(); // 1 = KillerTCell,2 = Marcophage,3 = Neutropil
+        this.spawn = request.getSpawn();
+        this.selectedABtypeIndex = request.getType(); // 0 = KillerTCell, 1 = Marcophage, 2 = Neutropil
         return "AB_Type : " + request.getType();
     }
 }

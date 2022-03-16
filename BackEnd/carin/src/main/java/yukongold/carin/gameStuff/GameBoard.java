@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.LinkedList;
 
 import org.springframework.stereotype.Controller;
 
@@ -98,31 +99,34 @@ public class GameBoard implements Runnable {
      * 
      */
     private void checkPlayerRequest(){
-        PlayerAction holder = theData.getCurrRequest();
+        LinkedList<PlayerAction> holderArr = theData.getCurrRequest();
         if(theData.isPlClickPause())pauseGame();
         if(theData.isPlClickSpeed())speedChange();
-        if (holder != null) {
-            if(holder.getClass().equals(SpawnAct.class)){
-                SpawnAct spawnHolder = (SpawnAct) holder;
-                if(this.currCredit - this.spawnCost > 0){
-                    Antibody newAB = GPsFac.createNewAB(abArr[spawnHolder.getTypeIndex()-1]);
-                    boolean check = GPsStore.setGPintoStorage(newAB, spawnHolder.getSelectedCoor());
-                    if (!check)
-                        System.out.println("GB.checkPlRequest: can't spawn AB at " + spawnHolder.getSelectedCoor().toString());
-                    else{
-                        GPsPlay.addGP(newAB);
-                        this.currCredit -= this.spawnCost;
-                    }
-                }else System.out.println("GB.checkPlRequest: not enough credit to spawn at " + spawnHolder.getSelectedCoor().toString());
+        if (holderArr != null) {
+            for (PlayerAction pA : holderArr) {
+                if(pA.getClass().equals(SpawnAct.class)){
+                    SpawnAct spawnHolder = (SpawnAct) pA;
+                    if(this.currCredit - this.spawnCost > 0){
+                        Antibody newAB = GPsFac.createNewAB(abArr[spawnHolder.getTypeIndex()-1]);
+                        boolean check = GPsStore.setGPintoStorage(newAB, spawnHolder.getSelectedCoor());
+                        if (!check)
+                            System.out.println("GB.checkPlRequest: can't spawn AB at " + spawnHolder.getSelectedCoor().toString());
+                        else{
+                            GPsPlay.addGP(newAB);
+                            this.currCredit -= this.spawnCost;
+                        }
+                    }else System.out.println("GB.checkPlRequest: not enough credit to spawn at " + spawnHolder.getSelectedCoor().toString());
+                    
+    
+                }else{
+                    RelocateAct relocateHolder = (RelocateAct) pA;
+                    boolean check = GPmanag.relocateAB(
+                        relocateHolder.getSelectedCoor(),
+                        relocateHolder.getDestination()
+                    );
+                    if(!check) System.out.println("GB.checkPlRequest: can't relocated AB at " + relocateHolder.getSelectedCoor().toString());
+                }
                 
-
-            }else{
-                RelocateAct relocateHolder = (RelocateAct) holder;
-                boolean check = GPmanag.relocateAB(
-                    relocateHolder.getSelectedCoor(),
-                    relocateHolder.getDestination()
-                );
-                if(!check) System.out.println("GB.checkPlRequest: can't relocated AB at " + relocateHolder.getSelectedCoor().toString());
             }
         }
     }
