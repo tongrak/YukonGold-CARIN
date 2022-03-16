@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.LinkedList;
 
 import org.springframework.stereotype.Controller;
 
@@ -98,7 +99,7 @@ public class GameBoard implements Runnable {
      * 
      */
     private void checkPlayerRequest(){
-        PlayerAction[] holderArr = theData.getCurrRequest();
+        LinkedList<PlayerAction> holderArr = theData.getCurrRequest();
         if(theData.isPlClickPause())pauseGame();
         if(theData.isPlClickSpeed())speedChange();
         if (holderArr != null) {

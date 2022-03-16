@@ -1,7 +1,7 @@
 package yukongold.carin.gamestuff;
 
+import java.util.LinkedList;
 import java.util.Map;
-import java.util.Stack;
 
 public class GBData {
     private boolean clickPause;
@@ -13,7 +13,7 @@ public class GBData {
     // private PlayerAction currRequest;
     private int currCredit = 0;
     private int vDeadCount = 0;
-    private Stack<PlayerAction> plActions = new Stack<>();
+    private LinkedList<PlayerAction> plActions = new LinkedList<>();
 
     private static Map<Coor, GamePiece> GPCoorMap;
     private static GBData instance;
@@ -31,8 +31,8 @@ public class GBData {
     /** Design for GameBoard(Mainloop) to access current player request
      * 
      */
-    public PlayerAction[] getCurrRequest(){
-        PlayerAction[] holder = (PlayerAction[]) plActions.toArray();
+    public LinkedList<PlayerAction> getCurrRequest(){
+        LinkedList<PlayerAction> holder = (LinkedList<PlayerAction>) plActions.clone();
         plActions.clear(); 
         return holder;
     }
