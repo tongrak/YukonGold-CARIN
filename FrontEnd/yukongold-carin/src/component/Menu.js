@@ -15,10 +15,13 @@ export default function Menu(){
     return (
         <div>
             <div id= "Menu">
-                <Credit/>
-                <Shop />
-                <Speed/>
-                <Pause/>
+                <div className='justify-items-center'>
+                    <Credit/>
+                    <Shop/>
+                    <Speed/>
+                    <Pause/>
+                </div>
+                
             </div>
             
             

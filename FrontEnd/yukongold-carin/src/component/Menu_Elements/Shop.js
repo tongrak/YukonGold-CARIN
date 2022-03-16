@@ -28,7 +28,7 @@ export default function Credit() {
             {/* <img className="image"
                 src="/images/Shop.png"
             /> */}
-            <div className='flex place-content-center space-x-4'>
+            <div className='flex place-content-center space-x-2 pb-5'>
 
 
                 <button onClick={() => {sendData(0)}}>

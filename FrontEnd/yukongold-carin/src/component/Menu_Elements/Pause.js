@@ -41,8 +41,8 @@ export default function Credit(){
     }
 
     return(
-    <div id= "Pause" data={gameData}>
-        <button onClick={clickPause}>
+    <div className='flex place-content-center pb-5' data={gameData}>
+        <button onClick={clickPause} className='justify-center'>
             <img className="image" src = {pause}/>
         </button>
     </div>
