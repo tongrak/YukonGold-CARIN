@@ -11,7 +11,8 @@ function Board(props) {
     const [spawn, setSpawn] = useState(false);
     const [playing, setPlaying] = useState(false)
     const [gameData, setGameData] = useState()
-    // const [isFirst,setIsFirst] = useState(true);
+    const [isFirst,setIsFirst] = useState(true);
+    const [speed,setSpeed] = useState(10000000000000000)
 
 
     // while (playing) {
@@ -30,23 +31,22 @@ function Board(props) {
     const [count, setCount] = useState(0);
 
     //Loop game
-    useEffect(() => {
-        setTimeout(() => {
-            setCount((count) => count + 1);
-            axios.get("http://localhost:8080/getdata", { crossdomain: true })
-            .then(res => {
-                console.log(res.data)
-                setGameData(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        }, 5000);
-        console.log(count)
-        
-
-        
-    });
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setCount((count) => count + 1);
+    //         axios.get("http://localhost:8080/getdata", { crossdomain: true })
+    //         .then(res => {
+    //             console.log(res.data)
+    //             setGameData(res.data)
+    //             setSpeed((res.data.speed)*1000)
+    //             console.log(speed)
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    //     }, speed);
+    //     console.log(count)
+    // });
 
     const sendData = (e) => {
         axios.post("http://localhost:8080/click", {
@@ -72,8 +72,8 @@ function Board(props) {
 
     const clickCoor = (e) => {
 
-        let ts = document.getElementById("Pause")
-        console.log(ts)
+        // let ts = document.getElementById("Pause")
+        // console.log(ts)
         //if AB is spawn
         if (spawn) {
             spawnAB();
