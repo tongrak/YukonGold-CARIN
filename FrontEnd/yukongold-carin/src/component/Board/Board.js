@@ -6,47 +6,34 @@ import '../Menu Elements/Pause'
 
 function Board(props) {
 
-    const img = ["/images/Alpha48px.png", "/images/Beta48px.png", "/images/Gamma48px.png"]
+    const img = ["/images/KillerTCell48px.png", "/images/Marcophage48px.png", "/images/Neutropil48px.png"]
     const [piture, setPiture] = useState();
     const [spawn, setSpawn] = useState(false);
     const [playing, setPlaying] = useState(false)
     const [gameData, setGameData] = useState()
-    const [isFirst,setIsFirst] = useState(true);
-    const [speed,setSpeed] = useState(10000000000000000)
+    const [isFirst, setIsFirst] = useState(true);
+    const [speed, setSpeed] = useState(10000000000000000)
 
-
-    // while (playing) {
-
-        // axios.get("http://localhost:8080/getdata", { crossdomain: true })
-        //     .then(res => {
-        //         console.log(res.data)
-        //         setGameData(res.data)
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
-
-    // }
 
     const [count, setCount] = useState(0);
 
-    //Loop game
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setCount((count) => count + 1);
-    //         axios.get("http://localhost:8080/getdata", { crossdomain: true })
-    //         .then(res => {
-    //             console.log(res.data)
-    //             setGameData(res.data)
-    //             setSpeed((res.data.speed)*1000)
-    //             console.log(speed)
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    //     }, speed);
-    //     console.log(count)
-    // });
+    // Loop game
+    useEffect(() => {
+        setTimeout(() => {
+            setCount((count) => count + 1);
+            axios.get("http://localhost:8080/getdata", { crossdomain: true })
+                .then(res => {
+                    console.log(res.data)
+                    setGameData(res.data)
+                    setSpeed((res.data.speed) * 1000)
+                    console.log(speed)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }, speed);
+        console.log(count)
+    });
 
     const sendData = (e) => {
         axios.post("http://localhost:8080/click", {
@@ -61,12 +48,23 @@ function Board(props) {
             })
     }
 
-    const spawnAB = () => {
+    const spawnAB = (e) => {
         axios.get("http://localhost:8080/spawn", { crossdomain: true })
             .then(res => {
-                setPiture(res.data.type)
-                console.log("Spawn Type: " + res.data.type + " Coor : " +
-                    res.data.coor.x + "," + res.data.coor.y)
+                if (res.data.spawn) {
+                    // setSpawn(res.data.spawn)
+                    setPiture(res.data.type)
+                    
+                    console.log("Spawn Type: " + res.data.type + " Coor : " +
+                        res.data.coor.x + "," + res.data.coor.y)
+                    let pp = e.concat("0")
+                    let setP = document.getElementById(pp)
+                    console.log(piture)
+                    setP.setAttribute('src', img[piture])
+                    console.log(setP)
+                    setSpawn(false)
+                }
+
             })
     }
 
@@ -75,13 +73,14 @@ function Board(props) {
         // let ts = document.getElementById("Pause")
         // console.log(ts)
         //if AB is spawn
-        if (spawn) {
-            spawnAB();
-            let pp = e.concat("0")
-            let setP = document.getElementById(pp)
-            setP.setAttribute('src', img[piture])
-            console.log(setP)
-        }
+        
+        // if (spawn) {
+        //     let pp = e.concat("0")
+        //     let setP = document.getElementById(pp)
+        //     setP.setAttribute('src', img[piture])
+        //     console.log(setP)
+        //     setSpawn(false)
+        // }
 
         let fst = Math.floor(e / 10)
         let snd = Math.floor(e % 10)
@@ -90,6 +89,7 @@ function Board(props) {
         let toSending = fstSring.concat(",", sndString);
         console.log(toSending)
         sendData(toSending)
+        spawnAB(e);
     }
 
     let board = [];

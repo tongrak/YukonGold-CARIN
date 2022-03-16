@@ -9,6 +9,7 @@ export default function Credit() {
 
     const sendData = (e) => {
         axios.post("http://localhost:8080/ABSelected" , {
+            spawn : true,
             type : e,
         })
         .then(res => {

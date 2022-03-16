@@ -8,9 +8,12 @@ public class ModelSendAB {
 
     private Coor coor;
 
-    public ModelSendAB(int type,Coor coor){
+    private boolean spawn;
+
+    public ModelSendAB(int type,Coor coor,boolean spawn){
         this.type = type;
         this.coor = coor;
+        this.spawn = spawn;
     }
 
     public int getType(){
@@ -19,5 +22,13 @@ public class ModelSendAB {
 
     public Coor getCoor(){
         return this.coor;
+    }
+
+    public void setSpawn(Boolean spawn){
+        this.spawn = spawn;
+    }
+
+    public boolean getSpawn(){
+        return this.spawn;
     }
 }
