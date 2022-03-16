@@ -7,36 +7,38 @@ import '../Menu Elements/Pause'
 function Board(props) {
 
     const img = ["/images/KillerTCell48px.png", "/images/Marcophage48px.png", "/images/Neutropil48px.png"]
-    const [piture, setPiture] = useState();
+    
     const [spawn, setSpawn] = useState(false);
-    const [playing, setPlaying] = useState(false)
     const [gameData, setGameData] = useState()
-    const [isFirst, setIsFirst] = useState(true);
-    const [speed, setSpeed] = useState(10000000000000000)
+    const [speed, setSpeed] = useState(5000)
+    // const [isFirst, setIsFirst] = useState(true);
+    // const [piture, setPiture] = useState();
+    // const [count, setCount] = useState(0);
 
 
-    const [count, setCount] = useState(0);
-
-    // Loop game
-    useEffect(() => {
-        setTimeout(() => {
-            setCount((count) => count + 1);
-            axios.get("http://localhost:8080/getdata", { crossdomain: true })
+    const getData = async() => {
+        await axios.get("http://localhost:8080/getdata", { crossdomain: true })
                 .then(res => {
                     console.log(res.data)
                     setGameData(res.data)
                     setSpeed((res.data.speed) * 1000)
-                    console.log(speed)
+                    console.log("speed : " + speed)
                 })
                 .catch(err => {
                     console.log(err)
                 })
-        }, speed);
-        console.log(count)
+    }
+    // Loop game
+    useEffect(() => {
+        
+        const interval = setInterval(() => {
+            // getData()
+        }, speed)
+        return () => clearInterval(interval)
     });
 
-    const sendData = (e) => {
-        axios.post("http://localhost:8080/click", {
+    const sendData = async(e) => {
+        await axios.post("http://localhost:8080/click", {
             id: 1,
             coor: e
         })
@@ -48,19 +50,19 @@ function Board(props) {
             })
     }
 
-    const spawnAB = (e) => {
-        axios.get("http://localhost:8080/spawn", { crossdomain: true })
+    const spawnAB = async(e) => {
+        await axios.get("http://localhost:8080/spawn", { crossdomain: true })
             .then(res => {
+                // setPiture(res.data.type)
                 if (res.data.spawn) {
                     // setSpawn(res.data.spawn)
-                    setPiture(res.data.type)
-                    
                     console.log("Spawn Type: " + res.data.type + " Coor : " +
                         res.data.coor.x + "," + res.data.coor.y)
                     let pp = e.concat("0")
                     let setP = document.getElementById(pp)
-                    console.log(piture)
-                    setP.setAttribute('src', img[piture])
+                    
+                    console.log("img : " + res.data.type)
+                    setP.setAttribute('src', img[res.data.type])
                     console.log(setP)
                     setSpawn(false)
                 }
@@ -69,18 +71,6 @@ function Board(props) {
     }
 
     const clickCoor = (e) => {
-
-        // let ts = document.getElementById("Pause")
-        // console.log(ts)
-        //if AB is spawn
-        
-        // if (spawn) {
-        //     let pp = e.concat("0")
-        //     let setP = document.getElementById(pp)
-        //     setP.setAttribute('src', img[piture])
-        //     console.log(setP)
-        //     setSpawn(false)
-        // }
 
         let fst = Math.floor(e / 10)
         let snd = Math.floor(e % 10)
