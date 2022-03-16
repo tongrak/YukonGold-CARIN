@@ -1,8 +1,8 @@
 import React from 'react';
-import Credit from './Menu Elements/Credit';
-import Shop from './Menu Elements/Shop';
-import Speed from './Menu Elements/Speed';
-import Pause from './Menu Elements/Pause';
+import Credit from './Menu_Elements/Credit';
+import Shop from './Menu_Elements/Shop';
+import Speed from './Menu_Elements/Speed';
+import Pause from './Menu_Elements/Pause';
 import './Menu.css';
 
 
@@ -16,7 +16,7 @@ export default function Menu(){
         <div>
             <div id= "Menu">
                 <Credit/>
-                <Shop/>
+                <Shop />
                 <Speed/>
                 <Pause/>
             </div>

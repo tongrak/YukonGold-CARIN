@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Board.css';
 import axios from 'axios';
-import '../Menu Elements/Pause'
+import '../Menu_Elements/Pause'
 
 
 function Board(props) {
@@ -66,7 +66,6 @@ function Board(props) {
                     console.log(setP)
                     setSpawn(false)
                 }
-
             })
     }
 
