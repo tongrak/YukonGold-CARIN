@@ -1,0 +1,990 @@
+*   commit 27e2894517d26330dcfcb874d418326c75ab4056
+|\  Merge: 744f173 587d50f
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Thu Feb 24 21:30:53 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | 
+| * commit 587d50fb77fa11c27f85c78521873b6841a2e14f
+| | Author: Nadtaphong Jandaboot <man2545_@hotmail.com>
+| | Date:   Thu Feb 24 21:28:49 2022 +0700
+| | 
+| |     Install Axios
+| | 
+* | commit 744f173a4110c6ec848234cf8f3315f9cbbd00d0
+|\| Merge: 2763c30 f29fa12
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Thu Feb 24 20:41:12 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | 
+| * commit f29fa1263ee839c7bfd0b57415ccd21162c35d3c
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Thu Feb 24 17:47:55 2022 +0700
+| | 
+| |     change style
+| | 
+| * commit 524966563cadf25702584e054868a1e61a24b1d5
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Thu Feb 24 17:23:45 2022 +0700
+| | 
+| |     decorated with tailwind
+| | 
+| * commit 9c727eb8efb16081241c86ad4e5f8355a75b5e64
+| | Author: Nadtaphong Jandaboot <man2545_@hotmail.com>
+| | Date:   Thu Feb 24 15:50:26 2022 +0700
+| | 
+| |     Add virus&antibody picture
+| | 
+* | commit 2763c30a22b9930f703ff365d06a5b2e7c03ed2e
+|/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|   Date:   Thu Feb 24 20:06:48 2022 +0700
+|   
+|       expression Factor test foothold
+| 
+* commit 97cb186d40648ab53f68d5ae9c4bf8b0cd4644bc
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Thu Feb 24 15:07:11 2022 +0700
+| 
+|     Uppdate generator grid
+| 
+* commit 086793d2dbe8d0a5a064e765e7b2616bdf4703f3
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Thu Feb 24 15:06:48 2022 +0700
+| 
+|     Implement show & hide tage input and button
+|   
+*   commit c33a0711bdc369b518dc2500432c875923c6a32b
+|\  Merge: 1f92436 baab9c4
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Thu Feb 24 15:05:14 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | 
+| * commit baab9c4f1c64c34176bf47fbdde5a915c8152fc6
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Thu Feb 24 02:23:47 2022 +0700
+| | 
+| |     update icon
+| | 
+| * commit c763ff1ba4145e0b3feaab63736d963e7eab82ee
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Thu Feb 24 02:08:23 2022 +0700
+| | 
+| |     Implement Pause button& Speed button
+| | 
+* | commit 1f924366d5b1149973d44dcc70a34a064fdae896
+|/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|   Date:   Thu Feb 24 15:05:00 2022 +0700
+|   
+|       expr Factor fixing added
+| 
+* commit 4c878af0e3e3d8dbd670d08db3ebe772079a97a7
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 24 00:33:10 2022 +0700
+| 
+|     post sampleGeneCode minor fix
+|   
+*   commit e64fdee471a84ac3697d34e48362d8322d567bb4
+|\  Merge: 79ec604 57f6c77
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Thu Feb 24 00:17:28 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | 
+| * commit 57f6c77ff0062e85e4802e9bac9e9294ff01f62b
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 23:57:11 2022 +0700
+| | 
+| |     Implement Post (/click)
+| | 
+* | commit 79ec604b20986cc8565abc596f968c4857685eed
+|/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|   Date:   Thu Feb 24 00:17:24 2022 +0700
+|   
+|       Testing section update
+| 
+* commit fc459ed597a11de78681d7f997bf643514a4d6d7
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 23 22:42:46 2022 +0700
+| 
+|     divde / modelate by zero case update
+|   
+*   commit cb60f38cfae962f248d7bff1fc75b3c3719cdff5
+|\  Merge: 2022bf5 9e4c1c9
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Wed Feb 23 22:29:06 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | 
+| * commit 9e4c1c914195a832193acfe56a817fa08a83774b
+| | Author: Nadtaphong Jandaboot <man2545_@hotmail.com>
+| | Date:   Wed Feb 23 22:26:39 2022 +0700
+| | 
+| |     Replace old picture with new resolution
+| | 
+| * commit 065056dae1cc10f9b9a044ccf5ca248d913ac1d8
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 21:20:50 2022 +0700
+| | 
+| |     update Front-end
+| | 
+| * commit acf2c2ff7605c250f220403b998c0c3088973585
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 21:19:14 2022 +0700
+| | 
+| |     access-control-allow-origin spring boot
+| | 
+* | commit 2022bf553b1e5f0f756ea64ea7c5a60d45f73750
+|/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|   Date:   Wed Feb 23 22:28:55 2022 +0700
+|   
+|       config file setUp update
+| 
+* commit 0fccbca04c52456a8268f1f677571a03f46b6279
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Wed Feb 23 18:12:45 2022 +0700
+| 
+|     Install router & axios
+|   
+*   commit 7f6f4b3b94f8987ebedeefbaace2c4746ff26121
+|\  Merge: 1076cc9 0b4da50
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Wed Feb 23 02:18:31 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | 
+| * commit 0b4da50ea1654ac6d537bc8f6ab7b1e05f8a5988
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 01:42:44 2022 +0700
+| | 
+| |     Test tailwind css
+| | 
+* | commit 1076cc9bae8b0cd563937d315a56b59ece67ee3d
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Wed Feb 23 02:18:16 2022 +0700
+| | 
+| |     GameMediator minor fix
+| | 
+* | commit 1268319fa8d6c06c59f9d016bdc69d48397f9342
+|/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|   Date:   Wed Feb 23 02:18:03 2022 +0700
+|   
+|       GameBoards minor change
+|   
+*   commit f1a8c5ed0640ccad29a89bc5714063041a3f81af
+|\  Merge: 4ffdbc4 c160726
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Wed Feb 23 01:38:43 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | 
+| * commit c1607265bcfa020125597447bfbcbab0de28770f
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 00:52:09 2022 +0700
+| | 
+| |     Install tailwind css & test
+| | 
+| * commit 3c8f66f567802535f2b3493696edaf10a3d0cf23
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 00:22:28 2022 +0700
+| | 
+| |     fix getIsPause methon
+| | 
+| * commit 2d853a4e91a9e3d4e148edf770e17959e5c72a1a
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 00:21:19 2022 +0700
+| | 
+| |     add method getCurrspeed
+| | 
+| * commit d07f7173e41999d8753f3e6b351f946433b15cb2
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 00:20:54 2022 +0700
+| | 
+| |     delete class virus&antibody
+| | 
+| * commit f7f9a2b9a596a6777ac0bf3847906b332ff46f78
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 00:19:56 2022 +0700
+| | 
+| |     add method getIsPause
+| | 
+| * commit e0a2dfd79c76725f015bebd306120016aec2bfe6
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Wed Feb 23 00:18:20 2022 +0700
+| | 
+| |     Implement GameMediator.sendingData
+| | 
+* | commit 4ffdbc44161e9da90c02b16fe0b3ac210a69329b
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Wed Feb 23 01:36:36 2022 +0700
+| | 
+| |     GameMediator added method for testing
+| | 
+* | commit bdd204adfa171e37ca3d301a52c96bb0aa10ba7c
+|/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|   Date:   Wed Feb 23 01:36:11 2022 +0700
+|   
+|       Major Bug Hunt Show down
+|   
+*   commit c6667bc626911ff1d7813f258d48b2dd239e4753
+|\  Merge: 259fb84 7d03921
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 23:18:34 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| |   
+| *   commit 7d03921d0b3d0a7db5631dce507dccd082834546
+| |\  Merge: 8812dc8 a0924ee
+| | | Author: Nadtaphong Jandaboot <man2545_@hotmail.com>
+| | | Date:   Tue Feb 22 23:00:28 2022 +0700
+| | | 
+| | |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN
+| | | 
+| * | commit 8812dc8e1031c14e4c6677eeafc00959185bd40c
+| | | Author: Nadtaphong Jandaboot <man2545_@hotmail.com>
+| | | Date:   Tue Feb 22 22:59:52 2022 +0700
+| | | 
+| | |     Add Menu and its elements, Fix elements position
+| | | 
+* | | commit 259fb84310ea611a8f3801b307a410024d9e536a
+| |/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|/|   Date:   Tue Feb 22 23:18:19 2022 +0700
+| |   
+| |       AB and Virus public
+| | 
+* | commit a0924ee99e10111221bf13aba7812d451c9bd30b
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 17:00:42 2022 +0700
+| | 
+| |     GB Atomic chage
+| | 
+* | commit 8c6ee48a77cafcdcc8b2c19420bdbf8e935c5f39
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 16:58:24 2022 +0700
+| | 
+| |     GameMediator passing data foothold
+| |   
+* |   commit 698da6a5f7f243adebb3fa4578069260f4cf1124
+|\ \  Merge: e595b3d f4d06a0
+| | | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | | Date:   Tue Feb 22 16:30:38 2022 +0700
+| | | 
+| | |     Merge branch 'main'
+| | | 
+| * | commit f4d06a004b15483820abec635e001a4e3b8ab6ca
+| | | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | | Date:   Tue Feb 22 15:03:58 2022 +0700
+| | | 
+| | |     Implement PostMapping(Click)
+| | | 
+* | | commit e595b3d3e695ed1df55635f4ef257782f6f87b2f
+| | | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | | Date:   Tue Feb 22 16:28:43 2022 +0700
+| | | 
+| | |     GameMediator adding startGame
+| | | 
+* | | commit 91cfd7aa0509dce0e9d26b6d1d9e4323a2ed480d
+| | | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | | Date:   Tue Feb 22 16:18:42 2022 +0700
+| | | 
+| | |     GBData added new method
+| | | 
+* | | commit 41b3fb9183f01cf455b94dee3f6f6830ae9769d4
+|/ /  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| |   Date:   Tue Feb 22 16:17:58 2022 +0700
+| |   
+| |       chanfe GB is Runnable
+| | 
+* | commit 1bf1e11f22403442c4b24c256fb7cf69e6886f9c
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Tue Feb 22 13:15:27 2022 +0700
+| | 
+| |     fix test mapping
+| | 
+* | commit 87b77886730c4be76e9abdcc518a2ea02d1448b9
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Tue Feb 22 03:07:46 2022 +0700
+| | 
+| |     workspace
+| | 
+* | commit 7477f60e9495a4ea658c60d9a438341dd5f888fe
+| | Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| | Date:   Tue Feb 22 03:06:49 2022 +0700
+| | 
+| |     Test GetMapping (send Map Data)
+| | 
+* | commit 9e20158dfdc57f2cea7e7af9f6ace0a236580983
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 03:00:04 2022 +0700
+| | 
+| |     VisualFrontEnd foothold
+| | 
+* | commit 1a73bb0ee0866eaee44fae8a6dda46eea9dbabfe
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 02:59:48 2022 +0700
+| | 
+| |     Added sampleGene for Virus
+| | 
+* | commit 5a4379e952940623da4b6133c4f8b8de48b0ba7f
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 02:59:16 2022 +0700
+| | 
+| |     GB Testing foothold
+| | 
+* | commit f645f35dede92eccccc62d502cdc4e7c9c709a7c
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 02:58:16 2022 +0700
+| | 
+| |     GPStore empty winning Con Fix
+| | 
+* | commit 188e261bd7148f61802e18f76d2421b2492b4569
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 02:56:24 2022 +0700
+| | 
+| |     GB wait basic implement
+| | 
+* | commit 7f11716c3eb1112b495751d06e88dab3913b79f3
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 02:55:12 2022 +0700
+| | 
+| |     ExprParser random fix
+| | 
+* | commit 496bf51431e90871e874e3f1193476978c5acc9b
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 00:48:33 2022 +0700
+| | 
+| |     GBData Document added
+| | 
+* | commit b146b6d51b593767b72e97373b17e4f1a8a52afa
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Tue Feb 22 00:47:51 2022 +0700
+| | 
+| |     GameBoard game speed manipulation update
+| |   
+* |   commit de0af46b435eab0901eed592c5c7351b21c3f988
+|\ \  Merge: 832f786 1a4248b
+| | | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | | Date:   Mon Feb 21 20:36:08 2022 +0700
+| | | 
+| | |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | | 
+| * | commit 1a4248b55531900495d97148d3507c7dd17815e3
+| |/  Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| |   Date:   Mon Feb 21 20:35:46 2022 +0700
+| |   
+| |       Test GetMapping
+| |   
+| *   commit 9dbe11bf20f20c43f57535190306eba1aff8fb72
+| |\  Merge: 8c4f622 32d0ee9
+| | | Author: Nadtaphong Jandaboot <man2545_@hotmail.com>
+| | | Date:   Mon Feb 21 00:27:42 2022 +0700
+| | | 
+| | |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN
+| | | 
+| * | commit 8c4f622ca08d222114657a5496174ad30fdb2ad5
+| | | Author: Nadtaphong Jandaboot <man2545_@hotmail.com>
+| | | Date:   Mon Feb 21 00:19:49 2022 +0700
+| | | 
+| | |     GameplayCellComponent#1
+| | | 
+* | | commit 832f786730afea465451089caacf8561c9601834
+| |/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|/|   Date:   Mon Feb 21 20:36:01 2022 +0700
+| |   
+| |       GPsStorageTest minor change
+| | 
+* | commit 32d0ee98fd521323a5b0bb5c63304c160fb73a19
+|/  Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+|   Date:   Sun Feb 20 22:17:44 2022 +0700
+|   
+|       Create config & genetic Code(not finish yet)
+| 
+* commit 7e090d70e68b8a73ec8252df07805e8982738c00
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sun Feb 20 00:45:53 2022 +0700
+| 
+|     implement the unplement method
+| 
+* commit f245ca7378b687e7e1a5b3ea4cd8acddc1a2bfa6
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sun Feb 20 00:30:51 2022 +0700
+| 
+|     GBData basics implement
+| 
+* commit 1a9980278e15c3fbd3b58513ecd063a9080b5a42
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sun Feb 20 00:25:50 2022 +0700
+| 
+|     GamePiece Basics implement
+| 
+* commit f9ac75e151ca73cd4cb3631fd7ac905f0a9ba938
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sun Feb 20 00:17:11 2022 +0700
+| 
+|     along with GPManager impl
+| 
+* commit 12bd353ad6fedf0141b55e3c7a5c1d6bc6eed94f
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sun Feb 20 00:16:20 2022 +0700
+| 
+|     GPManager Basic Implement
+| 
+* commit 3d02ec1a712f8d7eee2a0ed1c1617f1c98956500
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 18:40:43 2022 +0700
+| 
+|     minor Test change
+| 
+* commit 88fe9433d6a1343464fadafed754650bfae79f4a
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 18:38:06 2022 +0700
+| 
+|     GPsStorage essential method implement
+| 
+* commit 947bb9f42ff86ad6c7b8613eaa0d8aa07888b7e8
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 01:16:37 2022 +0700
+| 
+|     QuickTest added
+| 
+* commit 89987149fee5c9aaa3bf3457c8b6414d07f34c5b
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 01:15:49 2022 +0700
+| 
+|     minor update and TODO
+| 
+* commit dc3b240f430c75bc76ec54cf0589b8326acc4ba5
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 01:14:58 2022 +0700
+| 
+|     ExpressionParser un-id identifirt case added
+| 
+* commit 9b28fc805e0fa81d456499fc39ce14e5389c36d8
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 01:14:17 2022 +0700
+| 
+|     Coor Obj add equals
+| 
+* commit 2a62e680a1eed78a0dd58c935f12b89d964bcd50
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 00:34:43 2022 +0700
+| 
+|     testing commit
+| 
+* commit 8cf95e66c4e3b5d7e8085a14b83413d8339e8eee
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 00:34:29 2022 +0700
+| 
+|     Tokenizer to instance
+| 
+* commit 36967a284153b686aebcf6c2bece98c91815f39b
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 00:33:21 2022 +0700
+| 
+|     move class/inter for tests
+| 
+* commit a5e8dd402013e0b82b88683a95c393a8d360efec
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Sat Feb 19 00:32:31 2022 +0700
+| 
+|     GeneEval to instance
+| 
+* commit ddf1c00aa9a3ba0699dcc3d0ea60fc354b8b5172
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 23:49:51 2022 +0700
+| 
+|     PlayerActAbs change Genetic to Path
+| 
+* commit d212b5ac2bf405d658cb7d186670f1778815677e
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 23:49:24 2022 +0700
+| 
+|     GPsStrorage change to instance  && method added
+| 
+* commit c5c0fa6a31626c13bfda3ba0ee2e452489ba004a
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 23:48:33 2022 +0700
+| 
+|     GPsPlayer basics Implement
+| 
+* commit bec14e9e583273487af85770393f0d0aea8d290a
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 23:48:08 2022 +0700
+| 
+|     GPsFactory Basics Implement
+| 
+* commit 665b6b99ea86dfc52f10be0e52e98d4b7ac84b45
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 23:44:13 2022 +0700
+| 
+|     GeneticCode class remove
+| 
+* commit e34b77d04b3ad1dd3ef6633f40b54356f326b378
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 23:43:58 2022 +0700
+| 
+|     GBData basics implement
+| 
+* commit aa089b977d5f90ee15e400c8698d627a60e3f91b
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 23:43:24 2022 +0700
+| 
+|     GamePiece GeneticCode change to Path
+| 
+* commit 6e4fbb40f196099a139d417e6785c4001d7acb28
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 23:42:48 2022 +0700
+| 
+|     GameBoards basics implement
+| 
+* commit d5b45cb52635bea01ef58629b5ea5de75656a164
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 02:12:36 2022 +0700
+| 
+|     GameMediator interface foothold
+| 
+* commit 3700c83fff1030533901a1cb01f6d5a8c41025cf
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 02:12:07 2022 +0700
+| 
+|     other game's important class foothold
+| 
+* commit afa07c1125accf8920ce8bd37a5c5ab043b5e518
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 02:11:00 2022 +0700
+| 
+|     Coor equals() added
+| 
+* commit ca725b1fac07d82fe31c5e720fda6df2dd6433b1
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 00:30:29 2022 +0700
+| 
+|     adding package line in Tokenizer and DecodedGene
+| 
+* commit d2583719a3b37840eacbdb885ddc6081e96de72a
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 00:29:02 2022 +0700
+| 
+|     Moving interface/class for Testing
+| 
+* commit 76c1614745bb48a4ad802563092f16d61e2cff59
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 00:19:05 2022 +0700
+| 
+|     remove TestGround
+| 
+* commit 21ee37239dc258dfffadd56618601938f982948e
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 00:16:51 2022 +0700
+| 
+|     Proj big cleanUp and reOrganize
+| 
+* commit 3e14feee0c6fcabda54aedf944a3e0eda7e46315
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Fri Feb 18 00:16:21 2022 +0700
+| 
+|     GameMediator footHold
+| 
+* commit 6d32cc56a6510664de4451f57a53e8f4eb581e25
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 23:32:08 2022 +0700
+| 
+|     gamestuff's code minor change
+| 
+* commit 584a8725d93f178c258563961e2a95372eb0f526
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 22:29:39 2022 +0700
+| 
+|     External file update
+| 
+* commit aaff59b8c04c295ecc7cc95ee84af3bf9f72d1ab
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 22:27:05 2022 +0700
+| 
+|     xml files update
+| 
+* commit 4186c82e901f19ead48b81f6c6811a3a803a6edd
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 22:25:51 2022 +0700
+| 
+|     Removing H2 database foothold
+| 
+* commit 2ab5b8135581665e73726dc51939465aa6a24c84
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 02:11:34 2022 +0700
+| 
+|     special cases: rand implemented
+| 
+* commit 01e0cd8dc50a86baf7a76f69e12e9ba527844083
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 02:01:13 2022 +0700
+| 
+|     ExpressionParser ParseP identifier  change
+| 
+* commit 06959f2f408db4a8bd6b9fa461550c5cc15836ea
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 01:59:38 2022 +0700
+| 
+|     Testing related file update
+| 
+* commit 5937a39ca1252153bd04524f735881a92bef77a1
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 01:59:00 2022 +0700
+| 
+|     Evalua's Report image update
+| 
+* commit f1647d7c51d5b2c26a4539cf40799e0e2dbcf3cc
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Thu Feb 17 00:07:23 2022 +0700
+| 
+|     Tokenizer fixing
+| 
+* commit 97872c6b603646784b4fa1735ab56e08bda10a54
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Wed Feb 16 22:19:16 2022 +0700
+| 
+|     fix bug Tokenizer
+| 
+* commit ddcefb577f2d5a75b60fcd6ff55398be7efe5008
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 20:12:26 2022 +0700
+| 
+|     simplify sampleGeneCode.txt
+| 
+* commit 87b2a7bcaeffc14e6da4380e02d5ae6b7560a58d
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 20:11:58 2022 +0700
+| 
+|     ExpressionParser minor fix
+|     
+|     adding return
+| 
+* commit de5df45d8970a75e68e5988e5d2328cf0160700d
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 19:44:52 2022 +0700
+| 
+|     StatementParserTest.java added
+| 
+* commit 9f52d5263a2e2b3a754ca152db8cd2bdc6a75353
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 19:43:26 2022 +0700
+| 
+|     ExpressionParser minor change
+|     
+|     constructor no longer need Coor
+| 
+* commit 2027541f278cf7daa7073c406a3e44afd92b37db
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 19:42:55 2022 +0700
+| 
+|     DecodedGene minor change
+|     
+|     constructor no longer need Coor
+| 
+* commit e863a91f14ff0d35fba548e5cc24a1838686160a
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 19:33:09 2022 +0700
+| 
+|     DecodedGene.directionToEightDirec static added
+| 
+* commit 279248c76e91e6c9058e58dfd0d784b0936a779b
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 19:31:55 2022 +0700
+| 
+|     ExpressionParser ParseP implement.
+| 
+* commit 000a9806faef04741440cbb7d2fd971c2b7ad10c
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Wed Feb 16 18:43:44 2022 +0700
+| 
+|     implements parser(not finished yet)
+| 
+* commit 121991691710ec508329e75ed5419abf0b137e73
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 17:50:28 2022 +0700
+| 
+|     StatementParser getGPAction method update, and CommandBox implement
+| 
+* commit c60494c78e306adcd54e9a82b0749a340a61cc94
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 17:49:25 2022 +0700
+| 
+|     GeneEvaluator minor update
+|     
+|     changing ProgParser to DecodedGene
+| 
+* commit 87814a55ec6a758b9cd0419707b0d256973e3cce
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 17:48:15 2022 +0700
+| 
+|     ProgramParser renamed to DecodedGene
+| 
+* commit 225465a5010514d17a9f6a4de3fab008f60c3392
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 17:46:01 2022 +0700
+| 
+|     GeneEvaluator foothold
+| 
+* commit 4b21325a2a57e64b7e39f8747793fb5bc2778dd7
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 16:10:04 2022 +0700
+| 
+|     StatementParser ParseS CommandBox simplify
+| 
+* commit 31221fcf22bfc8421e2be3d85693793ed51caecb
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 15:45:48 2022 +0700
+| 
+|     workspace.xml update
+| 
+* commit 6aae1d4c97b2b5e5c9b74a4ab70210198f4faa0a
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 15:45:15 2022 +0700
+| 
+|     GPsStorage essential methods update
+| 
+* commit da86cc5ee790eef5c9f94bd6dbc33f840cc4f50e
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 15:44:42 2022 +0700
+| 
+|     ProgramParser foothold
+| 
+* commit 390065162e6a13702d33e305090f1e48e3aac518
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 15:44:07 2022 +0700
+| 
+|     StatementParser throws syntaxError
+| 
+* commit 0895b2e2f9704b5f573841d249e7dc84e8340cf0
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 15:43:24 2022 +0700
+| 
+|     ExpressionParser PowerBox section commit
+| 
+* commit b3ac5e80f53333f14d41e47d73a06c2e8ad201ca
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Wed Feb 16 14:52:55 2022 +0700
+| 
+|     implements Expression
+| 
+* commit ee4214b2518d2c3f8aa7ccf79fefc9ece0f925fb
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Wed Feb 16 13:58:59 2022 +0700
+| 
+|     implements expression(wed13:58) not finished yet
+| 
+* commit 0f663e52fd0e58de2882f3be73a61ae9d4d8c71a
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 16 10:42:37 2022 +0700
+| 
+|     Evaluator's report architecture related image
+| 
+* commit 6611bb3474849a92bade94a6246b7ec239052e2c
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 22:30:43 2022 +0700
+| 
+|     GPManager foothold
+| 
+* commit 138d32470c81007b54fd9f97b60f451da5e008d9
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 22:30:19 2022 +0700
+| 
+|     sampleGeneCode.txt added
+|     
+|     for testing all parser and AST form
+| 
+* commit 4fa069955489b706860d995e9099cc537e06a75e
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 21:40:14 2022 +0700
+| 
+|     StatementParser.parseS while statment implement
+| 
+* commit 2a6a43fbec2831fa18a7ed328fe69406e60d41cd
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 21:18:50 2022 +0700
+| 
+|     GPsStorage's important method turn static
+|     
+|     plus GPsStorage.coorOfGP, GPsStorage.containGP, GPsStorage.setGPintoStorage implemented
+| 
+* commit a5d7e88c2249d76d7773310f79a2bc472e0e8fae
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 20:49:47 2022 +0700
+| 
+|     GPsFactory foothold
+| 
+* commit 633474bba6d23fb1adf087fdaabf7fb0095ef222
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 20:48:56 2022 +0700
+| 
+|     Virus object added
+| 
+* commit f382bcbece4d8070c2578e02bd18a4a329e72d6f
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 16:41:17 2022 +0700
+| 
+|     AssignmentCommand added && StatementParser.parseC added
+| 
+* commit b37498a98aea61660b89293a4e43fc8eabdedb81
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 01:54:45 2022 +0700
+| 
+|     Evaluator.iml commit
+| 
+* commit e5ca51c765acaa6081ea487077f7657cd5b91e13
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 01:54:26 2022 +0700
+| 
+|     SyntaxError implemented
+|     
+|     one of the main exception around grammar uses
+| 
+* commit 9681a2d33f1782d35b9781930f96c4a0d0d9f7e0
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 01:53:42 2022 +0700
+| 
+|     StatementParser fully implemented commit
+|     
+|     All we have to do is just test the damn class CJ!
+| 
+* commit c10a97d74c9ed5a735308e70d1f457bca243fec1
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 01:50:55 2022 +0700
+| 
+|     ProgramParser redesign commit
+| 
+* commit 52771a126dbf0ddfc5b4269f43454c1ded478d18
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 01:50:18 2022 +0700
+| 
+|     GPsStorage foothold
+| 
+* commit 081da88a02a241f98b5d5882bac699888aed4f16
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 15 01:49:40 2022 +0700
+| 
+|     GamePiece foothold
+| 
+* commit 8cb3e721a5e1360409aa33e3507d11f58434353f
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 22:18:03 2022 +0700
+| 
+|     Tokenizer Comment update
+| 
+* commit 0d1897b5d31071897f124cbe3a701da8272bd0fe
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 22:07:36 2022 +0700
+| 
+|     Testing foothold commit
+| 
+* commit 9e2f5c42b28aca9b848c368865f755a90444cdd2
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 17:55:23 2022 +0700
+| 
+|     Tokenizer quick checkUp and minor fix
+| 
+* commit ce3543ec05ec93f627ba2ccd0cce12a776f4a873
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 17:51:36 2022 +0700
+| 
+|     GeneticCode class update
+| 
+* commit 4065b302c9ccf922c693486b526a9f66788709c3
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 17:51:04 2022 +0700
+| 
+|     ExpressionParser Minor update
+| 
+* commit 8b09682fd6b7f1131b531a1fd3c789cd43652c02
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Mon Feb 14 16:59:48 2022 +0700
+| 
+|     implements Tokenizer
+| 
+* commit 7d7a0ff84171bd43e886fb07df7aea28719d1abd
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 01:03:43 2022 +0700
+| 
+|     Evaluator.iml commit
+| 
+* commit 87a83f87e2c81f2cfdd08512ce187cb652d00f08
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 01:03:17 2022 +0700
+| 
+|     Parser Foothold
+| 
+* commit d365f8fa48c26442e1da601aea9c98f94800ef31
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 01:02:52 2022 +0700
+| 
+|     GPAction and PlayerAction foothold
+| 
+* commit 75151a0ac912a9984a49a449b1e86a69cb50a6e4
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 01:02:22 2022 +0700
+| 
+|     Coordinate class implement
+| 
+* commit 3c0e9e6e7e7aad08f85284ce6778b8be49219790
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 01:01:26 2022 +0700
+| 
+|     xml files update
+| 
+* commit f9951b0b5c4c5543fb5f6fe37e7ea9830f2bdef9
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Mon Feb 14 01:00:33 2022 +0700
+| 
+|     Docs updating
+|   
+*   commit eaa0af048ed31946bf0ff5ddf1581daaaeae55fb
+|\  Merge: 63f86ad 97c80bf
+| | Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| | Date:   Sat Feb 12 01:49:28 2022 +0700
+| | 
+| |     Merge branch 'main' of https://github.com/tongrak/YukonGold-CARIN into main
+| | 
+| * commit 97c80bf1bc73f03c69b674512d6236bfc34e60bc
+| | Author: Oliver Tongrak <74416671+tongrak@users.noreply.github.com>
+| | Date:   Tue Feb 8 21:40:01 2022 +0700
+| | 
+| |     Update README.md
+| | 
+* | commit 63f86adfac50b8080f1376fafa4b31e78c819db9
+|/  Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+|   Date:   Sat Feb 12 01:48:43 2022 +0700
+|   
+|       Tokenizer Interface adding
+|       
+|       need someone....
+| 
+* commit 39b592969583b5552f3fc49749bdd4c8d8cf491d
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Tue Feb 8 01:55:17 2022 +0700
+| 
+|     BackEnd Initial Commit (Spring)
+| 
+* commit 6d4a474fdff6090c6839c6301a1ae6472c8dea7a
+| Author: Kittiphum <76035271+kittiphum717@users.noreply.github.com>
+| Date:   Sun Feb 6 13:47:04 2022 +0700
+| 
+|     Create a Front-End Project (React)
+| 
+* commit 8c9447d6845e895466d811212b84c36826d7b5d1
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 2 23:56:34 2022 +0700
+| 
+|     adding folder
+| 
+* commit 0bccfcbad1ed96afa82c61ec74ad286fb91afbe9
+| Author: Oliver Tongrak <tongrak_ru@cmu.ac.th>
+| Date:   Wed Feb 2 23:48:01 2022 +0700
+| 
+|     Doc folder Added
+| 
+* commit 67116740ad414728321a884ca514b7e5575bec58
+  Author: Oliver Tongrak <74416671+tongrak@users.noreply.github.com>
+  Date:   Mon Jan 31 21:56:53 2022 +0700
+  
+      Initial commit
