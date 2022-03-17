@@ -32,10 +32,10 @@ public class GameBoardTest {
     @Test
     void innit1stPhases(){
         Thread t0 = new Thread(gb);
-        SpawnAct newSpawnAct1 = new SpawnAct(new Coor(0,1), 1);
-        SpawnAct newSpawnAct2 = new SpawnAct(new Coor(0,0), 1);
-        gbData.addPlayerAction(newSpawnAct1);
-        gbData.addPlayerAction(newSpawnAct2);
+        // SpawnAct newSpawnAct1 = new SpawnAct(new Coor(0,1), 1);
+        // SpawnAct newSpawnAct2 = new SpawnAct(new Coor(0,0), 1);
+        // gbData.addPlayerAction(newSpawnAct1);
+        // gbData.addPlayerAction(newSpawnAct2);
         // t0.start();
         gbData.setClickPause();
         gb.run();

@@ -65,6 +65,8 @@ public class GameBoard implements Runnable {
     @Override
     public void run() {
         gameInit();
+        SpawnAct newSpawnAct = new SpawnAct(new Coor(0,0), 1);
+        theData.addPlayerAction(newSpawnAct);
         while(!metWinningCond){
             try {
                 mainLoop();
