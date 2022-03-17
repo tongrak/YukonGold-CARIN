@@ -6,6 +6,8 @@ public class ModelRequestAB {
 
     private boolean spawn;
 
+    private int credit;
+
     public void setType(int type){
         this.type = type;
     }
@@ -20,6 +22,14 @@ public class ModelRequestAB {
 
     public boolean getSpawn(){
         return this.spawn;
+    }
+
+    public void setCredit(int credit){
+        this.credit = credit;
+    }
+
+    public int getCredit(){
+        return this.credit;
     }
 
 }

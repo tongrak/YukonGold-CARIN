@@ -10,10 +10,13 @@ public class ModelSendAB {
 
     private boolean spawn;
 
-    public ModelSendAB(int type,Coor coor,boolean spawn){
+    private int credit;
+
+    public ModelSendAB(int type,Coor coor,boolean spawn,int credit){
         this.type = type;
         this.coor = coor;
         this.spawn = spawn;
+        this.credit = credit;
     }
 
     public int getType(){
@@ -30,5 +33,13 @@ public class ModelSendAB {
 
     public boolean getSpawn(){
         return this.spawn;
+    }
+
+    public void setCredit(int credit){
+        this.credit = credit;
+    }
+
+    public int getCredit(){
+        return this.credit;
     }
 }

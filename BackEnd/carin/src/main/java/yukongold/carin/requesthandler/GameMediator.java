@@ -73,6 +73,7 @@ public class GameMediator {
     private Coor coor1;
     private Coor coor2;
     private boolean spawn = false;
+    private int cost = gbdata.getCurrCredit();
 
     @GetMapping("/start")
     public String startGame(){
@@ -90,14 +91,14 @@ public class GameMediator {
             boolean toSend = spawn;
             spawn = false;
             System.out.println("c1");
-            return new ModelSendAB(selectedABtypeIndex, coor2,toSend);
+            return new ModelSendAB(selectedABtypeIndex, coor2,toSend,cost);
         }else{
             SpawnAct newSpawnAct = new SpawnAct(coor1, selectedABtypeIndex);
             gbdata.addPlayerAction(newSpawnAct);
             boolean toSend = spawn;
             spawn = false;
             System.out.println("c2");
-            return new ModelSendAB(selectedABtypeIndex, coor1,toSend);
+            return new ModelSendAB(selectedABtypeIndex, coor1,toSend,cost);
         }
         
         // return "Spawning:" + ABType[selectedABtypeIndex] + " at " + coor1.getX() + "," + coor1.getY();
@@ -186,6 +187,7 @@ public class GameMediator {
         //when player click selecting one of three AB type to spawn in front-end shall post back to back-end with a integer (1,2,3) presenting a AB type. Then this method shall create a spawnAct object 
         //! seek GameMediator.spawningSampleGPS() for referent.
         // throw new RuntimeException("Unimplemented");
+        this.cost = request.getCredit();
         this.spawn = request.getSpawn();
         this.selectedABtypeIndex = request.getType(); // 0 = KillerTCell, 1 = Marcophage, 2 = Neutropil
         return "AB_Type : " + request.getType();

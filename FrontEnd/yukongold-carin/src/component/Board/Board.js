@@ -15,12 +15,23 @@ function Board(props) {
     // const [piture, setPiture] = useState();
     // const [count, setCount] = useState(0);
 
+    const getTest = async() => {
+        await axios.get("http://localhost:8080/test", { crossdomain: true })
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+    }
+
 
     const getData = async() => {
         await axios.get("http://localhost:8080/getdata", { crossdomain: true })
                 .then(res => {
                     console.log(res.data)
                     setGameData(res.data)
+                    console.log(res.data.dataLL)
                     setSpeed((res.data.speed) * 1000)
                     console.log("speed : " + speed)
                 })
@@ -32,9 +43,11 @@ function Board(props) {
     useEffect(() => {
         
         const interval = setInterval(() => {
-            // getData()
+            getData()
+            getTest()
         }, speed)
         return () => clearInterval(interval)
+
     });
 
     const sendData = async(e) => {
@@ -57,7 +70,7 @@ function Board(props) {
                 if (res.data.spawn) {
                     // setSpawn(res.data.spawn)
                     console.log("Spawn Type: " + res.data.type + " Coor : " +
-                        res.data.coor.x + "," + res.data.coor.y)
+                        res.data.coor.x + "," + res.data.coor.y + "Cost : " + res.data.credit)
                     let pp = e.concat("0")
                     let setP = document.getElementById(pp)
                     

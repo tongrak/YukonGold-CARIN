@@ -87,6 +87,7 @@ public class GameBoard implements Runnable {
     private void mainLoop() throws RuntimeException {
         System.out.println("current win con: " + metWinningCond);
         System.out.println("GB: is " + ((isPause) ? "pause" : "running") + " at turn:"+ ((isPause) ? turnCounter : turnCounter++));
+        System.out.println( "Credit : " + this.currCredit);
             checkPlayerRequest();
             if (!isPause){
                 spawnVirus();
